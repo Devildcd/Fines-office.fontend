@@ -1,0 +1,36 @@
+table {
+  width: 100%;
+}
+
+.card {
+  border: none;
+  background-color: transparent;
+}
+
+table th {
+  background-color: rgb(221, 220, 220);
+  font-size: 16px;
+  color: rgb(95, 95, 95);
+}
+
+table tr:nth-child(odd) {
+  background-color: rgb(245, 244, 244);
+}
+
+table tr:hover {
+  background-color:  #f8acac;
+}
+
+  .button-pers {
+    padding-top: 5px;
+    padding-bottom: 10px;
+    display: flex;
+  }
+
+  .search-boton-pers {
+    background-color: rgba(0, 0, 0, 0); border: none !important;
+  }
+
+  .paginador-transparente {
+    background-color: transparent !important; /* Establece el fondo como transparente */
+}

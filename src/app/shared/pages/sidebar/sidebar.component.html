@@ -1,0 +1,83 @@
+<!-- 
+
+<div [ngClass]="{'hidden': !sharedService.isVisible}" class="sidebar-wrapper">
+  <div class="logo" style="border-bottom: none;">
+      <a href="#" style="text-decoration: none;" class="simple-text">
+        <i class="fa fa-address-card"></i>
+        CGM
+      </a>
+      <hr class="separator">
+  </div>
+  <ul class="nav" style="margin-top: -10px;">
+
+      <li [routerLinkActive] = "['active']">
+          <a class="nav-link" href="" (click)="disableLink($event)" >
+              <i class="nc-icon nc-notes" [matMenuTriggerFor]="nomencladores"></i>
+              <p [routerLink]="['/nomencladores/divisiones/provincias']">Nomencladores</p>
+          </a>
+      </li>
+
+      <li [routerLinkActive] = "['active']">
+        <a class="nav-link" [routerLink]="['/cursos/listado']" [matMenuTriggerFor]="nomencladores">
+            <i class="nc-icon nc-notes"></i>
+            <p>Operaciones</p>
+        </a>
+    </li>
+      
+  </ul>
+</div>-->
+
+
+
+
+<ul *ngIf="mostrarMenu || showSidebar " class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" style="height: 100%;" id="accordionSidebar">
+
+  <!-- Sidebar - Brand -->
+  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="" (click)="disableLink($event)" id="homeLink">
+      <div class="sidebar-brand-icon">
+        <i class="fa fa-address-card"></i>
+      </div>
+      <div class="sidebar-brand-text mx-3">CGM <sup>2</sup></div>
+  </a>
+
+  <!-- Divider -->
+  <hr class="sidebar-divider my-0">
+
+  <!-- Nav Item - Dashboard -->
+  <li class="nav-item active">
+      <a class="nav-link" [routerLink]="['/nomencladores/inicio']">
+          <i class="fas fa-home" style="margin-right: 10px;"></i>
+          <span>Página Principal</span></a>
+  </li>
+
+  <!-- Divider -->
+  <hr class="sidebar-divider">
+
+  <!-- Heading -->
+  <div class="sidebar-heading">
+      Contenidos
+  </div>
+
+  <!-- Nav Item - Pages Collapse Menu -->
+  <li class="nav-item" [routerLinkActive] = "['active']">
+      <app-nomencladores-menu></app-nomencladores-menu>
+  </li>
+
+  <!-- Nav Item - Utilities Collapse Menu -->
+  <li class="nav-item">
+      <a class="nav-link collapsed" href="" (click)="disableLink($event)" data-toggle="collapse">
+          <i class="fas fa-calculator" style="margin-right: 10px;"></i>
+          <span>Operaciones</span>
+      </a>
+  </li>
+
+  <!-- Divider -->
+  <hr class="sidebar-divider d-none d-md-block">
+
+  <!-- Sidebar Toggler (Sidebar) -->
+  <div class="text-center d-none d-md-inline">
+      <button class="rounded-circle border-0" (click)="toggleSidebar()" id="sidebarToggle"></button>
+  </div>
+
+</ul>
+<!-- End of Sidebar -->

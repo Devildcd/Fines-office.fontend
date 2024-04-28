@@ -1,0 +1,171 @@
+
+<div *ngIf="loading" class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+  
+  <div class="container-pers">
+  
+    <div class="card card d-flex flex-column">
+      <div class="card-header">
+        <div class="row">
+          <div class="col-md-8">
+              <h2 style="color: rgb(95, 95, 95);">Detalles de OCCM</h2>
+          </div>
+      </div>
+  
+    <div *ngIf="!loading" class="card-body flex-grow-1">
+      <div class="container-fluid"> 
+        <div class="row desplazador-horizontal">
+          <div class="col-lg-6 col-md-12">
+            <div class="half-text d-flex">
+              <strong>Identificador:</strong>
+              <div class="col-lg-6 col-md-12">
+                <span>{{ occm.id_occm }}</span>
+              </div>
+              
+            </div>
+
+            <div class="half-text d-flex">
+              <strong>Oficina Superior:</strong>
+              <div class="col-lg-6 col-md-12">
+                <span *ngIf="occm.padre_id; else noIcon"  >{{ occm.padre_id.descripcion }}</span>
+                <ng-template #noIcon>
+                  No
+                </ng-template>
+              </div>
+            </div>
+
+            <div class="half-text d-flex">
+                <strong>Nit:</strong>
+                <div class="col-lg-6 col-md-12">
+                  <span *ngIf="occm.nit; else noIcon">{{ occm.nit }}</span>
+                </div>
+              </div>
+  
+            <div class="half-text d-flex">
+              <strong>Descripción:</strong>
+              <div class="col-lg-6 col-md-12">
+                <span>{{ occm.descripcion }}</span>
+              </div>
+            </div>
+
+            <div class="half-text d-flex">
+                <strong>Dirección:</strong>
+                <div class="col-lg-6 col-md-12">
+                  <span>{{ occm.direccion }}</span>
+                </div>
+              </div>
+
+              <div class="half-text d-flex">
+                <strong>Teléfono:</strong>
+                <div class="col-lg-6 col-md-12">
+                  <span>{{ occm.telefono }}</span>
+                </div>
+              </div>
+          </div>
+          <div class="col-lg-6 col-md-12">
+            <div class="half-text d-flex">
+              <strong>Provincia:</strong>
+              <div class="col-lg-6 col-md-12">
+                <span>{{ occm.provincia_id?.nombre }}</span>
+              </div>
+            </div>
+
+            <div class="half-text d-flex">
+              <strong>Municipio:</strong>
+              <div class="col-lg-6 col-md-12">
+                <span>{{ occm.municipio_id?.nombre }}</span>
+              </div>
+            </div>
+
+            <div class="half-text d-flex">
+              <strong>Distrito:</strong>
+              <div class="col-lg-6 col-md-12">
+                <span *ngIf="occm.distrito_id?.nombre; else noIcon">{{ occm.distrito_id?.nombre }}</span>
+              </div>
+            </div>
+
+          <div class="half-text d-flex">
+            <strong>Tipo de Oficina:</strong>
+            <div class="col-lg-6 col-md-12">
+              <span *ngIf="occm.tipo_oficina_id?.descripcion; else noIcon">{{ occm.tipo_oficina_id?.descripcion }}</span>
+            </div>
+          </div>
+
+          <div class="half-text d-flex">
+            <strong>OCCM Distrital:</strong>
+            <div class="col-lg-6 col-md-12">
+              <span *ngIf="occm.es_distrito; else noIcon"><i class="fa fa-check"></i></span>
+            </div>
+          </div>
+
+          <div class="half-text d-flex">
+            <strong>OCCM con Distritos:</strong>
+            <div class="col-lg-6 col-md-12">
+              <span *ngIf="occm.ofic_con_distrito; else noIcon"><i class="fa fa-check"></i></span>
+            </div>
+          </div>
+
+            <!-- <div class="half-text">
+              <span>{{ occm.id_occm }}</span>
+            </div>
+
+            <div class="half-text">
+              <span *ngIf="occm.padre_id?.descripcion">{{ occm.padre_id?.descripcion }}</span>
+              <span *ngIf="!occm.padre_id?.descripcion">No</span>
+            </div>
+
+            <div class="half-text">
+              <span>{{ occm.nit }}</span>
+            </div>
+  
+            <div class="half-text">
+              <span>{{ occm.descripcion }}</span>
+            </div>
+
+            <div class="half-text">
+                <span>{{ occm.direccion }}</span>
+              </div>
+
+              <div class="half-text">
+                <span>{{ occm.telefono }}</span>
+              </div>
+
+              <div class="half-text">
+                <span>{{ occm.provincia_id?.nombre }}</span>
+              </div>
+
+              <div class="half-text">
+                <span>{{ occm.municipio_id?.nombre }}</span>
+              </div>
+
+              <div class="half-text">
+                <span>{{ occm.distrito_id?.nombre }}</span>
+              </div>
+
+              <div class="half-text">
+                <span>{{ occm.tipo_oficina_id.descripcion }}</span>
+              </div>
+
+              <div class="half-text">
+                <span><i *ngIf="occm.es_distrito" class="fa fa-check"></i></span>
+                <span *ngIf="!occm.padre_id?.descripcion">No</span>
+              </div>
+
+              <div class="half-text">
+                <span><i *ngIf="occm.ofic_con_distrito" class="fa fa-check"></i></span>
+                <span *ngIf="!occm.padre_id?.descripcion">No</span>
+              </div> -->
+
+          </div>
+        </div>
+      </div>
+      <div class="example-button-container">
+        <button mat-raised-button [routerLink]="['/nomencladores/divisiones/occm']" color="secundary">Volver</button>
+      </div>     
+    </div>
+  
+    </div>
+  </div> 
+  
+  

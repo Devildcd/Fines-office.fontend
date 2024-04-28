@@ -1,0 +1,40 @@
+
+
+
+
+
+<div class="container-pers">
+
+    <div class="card card d-flex flex-column">
+      <div class="card-header">
+        <div class="row">
+          <div class="col-md-8">
+              <h2 style="color: rgb(95, 95, 95);">Crear Concepto de Anulación</h2>
+          </div>
+      </div>
+  
+    <div class="card-body flex-grow-1">
+        <form [formGroup]="formCrear">
+
+            <div class="example-inline-container">
+                <mat-form-field class="example-form-field">
+                  <mat-label>Descripción</mat-label>
+                  <input matInput formControlName="descripcion" required>
+                </mat-form-field>
+              </div>
+
+              <div class="example-button-container">
+                <!-- Agrega tus botones aquí -->
+                <button mat-raised-button (click)="crearConceptoAnulacion()" color="primary" style="margin-right: 5px;">Aceptar</button>
+                <button mat-raised-button [routerLink]="['/nomencladores/divisiones/conceptos-anulacion']" color="secundary">Volver</button>
+              </div>
+    
+        </form>
+    </div>
+ 
+    </div>
+  </div> 
+
+
+
+

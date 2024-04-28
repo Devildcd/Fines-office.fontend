@@ -1,0 +1,64 @@
+
+<div *ngIf="loading" class="spinner-border text-primary" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+
+<div class="container-pers">
+
+  <div class="card card d-flex flex-column">
+    <div class="card-header">
+      <div class="row">
+        <div class="col-md-8">
+            <h2 style="color: rgb(95, 95, 95);">Detalles del Consejo Popular</h2>
+        </div>
+    </div>
+
+  <div *ngIf="!loading" class="card-body flex-grow-1">
+    <div class="container-fluid"> 
+      <div class="row desplazador-horizontal">
+        <div class="col-lg-6 col-md-12">
+          <div class="half-text">
+            <strong>Identificador:</strong>
+          </div>
+
+          <div class="half-text">
+            <strong>Nombre:</strong>
+          </div>
+
+          <div class="half-text">
+            <strong>Municipio:</strong>
+          </div>
+
+          <div class="half-text">
+            <strong>Distrito:</strong>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-12">
+          <div class="half-text">
+            <span *ngIf="cpopular.id_cpopular; else noIcon">{{ cpopular.id_cpopular }}</span>
+            <ng-template class="half-text" #noIcon>
+              <span>No</span>
+            </ng-template>
+          </div>
+          <div class="half-text">
+            <span *ngIf="cpopular.nombre; else noIcon">{{ cpopular.nombre }}</span>
+          </div>
+
+          <div class="half-text">
+            <span *ngIf="cpopular.municipio_id.nombre; else noIcon">{{ cpopular.municipio_id.nombre }}</span>
+          </div>
+
+          <div class="half-text">
+            <span *ngIf="cpopular.distrito_id?.nombre; else noIcon">{{ cpopular.distrito_id.nombre }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="example-button-container">
+      <button mat-raised-button [routerLink]="['/nomencladores/divisiones/consejos-populares']" color="secundary">Volver</button>
+    </div>     
+  </div>
+
+  </div>
+</div> 
+

@@ -1,0 +1,21 @@
+
+.card {
+  border: none;
+  background-color: transparent;
+}
+
+.example-inline-container {
+    display: flex;
+    gap: 16px; /* Ajusta el valor según la separación deseada */
+    width: 100%;
+  }
+
+  .example-form-field {
+    width: 100%; /* Ajusta el valor según el ancho deseado */
+  }
+
+  .example-button-container {
+    margin-top: 10px;
+    display: flex;
+  justify-content: flex-end;
+  }

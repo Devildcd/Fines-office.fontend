@@ -1,0 +1,30 @@
+
+.card {
+    border: none; 
+    background-color: transparent;
+  }
+
+    .example-button-container {
+      margin-top: 10px;
+      display: flex;
+    justify-content: flex-end;
+    }
+  
+    .desplazador-horizontal {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      margin-bottom: 10px;
+    }
+    
+    .half-text {
+      margin-bottom: 10px;
+    }
+    
+    .half-text strong {
+      font-size: 16px;
+    }
+    
+    .half-text span {
+      font-size: 16px
+    }

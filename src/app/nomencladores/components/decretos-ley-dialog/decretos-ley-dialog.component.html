@@ -1,0 +1,41 @@
+<h1 mat-dialog-title>{{organismo?.nombre}}</h1>
+
+<div class="card card d-flex flex-column">
+    <div class="card-header">
+      <div class="row">
+        <div class="col-md-8">
+           
+            <h2 style="color: rgb(95, 95, 95);">Decretos ley</h2>
+        </div>
+    </div>
+
+      <div class="card-body flex-grow-1" style="margin-top: -20px;">
+        
+        <div class="table-responsive">
+
+          <!-- <div *ngIf="loading" class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div> -->
+
+          <table  mat-table [dataSource]="dataSource" class=" custom-table">
+ 
+            <ng-container matColumnDef="id_decreto_ley">
+              <th mat-header-cell *matHeaderCellDef><strong> Identificador </strong></th>
+              <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> {{element.id_decreto_ley}} </td>
+            </ng-container>
+           
+            <ng-container matColumnDef="descripcion">
+              <th mat-header-cell *matHeaderCellDef><strong> Nombre </strong></th>
+              <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> {{element.descripcion}} </td>
+            </ng-container>
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let element; columns: displayedColumns;"></tr>
+          </table>
+        </div>
+      </div>
+      </div>
+  </div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cerrar</button>
+</div>

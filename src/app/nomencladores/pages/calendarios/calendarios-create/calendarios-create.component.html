@@ -1,0 +1,34 @@
+<div class="container-pers">
+
+    <div class="card card d-flex flex-column">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-md-8">
+                    <h2 style="color: rgb(95, 95, 95);">Crear Calendario</h2>
+                </div>
+            </div>
+
+            <div class="card-body flex-grow-1">
+                <form [formGroup]="formCrear">
+
+                    <div class="example-inline-container">
+                        <mat-form-field class="example-form-field">
+                            <mat-label>Descripción</mat-label>
+                            <input matInput formControlName="descripcion" required maxlength="50">
+                            <mat-error *ngIf="formCrear.get('descripcion')?.errors?.['maxlength']">
+                                La descripción no puede tener más de 50 caracteres.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="example-button-container">
+                        <!-- Agrega tus botones aquí -->
+                        <button mat-raised-button (click)="crearCalendario()" color="primary"
+                            style="margin-right: 5px;">Aceptar</button>
+                        <button mat-raised-button [routerLink]="['/nomencladores/divisiones/calendarios']"
+                            color="secundary">Volver</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>

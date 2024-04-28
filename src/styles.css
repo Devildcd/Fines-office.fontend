@@ -1,0 +1,18 @@
+/* You can add global styles to this file, and also import other style files */
+@import "assets/css/fontawesome-free/css/all.min.css";
+/* @import "assets/css/light-bootstrap-dashboard.css"; */
+@import "assets/css/sb-admin-2.css";
+
+/* CSS Document */
+.link-estilizado {
+    text-decoration: none; /* Quitar subrayado */
+    color:black; /* Cambiar el color */
+  }
+
+  .container-pers {
+    padding-top: 0px;
+    padding-bottom: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+}  
+

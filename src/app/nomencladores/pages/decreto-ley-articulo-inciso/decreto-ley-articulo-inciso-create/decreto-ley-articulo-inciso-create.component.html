@@ -1,0 +1,144 @@
+
+
+<div class="container-pers">
+
+    <div class="card card d-flex flex-column">
+      <div class="card-header">
+        <div class="row">
+          <div class="col-md-8">
+              <h2 style="color: rgb(95, 95, 95);">Crear Decreto Ley-Artículo Inciso</h2>
+          </div>
+      </div>
+  
+    <div class="card-body flex-grow-1">
+        <form [formGroup]="formCrear">
+
+            <div class="example-inline-container">
+                <mat-form-field class="example-form-field">
+                  <mat-label>Descripción</mat-label>
+                  <input matInput formControlName="descripcion" required>
+                </mat-form-field>
+              
+                <mat-form-field class="example-form-field">
+                    <mat-label>Decreto Ley</mat-label>
+                    <mat-select formControlName="decreto_ley" required>
+                      <mat-option *ngFor="let decreto of decretosLey" [value]="decreto.id">{{ decreto.descripcion }}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+
+                <div class="example-inline-container">
+
+                    <mat-form-field class="example-form-field">
+                        <mat-label>Artículo</mat-label>
+                        <mat-select formControlName="articulo" required>
+                          <mat-option *ngFor="let articulo of articulos" [value]="articulo.id">{{ articulo.id_articulo }}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+
+                    <mat-form-field class="example-form-field">
+                        <mat-label>Inciso</mat-label>
+                        <mat-select formControlName="inciso" required>
+                          <mat-option *ngFor="let inciso of incisos" [value]="inciso.id">{{ inciso.id_inciso }}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+
+                  </div>
+
+                  <div class="example-inline-container">
+
+                    <mat-checkbox formControlName="duplica" color="primary">
+                        Duplica
+                    </mat-checkbox>
+
+                    <mat-form-field *ngIf="formCrear.get('duplica')?.value" class="example-form-field">
+                        <mat-label>Días para Duplicar</mat-label>
+                        <input matInput type="number" formControlName="dias_duplicar">
+                      </mat-form-field>
+                    
+                      <mat-form-field *ngIf="formCrear.get('duplica')?.value" class="example-form-field">
+                        <mat-label>Tipo de Días para Duplicar</mat-label>
+                        <mat-select formControlName="tipo_dias_dup">
+                          <mat-option value="naturales" selected>Naturales</mat-option>
+                          <mat-option value="hábiles">Hábiles</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                  </div>
+
+                  <div class="example-inline-container">
+
+                    <mat-checkbox formControlName="apremia" color="primary">
+                        Apremia
+                    </mat-checkbox>
+
+                    <mat-form-field *ngIf="formCrear.get('apremia')?.value" class="example-form-field">
+                        <mat-label>Días para Apremiar</mat-label>
+                        <input matInput type="number" formControlName="dias_apremiar">
+                      </mat-form-field>
+        
+                      <mat-form-field *ngIf="formCrear.get('apremia')?.value" class="example-form-field">
+                        <mat-label>Tipo de Días para Apremiar</mat-label>
+                        <mat-select formControlName="tipo_dias_ap">
+                          <mat-option value="naturales">Naturales</mat-option>
+                          <mat-option value="hábiles">Hábiles</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                  </div>
+
+                  <div class="example-inline-container">
+
+                    <mat-checkbox formControlName="cancela" color="primary">
+                        Cancela
+                    </mat-checkbox>
+
+                    <mat-form-field *ngIf="formCrear.get('cancela')?.value" class="example-form-field">
+                        <mat-label>Días para Cancelar</mat-label>
+                        <input matInput type="number" formControlName="dias_cancelar">
+                      </mat-form-field>
+        
+                      <mat-form-field *ngIf="formCrear.get('cancela')?.value" class="example-form-field">
+                        <mat-label>Tipo de Días para Cancelar</mat-label>
+                        <mat-select formControlName="tipo_dias_canc">
+                          <mat-option value="naturales">Naturales</mat-option>
+                          <mat-option value="hábiles">Hábiles</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                  </div>
+
+                  <div class="example-inline-container">
+
+                    <mat-checkbox formControlName="bonifica" color="primary">
+                        Bonifica
+                    </mat-checkbox>
+
+                    <mat-form-field *ngIf="formCrear.get('bonifica')?.value" class="example-form-field">
+                        <mat-label>Días que Bonifica</mat-label>
+                        <input matInput type="number" formControlName="bonifica_dias">
+                      </mat-form-field>
+        
+                      <mat-form-field *ngIf="formCrear.get('bonifica')?.value" class="example-form-field">
+                        <mat-label>Porciento de Bonificación</mat-label>
+                        <input matInput type="number" formControlName="bonifica_porc">
+                      </mat-form-field>
+                  </div>
+
+                  <div class="example-inline-container">
+                    <mat-checkbox formControlName="traslada" color="primary">
+                        Se Traslada
+                    </mat-checkbox>
+                  </div>
+
+              <div class="example-button-container">
+                <!-- Agrega tus botones aquí -->
+                <button mat-raised-button (click)="crearDecArtInc()" color="primary" style="margin-right: 5px;">Aceptar</button>
+                <button mat-raised-button [routerLink]="['/nomencladores/divisiones/decretos-ley-articulos-incisos']" color="secundary">Volver</button>
+              </div>
+    
+        </form>
+    </div>
+ 
+    </div>
+  </div> 
+</div>
+
+

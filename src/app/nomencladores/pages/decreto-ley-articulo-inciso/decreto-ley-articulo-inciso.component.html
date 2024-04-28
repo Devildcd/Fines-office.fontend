@@ -1,0 +1,231 @@
+<div class="container-pers">
+
+    <div class="card card d-flex flex-column">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-md-8">
+
+                    <h2 style="color: rgb(95, 95, 95);">Decretos Ley-Artículos Incisos</h2>
+                </div>
+
+                <div class="row justify-content-end">
+                    <div class="col-md-5">
+                        <div class="input-group">
+                            <input type="text" class="form-control" [(ngModel)]="terminoBusqueda"
+                                (input)="filtrarDatos()" placeholder="Buscar">
+                            <div class="input-group-append">
+                                <button *ngIf="!terminoBusqueda" class="search-boton-pers" mat-raised-button
+                                    color="secondary" type="button">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                                <button (click)="clearBuscador()" *ngIf="terminoBusqueda" class="search-boton-pers"
+                                    mat-raised-button color="secondary" type="button">
+                                    <i class="fa fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-body flex-grow-1" style="margin-top: -20px;">
+
+                <div class="row mt-3">
+                    <div class="col-md-8">
+                        <div class="button-pers">
+                            <button mat-raised-button color="primary"
+                                [routerLink]="['/nomencladores/divisiones/crear/decreto-ley-articulo-inciso']">Crear</button>
+                            <!-- <button mat-raised-button color="primary" >Crear</button> -->
+                            <button mat-raised-button color="secundary" style="margin-left: 5px;">Importar</button>
+                        </div>
+                    </div>
+
+                    <div class="additional-buttons"
+                        style="display: flex; justify-content: flex-end; align-items: center; margin-top: -45px; margin-bottom: 10px;">
+                        <div>
+                            <button mat-mini-fab color="primary" [matMenuTriggerFor]="menu">
+                                <i class="fas fa-ellipsis-v"></i> <!-- Icono de opciones de Font Awesome -->
+                            </button>
+
+                            <mat-menu #menu="matMenu">
+                                <button mat-menu-item>Opción 1</button>
+                                <button mat-menu-item>Opción 2</button>
+                            </mat-menu>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+
+                    <div *ngIf="loading" class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+
+                    <table *ngIf="!loading" mat-table [dataSource]="dataSource" class="mat-elevation-z8 custom-table">
+
+                        <ng-container matColumnDef="select">
+                            <th mat-header-cell *matHeaderCellDef class="custom-header">
+                                <mat-checkbox color="primary" (change)="$event ? toggleAllRows() : null"
+                                    [checked]="selection.hasValue() && isAllSelected()"
+                                    [indeterminate]="selection.hasValue() && !isAllSelected()"
+                                    [aria-label]="checkboxLabel()">
+                                </mat-checkbox>
+                            </th>
+                            <td mat-cell *matCellDef="let row">
+                                <mat-checkbox color="primary" (click)="$event.stopPropagation()"
+                                    (change)="$event ? selection.toggle(row) : null"
+                                    [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)">
+                                </mat-checkbox>
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="descripcion">
+                            <th mat-header-cell *matHeaderCellDef><strong> Descripción </strong></th>
+                            <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+                                    [routerLink]="['/nomencladores/divisiones/detalles/decreto-ley-articulo-inciso/', element.id]"
+                                    class="link-estilizado">{{ element.descripcion }} </a> </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="decreto_ley">
+                            <th mat-header-cell *matHeaderCellDef><strong> Decreto Ley </strong></th>
+                            <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+                                    [routerLink]="['/nomencladores/divisiones/detalles/decreto-ley-articulo-inciso/', element.id]"
+                                    class="link-estilizado">{{ element.decreto_ley.descripcion }} </a> </td>
+                        </ng-container>
+                        <ng-container matColumnDef="articulo">
+                            <th mat-header-cell *matHeaderCellDef><strong> Artículo </strong></th>
+                            <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+                                    [routerLink]="['/nomencladores/divisiones/detalles/decreto-ley-articulo-inciso/', element.id]"
+                                    class="link-estilizado">{{ element.articulo.id_articulo }} </a> </td>
+                        </ng-container>
+                        <ng-container matColumnDef="inciso">
+                            <th mat-header-cell *matHeaderCellDef><strong> Inciso </strong></th>
+                            <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+                                    [routerLink]="['/nomencladores/divisiones/detalles/decreto-ley-articulo-inciso/', element.id]"
+                                    class="link-estilizado">{{ element.inciso.id_inciso }} </a> </td>
+                        </ng-container>
+                        <ng-container matColumnDef="duplica">
+                            <th mat-header-cell *matHeaderCellDef><strong> Duplica </strong></th>
+                            <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+                                    [routerLink]="['/nomencladores/divisiones/detalles/decreto-ley-articulo-inciso/', element.id]"
+                                    class="link-estilizado"><i *ngIf="element.duplica" class="fa fa-check"></i></a> </td>
+                        </ng-container>
+                        <ng-container matColumnDef="dias_duplicar">
+                            <th mat-header-cell *matHeaderCellDef><strong> Días para Duplicar </strong></th>
+                            <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+                                    [routerLink]="['/nomencladores/divisiones/detalles/decreto-ley-articulo-inciso/', element.id]"
+                                    class="link-estilizado"> {{ element.dias_duplicar }} </a> </td>
+                        </ng-container>
+                        <ng-container matColumnDef="tipo_dias_dup">
+                            <th mat-header-cell *matHeaderCellDef><strong> Tipo de Días para Duplicar </strong></th>
+                            <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+                                    [routerLink]="['/nomencladores/divisiones/detalles/decreto-ley-articulo-inciso/', element.id]"
+                                    class="link-estilizado"> {{ element.tipo_dias_dup }} </a> </td>
+
+                        </ng-container>
+                        <ng-container matColumnDef="apremia">
+                            <th mat-header-cell *matHeaderCellDef><strong> Apremia </strong></th>
+                            <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+                                    [routerLink]="['/nomencladores/divisiones/detalles/decreto-ley-articulo-inciso/', element.id]"
+                                    class="link-estilizado"> <i *ngIf="element.apremia" class="fa fa-check"></i> </a> </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="dias_apremiar">
+                            <th mat-header-cell *matHeaderCellDef><strong> Días para Apremiar </strong></th>
+                            <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+                                    [routerLink]="['/nomencladores/divisiones/detalles/decreto-ley-articulo-inciso/', element.id]"
+                                    class="link-estilizado"> {{ element.dias_apremiar }} </a> </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="tipo_dias_ap">
+                            <th mat-header-cell *matHeaderCellDef><strong> Tipo de Días para Apremiar </strong></th>
+                            <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+                                [routerLink]="['/nomencladores/divisiones/detalles/decreto-ley-articulo-inciso/', element.id]"
+                                class="link-estilizado"> {{ element.tipo_dias_ap }} </a> </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="cancela">
+                            <th mat-header-cell *matHeaderCellDef><strong> Cancela </strong></th>
+                            <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+                                [routerLink]="['/nomencladores/divisiones/detalles/decreto-ley-articulo-inciso/', element.id]"
+                                class="link-estilizado"> <i *ngIf="element.cancela" class="fa fa-check"></i> </a> </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="dias_cancelar">
+                            <th mat-header-cell *matHeaderCellDef><strong> Días para Cancelar </strong></th>
+                            <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+                                [routerLink]="['/nomencladores/divisiones/detalles/decreto-ley-articulo-inciso/', element.id]"
+                                class="link-estilizado"> {{ element.dias_cancelar }} </a> </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="tipo_dias_canc">
+                            <th mat-header-cell *matHeaderCellDef><strong> Tipo de Días para Cancelar </strong></th>
+                            <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+                                [routerLink]="['/nomencladores/divisiones/detalles/decreto-ley-articulo-inciso/', element.id]"
+                                class="link-estilizado"> {{ element.tipo_dias_canc }} </a> </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="traslada">
+                            <th mat-header-cell *matHeaderCellDef><strong> Se Traslada </strong></th>
+                            <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+                                [routerLink]="['/nomencladores/divisiones/detalles/decreto-ley-articulo-inciso/', element.id]"
+                                class="link-estilizado"> <i *ngIf="element.traslada" class="fa fa-check"></i> </a> </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="bonifica">
+                            <th mat-header-cell *matHeaderCellDef><strong> Bonifica </strong></th>
+                            <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+                                [routerLink]="['/nomencladores/divisiones/detalles/decreto-ley-articulo-inciso/', element.id]"
+                                class="link-estilizado"> <i *ngIf="element.bonifica" class="fa fa-check"></i> </a> </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="bonifica_dias">
+                            <th mat-header-cell *matHeaderCellDef><strong> Días que Bonifica </strong></th>
+                            <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+                                [routerLink]="['/nomencladores/divisiones/detalles/decreto-ley-articulo-inciso/', element.id]"
+                                class="link-estilizado"> {{ element.bonifica_dias }} </a> </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="bonifica_porc">
+                            <th mat-header-cell *matHeaderCellDef><strong> Porciento de Bonificación </strong></th>
+                            <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+                                [routerLink]="['/nomencladores/divisiones/detalles/decreto-ley-articulo-inciso/', element.id]"
+                                class="link-estilizado"> {{ element.bonifica_porc }} </a> </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="actions">
+                            <th mat-header-cell *matHeaderCellDef><strong>Acciones</strong></th>
+                            <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element">
+                                <div class="d-flex">
+                                    <button [routerLink]="['/nomencladores/divisiones/editar/decreto-ley-articulo-inciso', element.id]"
+                                        mat-mini-fab color="primary" style="margin-right: 5px;">
+                                        <i class="fa fa-edit" aria-hidden="true"></i>
+                                    </button>
+                                    <button mat-mini-fab (click)="eliminarDecretoLeyArticuloInc(element.id)" color="warn">
+                                        <i class="fa fa-trash" aria-hidden="true"></i>
+                                    </button>
+
+                                </div>
+                            </td>
+                        </ng-container>
+
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let element; columns: displayedColumns;"
+                            (click)="selection.toggle(element)">
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+
+
+            <mat-paginator #paginator class="demo-paginator paginador-transparente" (page)="handlePageEvent($event)"
+                [length]="length" [pageSize]="pageSize" [disabled]="disabled"
+                [showFirstLastButtons]="showFirstLastButtons"
+                [pageSizeOptions]="showPageSizeOptions ? pageSizeOptions : []" [hidePageSize]="hidePageSize"
+                [pageIndex]="pageIndex" aria-label="Select page">
+            </mat-paginator>
+        </div>
+    </div>
+</div>

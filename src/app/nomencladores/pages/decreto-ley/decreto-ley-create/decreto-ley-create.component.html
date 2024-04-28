@@ -1,0 +1,48 @@
+
+
+
+<div class="container-pers">
+
+    <div class="card card d-flex flex-column">
+      <div class="card-header">
+        <div class="row">
+          <div class="col-md-8">
+              <h2 style="color: rgb(95, 95, 95);">Crear Decreto Ley</h2>
+          </div>
+      </div>
+  
+    <div class="card-body flex-grow-1">
+        <form [formGroup]="formCrear">
+  
+            <div class="example-inline-container">
+                <mat-form-field class="example-form-field">
+                  <mat-label>Número</mat-label>
+                  <input matInput formControlName="id_decreto_ley" required>
+                </mat-form-field>
+              
+                <mat-form-field class="example-form-field">
+                  <mat-label>Descripcion</mat-label>
+                  <input matInput formControlName="descripcion" required>
+                </mat-form-field>
+
+                <mat-form-field class="example-form-field">
+                  <mat-label>Tipo de Multa</mat-label>
+                  <mat-select formControlName="tipo_multa" required>
+                    <mat-option *ngFor="let tipoMulta of tiposMultas" [value]="tipoMulta.id">{{ tipoMulta.descripcion }}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+  
+              <div class="example-button-container">
+                <!-- Agrega tus botones aquí -->
+                <button mat-raised-button (click)="crearDecreto()" color="primary" style="margin-right: 5px;">Aceptar</button>
+                <button mat-raised-button [routerLink]="['/nomencladores/divisiones/decretos-ley']" color="secundary">Volver</button>
+              </div>
+    
+        </form>
+    </div>
+  
+    </div>
+  </div> 
+  
+  
