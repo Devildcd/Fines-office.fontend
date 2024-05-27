@@ -1,0 +1,95 @@
+
+<div *ngIf="loading" class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+  
+  <div class="container-pers">
+  
+    <div class="card card d-flex flex-column">
+      <div class="card-header">
+        <div class="row">
+          <div class="col-md-8">
+              <h2 style="color: rgb(95, 95, 95);">Detalles del Modelo</h2>
+          </div>
+      </div>
+  
+    <div *ngIf="!loading" class="card-body flex-grow-1">
+      <div class="container-fluid"> 
+        <div class="row desplazador-horizontal">
+          <div class="col-lg-6 col-md-12">
+            <div class="half-text d-flex">
+              <strong>Oficina:</strong>
+              <div class="col-lg-6 col-md-12">
+                <span *ngIf="modeloOc6.occm; else noIcon">{{ modeloOc6.occm }}</span>
+              </div>
+              
+            </div>
+
+            <div class="half-text d-flex">
+              <strong>Organismo:</strong>
+              <div class="col-lg-6 col-md-12">
+                <span *ngIf="modeloOc6.organismo_origen; else noIcon"  >{{ modeloOc6.occm_origen }}</span>
+                <ng-template #noIcon>
+                  No
+                </ng-template>
+              </div>
+            </div>
+
+            <div class="half-text d-flex">
+                <strong>Importe Total:</strong>
+                <div class="col-lg-6 col-md-12">
+                  <span>{{ modeloOc6.importe_total }}</span>
+                </div>
+              </div>
+  
+            <div class="half-text d-flex">
+              <strong>Cantidad Multas:</strong>
+              <div class="col-lg-6 col-md-12">
+                <span>{{ modeloOc6.cantidad_multas }}</span>
+              </div>
+            </div>
+
+          </div>
+          <div class="col-lg-6 col-md-12">
+            <div class="half-text d-flex">
+                <strong>Suma de Dias:</strong>
+                <div class="col-lg-6 col-md-12">
+                  <span>{{ modeloOc6.suma_dias }}</span>
+                </div>
+              </div>
+
+            <div class="half-text d-flex">
+                <strong>Suma de Serie:</strong>
+                <div class="col-lg-6 col-md-12">
+                  <span>{{ modeloOc6.suma_serie }}</span>
+                </div>
+              </div>
+
+            <div class="half-text d-flex">
+              <strong>Estado:</strong>
+              <div class="col-lg-6 col-md-12">
+                <span>{{ modeloOc6.estado }}</span>
+              </div>
+            </div>
+
+            <div class="half-text d-flex">
+              <strong>Multas:</strong>
+              <div class="col-lg-6 col-md-12">
+                <span *ngIf="modeloOc6.multas; else noIcon">{{ modeloOc6.multas }}</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="example-button-container">
+        <button mat-raised-button color="secundary">Volver</button>
+      </div>      
+    </div>
+  
+    </div>
+  </div> 
+  
+  
+
+

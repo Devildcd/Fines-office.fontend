@@ -1,0 +1,78 @@
+
+
+<div class="container-pers">
+
+    <div class="card card d-flex flex-column">
+      <div class="card-header">
+        <div class="row">
+          <div class="col-md-8">
+              <h2 style="color: rgb(95, 95, 95);">Crear Modelo Oc6</h2>
+          </div>
+      </div>
+  
+    <div class="card-body flex-grow-1">
+        <form [formGroup]="formCrear">
+  
+            <div class="example-inline-container">
+                <mat-form-field class="example-form-field">
+                    <mat-label>Oficina</mat-label>
+                    <mat-select formControlName="occm" required>
+                      <mat-option *ngFor="let occm of occms" [value]="occm.id">{{ occm.id_occm }}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+              
+                  <mat-form-field class="example-form-field">
+                    <mat-label>Oficina Original</mat-label>
+                    <mat-select formControlName="occm_origen" required>
+                      <mat-option *ngFor="let occm of occms" [value]="occm.id">{{ occm.id_occm }}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+              </div>
+
+              <div class="example-inline-container">
+                <mat-form-field class="example-form-field">
+                    <mat-label>Cantidad de Multas</mat-label>
+                    <input matInput formControlName="cantidad_multas" required>
+                  </mat-form-field>
+
+                <mat-form-field class="example-form-field">
+                    <mat-label>Importe Total</mat-label>
+                    <input matInput formControlName="importe_total" required>
+                  </mat-form-field>
+
+                  <mat-form-field class="example-form-field">
+                    <mat-label>Suma de Serie</mat-label>
+                    <input matInput formControlName="suma_serie" required>
+                  </mat-form-field>
+              </div>
+
+              <div class="example-inline-container">
+
+                <mat-form-field class="example-form-field">
+                    <mat-label>Suma de Dias</mat-label>
+                    <input matInput formControlName="suma_dias" required>
+                  </mat-form-field>
+
+                  <mat-form-field class="example-form-field">
+                    <mat-label>Estado</mat-label>
+                    <mat-select formControlName="estado" required>
+                      <mat-option value="draft">No Confirmado</mat-option>
+                      <mat-option value="done">Confirmado</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+              </div>
+  
+              <div class="example-button-container">
+                <!-- Agrega tus botones aquí -->
+                <button mat-raised-button (click)="crearModeloOc6()" color="primary" style="margin-right: 5px;">Aceptar</button>
+                <button mat-raised-button [routerLink]="['/recepción/modeloOC6/listado']" color="secundary">Volver</button>
+              </div>
+    
+        </form>
+    </div>
+  
+    </div>
+  </div> 
+  
+  
+

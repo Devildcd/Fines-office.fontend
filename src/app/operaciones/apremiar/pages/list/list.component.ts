@@ -1,57 +1,53 @@
-import { Component, ViewChild } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
 import { SelectionModel } from '@angular/cdk/collections';
-
-import { OCCM } from '../../interfaces/occm.interface';
+import { Component, ViewChild } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
-import { NomencladoresService } from '../../services/nomencladores.service';
+import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
-import Swal from 'sweetalert2';
 import { catchError, throwError } from 'rxjs';
+import { Apremiar } from 'src/app/operaciones/interfaces/apremiar.interface';
+import Swal from 'sweetalert2';
+import { ApremiarService } from '../../services/apremiar.service';
 
 @Component({
-  selector: 'app-occm',
-  templateUrl: './occm.component.html',
-  styleUrls: ['./occm.component.css']
+  selector: 'app-list',
+  templateUrl: './list.component.html',
+  styleUrls: ['./list.component.css']
 })
-export class OccmComponent {
+export class ListComponent {
 
-  occm: OCCM[] = [];
+  apremios: Apremiar[] = [];
   displayedColumns: string[] = [
     'select',
-    'id_occm',
-    'nit',
-    'descripcion',
-    'direccion',
-    'telefono',
-    'provincia_id',
-    'municipio_id',
-    'distrito_id',
-    'tipo_oficina_id',
-    'es_distrito',
-    'ofic_con_distrito',
-    'padre_id',
+    'id_matriz',
+    'moneda',
+    'fecha_imp',
+    'fecha_gestion',
+    'fecha_comunicada',
+    'fecha_denunciada',
+    'num_radicacion',
+    'state',
     'actions'];
-  dataSource = new MatTableDataSource<OCCM>([]);
-  selection = new SelectionModel<OCCM>(true, []);
+  dataSource = new MatTableDataSource<Apremiar>([]);
+  selection = new SelectionModel<Apremiar>(true, []);
   loading = true;
   terminoBusqueda: string = '';
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private nomencladoresService: NomencladoresService, private router: Router) { }
+  constructor(private apremiarService: ApremiarService, 
+              private router: Router) { }
 
   ngOnInit() {
-    this.cargarOCCM();
+    this.cargarApremio();
   }
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
 
-  cargarOCCM() {
-    this.nomencladoresService
-      .getOCCMS()
+  cargarApremio() {
+    this.apremiarService
+      .getApremios()
       .pipe(
         catchError((error) => {
           console.log('Error:', error);
@@ -69,34 +65,33 @@ export class OccmComponent {
           return throwError('Ha ocurrido un error en la API');
         })
       )
-      .subscribe((occm) => {
-        this.occm = occm;
-        this.dataSource.data = occm;
-        console.log(this.occm);
+      .subscribe((apremios) => {
+        this.apremios = apremios;
+        this.dataSource.data = apremios;
+        console.log(this.apremios);
         this.loading = false;
         // console.log(this.token);
       });
   }
 
   filtrarDatos() {
-    this.dataSource.data = this.occm.filter((occm) => {
-      return occm.id_occm.toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
-      occm.nit.toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
-      occm.descripcion.toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
-      occm.direccion.toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
-      occm.telefono.toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
-      occm.provincia_id?.nombre.toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
-      occm.municipio_id?.nombre.toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
-      occm.distrito_id?.nombre.toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
-      occm.tipo_oficina_id?.descripcion.toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
-      occm.padre_id?.descripcion.toLowerCase().includes(this.terminoBusqueda.toLowerCase());
+    this.dataSource.data = this.apremios.filter((apremiar) => {
+      return apremiar.id_matriz.toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
+      apremiar.moneda.id_moneda.toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
+      apremiar.fecha_imp.toString().toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
+      apremiar.fecha_gestion.toString().toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
+      apremiar.fecha_comunicada.toString().toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
+      apremiar.fecha_denunciada.toString().toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
+      apremiar.num_radicacion.toString().toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
+      apremiar.state.toLowerCase().includes(this.terminoBusqueda.toLowerCase())
+      
       
     });
   }
 
   clearBuscador() {
     this.terminoBusqueda = '';
-    this.cargarOCCM();
+    this.cargarApremio();
   }
 
   /** Whether the number of selected elements matches the total number of rows. */
@@ -117,11 +112,11 @@ export class OccmComponent {
   }
 
   /** The label for the checkbox on the passed row */
-  checkboxLabel(row?: OCCM): string {
+  checkboxLabel(row?: Apremiar): string {
     if (!row) {
       return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
     }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id_occm + 1}`;
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id_matriz + 1}`;
   }
 
   length = 50;
@@ -149,7 +144,7 @@ export class OccmComponent {
     }
   }
 
-  eliminarOCCM(id: number) {
+  eliminarApremio(id: number) {
     if (id !== undefined) {
       Swal.fire({
         title: '¿Estás seguro?',
@@ -162,10 +157,10 @@ export class OccmComponent {
         cancelButtonText: 'Cancelar',
       }).then((result) => {
         if (result.isConfirmed) {
-          this.nomencladoresService.deleteOCCM(id).subscribe(
+          this.apremiarService.deleteApremiar(id).subscribe(
             () => {
               // Eliminar sin recargar la página
-              this.cargarOCCM();
+              this.cargarApremio();
               console.log('Eliminado exitosamente');
             },
             // (error) => {
@@ -187,5 +182,4 @@ export class OccmComponent {
       });
     }
   }
-
 }

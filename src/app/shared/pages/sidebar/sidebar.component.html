@@ -58,18 +58,19 @@
       Contenidos
   </div>
 
+  <li class="nav-item" [routerLinkActive] = "['active']">
+    <app-base-menu></app-base-menu>
+</li>
+
   <!-- Nav Item - Pages Collapse Menu -->
   <li class="nav-item" [routerLinkActive] = "['active']">
       <app-nomencladores-menu></app-nomencladores-menu>
   </li>
 
   <!-- Nav Item - Utilities Collapse Menu -->
-  <li class="nav-item">
-      <a class="nav-link collapsed" href="" (click)="disableLink($event)" data-toggle="collapse">
-          <i class="fas fa-calculator" style="margin-right: 10px;"></i>
-          <span>Operaciones</span>
-      </a>
-  </li>
+  <li class="nav-item" [routerLinkActive] = "['active']">
+    <app-recepcion-menu></app-recepcion-menu>
+</li>
 
   <!-- Divider -->
   <hr class="sidebar-divider d-none d-md-block">

@@ -1,0 +1,76 @@
+
+
+<a class="nav-link collapsed" href="" (click)="disableLink($event)" [matMenuTriggerFor]="nomencladores" data-toggle="collapse">
+    <i class="fas fa-tag" style="margin-right: 10px;"></i>
+    <span>Base</span>
+</a>
+
+<mat-menu #tools="matMenu">
+    <button [matMenuTriggerFor]="nomencladores" mat-menu-item>Base</button>
+  </mat-menu>
+  <mat-menu #nomencladores="matMenu">
+    <button [matMenuTriggerFor]="divisiones" mat-menu-item>Divisiones</button>
+    <button [matMenuTriggerFor]="tipos" mat-menu-item>Tipos</button>
+    <button [matMenuTriggerFor]="conceptos" mat-menu-item>Conceptos</button>
+    <button [matMenuTriggerFor]="rangos" mat-menu-item>Rangos</button>
+    <button [matMenuTriggerFor]="cuentasbancarias" mat-menu-item>Cuentas Bancarias</button>
+    <button [matMenuTriggerFor]="categoriasmultas" mat-menu-item>Categorías de las Multas</button>
+    <button mat-menu-item [routerLink]="['/nomencladores/divisiones/decretos-ley']">Decretos Ley</button>
+     <button mat-menu-item [routerLink]="['/nomencladores/divisiones/articulos']">Artículos</button>
+    <button mat-menu-item [routerLink]="['/nomencladores/divisiones/situaciones-laborales']">Situaciones Laborales</button>
+    <button mat-menu-item [routerLink]="['/nomencladores/divisiones/incisos']">Incisos</button>
+    <button mat-menu-item [routerLink]="['/nomencladores/divisiones/categorias-peligrosidades']">Categorías de Peligrosidad</button>
+    <button mat-menu-item [routerLink]="['/nomencladores/divisiones/medios-cobros']">Medios de Cobro</button>
+    <button mat-menu-item [routerLink]="['/nomencladores/divisiones/decretos-ley-articulos-incisos']">Decreto Ley-Artículo Inciso</button>
+  </mat-menu>
+  
+  <mat-menu #divisiones="matMenu">
+    <button mat-menu-item [routerLink]="['/nomencladores/divisiones/provincias']">Provincias</button>
+    <button mat-menu-item [routerLink]="['/nomencladores/divisiones/municipios']">Municipios</button>
+    <button mat-menu-item [routerLink]="['/nomencladores/divisiones/distritos']">Distritos</button>
+    <button mat-menu-item [routerLink]="['/nomencladores/divisiones/consejos-populares']">Consejos Populares</button>
+    <button mat-menu-item [routerLink]="['/nomencladores/divisiones/calles']">Calles</button>
+    <button mat-menu-item [routerLink]="['/nomencladores/divisiones/occm']">OCCM </button>
+    <button mat-menu-item [routerLink]="['/nomencladores/divisiones/organismos']">Organismos</button>
+    <button mat-menu-item [routerLink]="['/nomencladores/divisiones/zonas']">Zonas</button>
+    
+  
+  </mat-menu>
+  
+  <mat-menu #tipos="matMenu">
+    <button mat-menu-item [routerLink]="['/nomencladores/divisiones/tipos-multas']">Tipos de Multas</button>
+    <button mat-menu-item [routerLink]="['/nomencladores/divisiones/tipos-documentos']">Tipos de Documentos</button>
+    <button mat-menu-item [routerLink]="['/nomencladores/divisiones/tipo-cobros']">Tipos de Cobro</button>
+    <button mat-menu-item [routerLink]="['/nomencladores/divisiones/tipos-oficinas']">Tipos de Oficinas</button>
+    <button mat-menu-item [routerLink]="['/nomencladores/divisiones/tipos-operaciones']">Tipos de Operaciones</button>
+    <button mat-menu-item [routerLink]="['/nomencladores/divisiones/tipos-ajustes']">Tipos de Ajuste</button>
+    <button mat-menu-item [routerLink]="['/nomencladores/divisiones/calendarios']">Tipos de Calendarios</button>
+  </mat-menu>
+  
+  <mat-menu #conceptos="matMenu">
+    <button mat-menu-item [routerLink]="['/nomencladores/divisiones/conceptos-ajustes']">Conceptos de Ajuste</button>
+    <button mat-menu-item [routerLink]="['/nomencladores/divisiones/conceptos-anulacion']">Conceptos de Anulación</button>
+    <button mat-menu-item [routerLink]="['/nomencladores/divisiones/conceptos-cancelacion']">Conceptos de Cancelación</button>
+    <button mat-menu-item [routerLink]="['/nomencladores/divisiones/consejos-populares']">Consejos Populares</button>
+    <button mat-menu-item [routerLink]="['/nomencladores/divisiones/conceptos-traslado']">Conceptos de Traslado</button>
+    <button mat-menu-item [routerLink]="['/nomencladores/divisiones/conceptos-devoluciones']">Conceptos de Devolución</button>
+    <button mat-menu-item>Conceptos OC-8</button>
+    <button mat-menu-item>Conceptos de OC-11</button>
+  </mat-menu>
+  
+  <mat-menu #rangos="matMenu">
+    <button mat-menu-item [routerLink]="['/nomencladores/divisiones/rangos-de-cantidades']">Rangos de Cantidad</button>
+    <button mat-menu-item [routerLink]="['/nomencladores/divisiones/rangos-de-importes']">Rangos de Importe</button>
+  </mat-menu>
+  
+  <mat-menu #cuentasbancarias="matMenu">
+    <button mat-menu-item [routerLink]="['/nomencladores/divisiones/monedas']">Monedas</button>
+    <button mat-menu-item [routerLink]="['/nomencladores/divisiones/cuentas-bancarias']">Cuentas Bancarias</button>
+  </mat-menu>
+  
+  <mat-menu #categoriasmultas="matMenu">
+    <button mat-menu-item [routerLink]="['/nomencladores/divisiones/situaciones-multas']">Situaciones de las Multas</button>
+    <button mat-menu-item [routerLink]="['/nomencladores/divisiones/estados-multas']">Estados de las Multas</button>
+  </mat-menu> 
+
+

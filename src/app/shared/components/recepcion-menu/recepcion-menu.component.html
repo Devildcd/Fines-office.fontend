@@ -1,0 +1,19 @@
+
+<a class="nav-link collapsed" href="" (click)="disableLink($event)" [matMenuTriggerFor]="recepcion" data-toggle="collapse">
+    <i class="fas fa-tag" style="margin-right: 10px;"></i>
+    <span>Recepción</span>
+</a>
+
+<mat-menu #tools="matMenu">
+    <button [matMenuTriggerFor]="recepcion" mat-menu-item>Recepción</button>
+  </mat-menu>
+  <mat-menu #recepcion="matMenu">
+    <button mat-menu-item [routerLink]="['/recepción/modeloOC5/listado']">Modelo Oc5</button>
+    <button mat-menu-item [routerLink]="['/recepción/modeloOC6/listado']">Modelo Oc6</button>
+   <button mat-menu-item [routerLink]="['/recepción/modeloOC40/listado']">Modelo Oc40</button>
+   
+  </mat-menu>
+  
+
+
+

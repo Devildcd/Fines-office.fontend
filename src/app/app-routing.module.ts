@@ -8,10 +8,37 @@ const routes: Routes = [
     path: 'auth',
     loadChildren: () => import( './auth/auth.module'). then( m => m.AuthModule )
   },
+  // nomencladores
   {
     path: 'nomencladores',
     loadChildren: () =>
       import('./nomencladores/nomencladores.module').then((m) => m.NomencladoresModule),
+    // canActivate: [ValidarTokenGuard],
+  },
+  // operaciones
+  {
+    path: 'operaciones/apremiar',
+    loadChildren: () =>
+      import('./operaciones/apremiar/apremiar.module').then((m) => m.ApremiarModule),
+    // canActivate: [ValidarTokenGuard],
+  },
+  // recepcion
+  {
+    path: 'recepción/modeloOC5',
+    loadChildren: () =>
+      import('./recepcion/oc5/oc5.module').then((m) => m.Oc5Module),
+    // canActivate: [ValidarTokenGuard],
+  },
+  {
+    path: 'recepción/modeloOC6',
+    loadChildren: () =>
+      import('./recepcion/oc6/oc6.module').then((m) => m.Oc6Module),
+    // canActivate: [ValidarTokenGuard],
+  },
+  {
+    path: 'recepción/modeloOC40',
+    loadChildren: () =>
+      import('./recepcion/oc40/oc40.module').then((m) => m.Oc40Module),
     // canActivate: [ValidarTokenGuard],
   },
   {

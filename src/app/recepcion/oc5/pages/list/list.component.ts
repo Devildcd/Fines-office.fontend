@@ -1,57 +1,52 @@
-import { Component, ViewChild } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
 import { SelectionModel } from '@angular/cdk/collections';
-
-import { OCCM } from '../../interfaces/occm.interface';
+import { Component, ViewChild } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
-import { NomencladoresService } from '../../services/nomencladores.service';
+import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
-import Swal from 'sweetalert2';
 import { catchError, throwError } from 'rxjs';
+import Swal from 'sweetalert2';
+import { OC5 } from '../../interfaces/oc5.interface';
+import { Oc5Service } from '../../services/oc5.service';
 
 @Component({
-  selector: 'app-occm',
-  templateUrl: './occm.component.html',
-  styleUrls: ['./occm.component.css']
+  selector: 'app-list',
+  templateUrl: './list.component.html',
+  styleUrls: ['./list.component.css']
 })
-export class OccmComponent {
+export class ListComponent {
 
-  occm: OCCM[] = [];
+  modelosOC5: OC5[] = [];
   displayedColumns: string[] = [
     'select',
-    'id_occm',
-    'nit',
-    'descripcion',
-    'direccion',
-    'telefono',
-    'provincia_id',
-    'municipio_id',
-    'distrito_id',
-    'tipo_oficina_id',
-    'es_distrito',
-    'ofic_con_distrito',
-    'padre_id',
+    'occm',
+    'organismo_origen',
+    'cantidad_multas',
+    'importe_total',
+    'suma_serie',
+    'suma_dias',
+    'estado',
     'actions'];
-  dataSource = new MatTableDataSource<OCCM>([]);
-  selection = new SelectionModel<OCCM>(true, []);
+  dataSource = new MatTableDataSource<OC5>([]);
+  selection = new SelectionModel<OC5>(true, []);
   loading = true;
   terminoBusqueda: string = '';
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private nomencladoresService: NomencladoresService, private router: Router) { }
+  constructor(private oc5Service: Oc5Service,
+              private router: Router) { }
 
   ngOnInit() {
-    this.cargarOCCM();
+    this.cargarModelosOC5();
   }
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
 
-  cargarOCCM() {
-    this.nomencladoresService
-      .getOCCMS()
+  cargarModelosOC5() {
+    this.oc5Service
+      .getModelosOC5()
       .pipe(
         catchError((error) => {
           console.log('Error:', error);
@@ -69,34 +64,29 @@ export class OccmComponent {
           return throwError('Ha ocurrido un error en la API');
         })
       )
-      .subscribe((occm) => {
-        this.occm = occm;
-        this.dataSource.data = occm;
-        console.log(this.occm);
+      .subscribe((modelosOC5) => {
+        this.modelosOC5 = modelosOC5;
+        this.dataSource.data = modelosOC5;
+        console.log(this.modelosOC5);
         this.loading = false;
         // console.log(this.token);
       });
   }
 
   filtrarDatos() {
-    this.dataSource.data = this.occm.filter((occm) => {
-      return occm.id_occm.toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
-      occm.nit.toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
-      occm.descripcion.toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
-      occm.direccion.toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
-      occm.telefono.toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
-      occm.provincia_id?.nombre.toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
-      occm.municipio_id?.nombre.toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
-      occm.distrito_id?.nombre.toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
-      occm.tipo_oficina_id?.descripcion.toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
-      occm.padre_id?.descripcion.toLowerCase().includes(this.terminoBusqueda.toLowerCase());
-      
+    this.dataSource.data = this.modelosOC5.filter((modelosOC5) => {
+      return modelosOC5.organismo_origen.nombre.toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
+      modelosOC5.cantidad_multas.toString().toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
+      modelosOC5.importe_total.toString().toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
+      modelosOC5.suma_serie.toString().toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
+      modelosOC5.suma_dias.toString().toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
+      modelosOC5.estado.toLowerCase().includes(this.terminoBusqueda.toLowerCase());
     });
   }
 
   clearBuscador() {
     this.terminoBusqueda = '';
-    this.cargarOCCM();
+    this.cargarModelosOC5();
   }
 
   /** Whether the number of selected elements matches the total number of rows. */
@@ -117,11 +107,11 @@ export class OccmComponent {
   }
 
   /** The label for the checkbox on the passed row */
-  checkboxLabel(row?: OCCM): string {
+  checkboxLabel(row?: OC5): string {
     if (!row) {
       return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
     }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id_occm + 1}`;
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.cantidad_multas + 1}`;
   }
 
   length = 50;
@@ -149,7 +139,7 @@ export class OccmComponent {
     }
   }
 
-  eliminarOCCM(id: number) {
+  eliminarModelo0C5(id: number) {
     if (id !== undefined) {
       Swal.fire({
         title: '¿Estás seguro?',
@@ -162,10 +152,10 @@ export class OccmComponent {
         cancelButtonText: 'Cancelar',
       }).then((result) => {
         if (result.isConfirmed) {
-          this.nomencladoresService.deleteOCCM(id).subscribe(
+          this.oc5Service.deleteModeloOc5(id).subscribe(
             () => {
               // Eliminar sin recargar la página
-              this.cargarOCCM();
+              this.cargarModelosOC5();
               console.log('Eliminado exitosamente');
             },
             // (error) => {
@@ -187,5 +177,4 @@ export class OccmComponent {
       });
     }
   }
-
 }

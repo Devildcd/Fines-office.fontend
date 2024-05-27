@@ -6,8 +6,10 @@ import { MaterialModule } from '../material/material.module';
 import { NavbarComponent } from './pages/navbar/navbar.component';
 import { SidebarComponent } from './pages/sidebar/sidebar.component';
 import { FooterComponent } from './pages/footer/footer.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { NomencladoresMenuComponent } from './components/nomencladores-menu/nomencladores-menu.component';
+import { LayoutsComponent } from './pages/layouts/layouts.component';
+import { RecepcionMenuComponent } from './components/recepcion-menu/recepcion-menu.component';
+import { BaseMenuComponent } from './components/base-menu/base-menu.component';
 
 
 
@@ -16,8 +18,10 @@ import { NomencladoresMenuComponent } from './components/nomencladores-menu/nome
     NavbarComponent,
     SidebarComponent,
     FooterComponent,
-    DashboardComponent,
-    NomencladoresMenuComponent
+    NomencladoresMenuComponent,
+    LayoutsComponent,
+    RecepcionMenuComponent,
+    BaseMenuComponent
   ],
   imports: [
     CommonModule,
@@ -28,7 +32,7 @@ import { NomencladoresMenuComponent } from './components/nomencladores-menu/nome
     NavbarComponent,
     SidebarComponent,
     FooterComponent,
-    DashboardComponent
+    LayoutsComponent
   ] 
 })
 export class SharedModule { }

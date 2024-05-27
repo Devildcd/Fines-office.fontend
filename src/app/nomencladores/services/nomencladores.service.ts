@@ -16,8 +16,8 @@ import { DecretoLey } from '../interfaces/decreto-ley.interface';
 import { TipoMulta } from '../interfaces/tipo-multa.interface';
 import { TipoDocumento } from '../interfaces/tipo-documento.interface';
 import { TipoOperacion } from '../interfaces/tipo-operacion.interface';
-// import { environment } from 'src/environments/environment';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from 'src/environments/environment';
+// import { environment } from 'src/environments/environment.prod';
 import { Organismo } from '../interfaces/organismo.interface';
 import { TipoAjuste } from '../interfaces/tipo-ajuste.inteface';
 import { ConceptoAjuste } from '../interfaces/concepto-ajuste.interface';
@@ -45,8 +45,8 @@ import { MedioCobro } from '../interfaces/medio-cobro.interface';
 })
 export class NomencladoresService {
 
-  baseUrl: string = environment.apiUrlNomencladores;
-  // baseUrl: string = environment.baseUrlNomencladores;
+  // baseUrl: string = environment.apiUrlNomencladores;
+  baseUrl: string = environment.baseUrlNomencladores;
 
   constructor( private http: HttpClient ) { }
 
