@@ -22,6 +22,20 @@ const routes: Routes = [
       import('./operaciones/apremiar/apremiar.module').then((m) => m.ApremiarModule),
     // canActivate: [ValidarTokenGuard],
   },
+
+  {
+    path: 'operaciones/cancelar',
+    loadChildren: () =>
+       import('./operaciones/cancelar/cancelar.module').then((m) => m.CancelarModule),
+    // canActivate: [ValidarTokenGuard],
+   },
+  {
+    path: 'operaciones/devolucion',
+    loadChildren: () =>
+       import('./operaciones/devolucion/devolucion.module').then((m) => m.DevolucionModule),
+    // canActivate: [ValidarTokenGuard],
+   },
+
   // recepcion
   {
     path: 'recepción/modeloOC5',

@@ -10,6 +10,7 @@ import { NomencladoresMenuComponent } from './components/nomencladores-menu/nome
 import { LayoutsComponent } from './pages/layouts/layouts.component';
 import { RecepcionMenuComponent } from './components/recepcion-menu/recepcion-menu.component';
 import { BaseMenuComponent } from './components/base-menu/base-menu.component';
+import { OperacionesMenuComponent } from './components/operaciones-menu/operaciones-menu/operaciones-menu.component';
 
 
 
@@ -21,7 +22,9 @@ import { BaseMenuComponent } from './components/base-menu/base-menu.component';
     NomencladoresMenuComponent,
     LayoutsComponent,
     RecepcionMenuComponent,
-    BaseMenuComponent
+    BaseMenuComponent,
+    OperacionesMenuComponent,
+    
   ],
   imports: [
     CommonModule,

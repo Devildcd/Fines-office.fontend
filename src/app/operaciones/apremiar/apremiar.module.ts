@@ -30,6 +30,9 @@ import { DateFormatPipe } from './pipes/date-format.pipe';
     FormsModule,
     ReactiveFormsModule,
     ApremiarRoutingModule
+  ],
+  providers: [
+    DateFormatPipe
   ]
 })
 export class ApremiarModule { }
