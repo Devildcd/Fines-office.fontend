@@ -11,6 +11,7 @@ import { LayoutsComponent } from './pages/layouts/layouts.component';
 import { RecepcionMenuComponent } from './components/recepcion-menu/recepcion-menu.component';
 import { BaseMenuComponent } from './components/base-menu/base-menu.component';
 import { OperacionesMenuComponent } from './components/operaciones-menu/operaciones-menu/operaciones-menu.component';
+import { TalonariosMenuComponent } from './components/talonarios-menu/talonarios-menu/talonarios-menu.component';
 
 
 
@@ -24,7 +25,7 @@ import { OperacionesMenuComponent } from './components/operaciones-menu/operacio
     RecepcionMenuComponent,
     BaseMenuComponent,
     OperacionesMenuComponent,
-    
+    TalonariosMenuComponent
   ],
   imports: [
     CommonModule,

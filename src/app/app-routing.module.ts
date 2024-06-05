@@ -36,6 +36,14 @@ const routes: Routes = [
     // canActivate: [ValidarTokenGuard],
    },
 
+   // talonarios
+  {
+    path: 'talonarios/entrega-recepcion',
+    loadChildren: () =>
+      import('./talonarios/entrega-recepcion/entrega-recepcion.module').then((m) => m.EntregaRecepcionModule),
+    // canActivate: [ValidarTokenGuard],
+  },
+
   // recepcion
   {
     path: 'recepción/modeloOC5',
