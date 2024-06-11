@@ -64,16 +64,16 @@ export class OccmCreateComponent {
     id_occm: ['', Validators.required],
     nit: ['', Validators.required],
     descripcion: [''],
-    direccion: ['', Validators.required],
-    telefono: ['', Validators.required],
+    direccion: [''],
+    telefono: [''],
     es_distrito: [false],
     ofic_con_distrito: [false],
     activo: [true],
-    provincia_id: ['', Validators.required],
-    municipio_id: ['', Validators.required],
-    distrito_id: ['', Validators.required],
+    provincia_id: [''],
+    municipio_id: [''],
+    distrito_id: [''],
     tipo_oficina_id: ['', Validators.required],
-    padre_id: ['', Validators.required],
+    padre_id: [''],
   });
 
   crearOCCM() {

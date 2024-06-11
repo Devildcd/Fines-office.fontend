@@ -1,0 +1,169 @@
+<div class="container-pers">
+
+    <div class="card card d-flex flex-column">
+      <div class="card-header">
+        <div class="row">
+          <div class="col-md-8">
+              <h2 style="color: rgb(95, 95, 95);">Editar Matriz</h2>
+          </div>
+      </div>
+  
+    <div class="card-body flex-grow-1">
+        <form [formGroup]="formEditar">
+
+            <div class="example-inline-container">
+                <mat-form-field class="example-form-field">
+                    <mat-label>Modelo Oc5</mat-label>
+                    <mat-select formControlName="oc5" required>
+                      <mat-option *ngFor="let modeloOc5 of modelosOc5" [value]="modeloOc5.id">{{ modeloOc5.estado }}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+                  <mat-form-field class="example-form-field">
+                    <mat-label>Organismo Impositor</mat-label>
+                    <mat-select formControlName="impositor" required>
+                      <mat-option *ngFor="let organismo of organismos" [value]="organismo.id">{{ organismo.nombre }}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+              </div>
+
+              <div class="example-inline-container">
+                <!-- <mat-form-field class="example-form-field">
+                    <mat-label>Talon</mat-label>
+                    <mat-select formControlName="talon" required>
+                      <mat-option *ngFor="let talon of talones" [value]="talon.id">{{ talon }}</mat-option>
+                    </mat-select>
+                  </mat-form-field> -->
+
+                  <mat-form-field class="example-form-field">
+                    <mat-label>Serie</mat-label>
+                    <input matInput formControlName="c1" required>
+                  </mat-form-field>
+
+                  <mat-form-field class="example-form-field">
+                    <mat-label>Serie</mat-label>
+                    <input matInput formControlName="c2" required>
+                  </mat-form-field>
+                </div>
+
+                <div class="example-inline-container">
+                    <mat-form-field class="example-form-field">
+                        <mat-label>Fecha</mat-label>
+                        <input matInput formControlName="fecha" required>
+                      </mat-form-field>
+
+                      <mat-form-field class="example-form-field">
+                        <mat-label>Importe</mat-label>
+                        <input matInput type="number" formControlName="importe" required>
+                      </mat-form-field>
+
+                      <mat-form-field class="example-form-field">
+                        <mat-label>Decreto Ley</mat-label>
+                        <mat-select formControlName="dley_art_inc" required>
+                          <mat-option *ngFor="let decretoLey of decretosLey" [value]="decretoLey.id">{{ decretoLey.descripcion }}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                  </div>
+
+                  <div class="example-inline-container">
+                      <mat-form-field class="example-form-field">
+                        <mat-label>Tipo de Multa</mat-label>
+                        <mat-select formControlName="tipo_multa" required>
+                          <mat-option *ngFor="let tipoMulta of tiposMultas" [value]="tipoMulta.id">{{ tipoMulta.descripcion }}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+
+                      <mat-form-field class="example-form-field">
+                        <mat-label>Estado de Multa</mat-label>
+                        <mat-select formControlName="estado_multa_id" required>
+                          <mat-option *ngFor="let estadoMulta of estadoMultas" [value]="estadoMulta.id">{{ estadoMulta.descripcion }}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+
+                      <mat-form-field class="example-form-field">
+                        <mat-label>Modelo Oc6</mat-label>
+                        <mat-select formControlName="oc6" required>
+                          <mat-option *ngFor="let modeloOc6 of modelosOc6" [value]="modeloOc6.id">{{ modeloOc6.estado }}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                  </div>
+
+                  <div class="example-inline-container">
+                      <mat-form-field class="example-form-field">
+                        <mat-label>Moneda</mat-label>
+                        <mat-select formControlName="moneda" required>
+                          <mat-option *ngFor="let moneda of monedas" [value]="moneda.id">{{ moneda.id_moneda }}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+
+                      <mat-form-field class="example-form-field">
+                        <mat-label>Concepto de Traslado</mat-label>
+                        <mat-select formControlName="conceptraslado" required>
+                          <mat-option *ngFor="let conceptoTraslado of conceptosTraslados" [value]="conceptoTraslado.id">{{ conceptoTraslado.descripcion }}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+
+                      <mat-form-field class="example-form-field">
+                        <mat-label>Contraventor</mat-label>
+                        <mat-select formControlName="contraventor" required>
+                          <mat-option *ngFor="let contraventor of contraventores" [value]="contraventor.id">{{ contraventor.nombre }}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                  </div>
+
+                  <div class="example-inline-container">
+                    <mat-form-field class="example-form-field">
+                        <mat-label>Fecha Denunciada</mat-label>
+                        <input matInput placeholder="Mes/Día/Año" [matDatepicker]="picker" formControlName="fecha_creacion" required readonly
+                        [value]="formEditar.get('fecha_creacion')!.value">
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                      </mat-form-field>
+
+                      <mat-form-field class="example-form-field">
+                        <mat-label>Fecha Denunciada</mat-label>
+                        <input matInput placeholder="Mes/Día/Año" [matDatepicker]="picker1" formControlName="fecha_edicion" required readonly
+                        [value]="formEditar.get('fecha_edicion')!.value">
+                        <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+                        <mat-datepicker #picker1></mat-datepicker>
+                      </mat-form-field>
+                  </div>
+
+                  <div class="example-inline-container">
+                    <mat-checkbox formControlName="temporal" color="primary">
+                        Temporal
+                    </mat-checkbox>
+
+                    <mat-checkbox formControlName="devolver" color="primary">
+                        Devuelve
+                    </mat-checkbox>
+
+                    <mat-checkbox formControlName="recibida_traslado" color="primary">
+                        Recibida por Traslado
+                    </mat-checkbox>
+
+                    <mat-checkbox formControlName="carga" color="primary">
+                        Carga
+                    </mat-checkbox>
+
+                    <mat-checkbox formControlName="nivel" color="primary">
+                        Nivel Superior
+                    </mat-checkbox>
+                  </div>
+
+              <div class="example-button-container">
+                <!-- Agrega tus botones aquí -->
+                <button mat-raised-button (click)="editarMatriz()" color="primary" style="margin-right: 5px;">Aceptar</button>
+                <button mat-raised-button [routerLink]="['/base/matriz/listado']" color="secundary">Volver</button>
+              </div>
+    
+        </form>
+    </div>
+ 
+    </div>
+  </div> 
+</div>
+
+
+
+

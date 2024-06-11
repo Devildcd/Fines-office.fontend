@@ -19,66 +19,58 @@
                 </mat-form-field>
               
                 <mat-form-field class="example-form-field">
-                    <mat-label>Moneda</mat-label>
-                    <mat-select formControlName="moneda" required>
-                      <mat-option *ngFor="let moneda of monedas" [value]="moneda.id">{{ moneda.descripcion }}</mat-option>
-                    </mat-select>
-                  </mat-form-field>
+                  <mat-label>Movimiento</mat-label>
+                  <input matInput formControlName="mov_multa_id" required>
+                </mat-form-field>
+
               </div>
 
               <div class="example-inline-container">
+                <mat-form-field class="example-form-field">
+                  <mat-label>Estado nuevo de la multa </mat-label>
+                  <mat-select formControlName="estado" required>
+                    <mat-option *ngFor="let estado of estados" [value]="estado.id">{{ estado.descripcion }}</mat-option>
+                  </mat-select>
+                </mat-form-field>
 
-                  <mat-form-field class="example-form-field">
-                    <mat-label>Fecha de Imposición</mat-label>
-                    <input matInput placeholder="Mes/Día/Año" [matDatepicker]="picker" formControlName="fecha_imp" required readonly>
-                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
-                  </mat-form-field>
+                <mat-form-field class="example-form-field">
+                  <mat-label>Fecha de Apremio</mat-label>
+                  <input matInput placeholder="Mes/Día/Año" [matDatepicker]="picker" formControlName="fecha_apremio" required readonly>
+                  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
 
-                  <mat-form-field class="example-form-field">
-                    <mat-label>Fecha de Gestión</mat-label>
-                    <input matInput placeholder="Mes/Día/Año" [matDatepicker]="picker1" formControlName="fecha_gestion" required readonly>
-                    <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
-                    <mat-datepicker #picker1></mat-datepicker>
-                  </mat-form-field>
-
-                  <mat-form-field class="example-form-field">
-                    <mat-label>Fecha Comunicada</mat-label>
-                    <input matInput placeholder="Mes/Día/Año" [matDatepicker]="picker2" formControlName="fecha_comunicada" required readonly>
-                    <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
-                    <mat-datepicker #picker2></mat-datepicker>
-                  </mat-form-field>
                 </div>
+                 
+                <div class="example-inline-container">
+                  <mat-form-field class="example-form-field">
+                    <mat-label>Fecha de comunición</mat-label>
+                    <input matInput placeholder="Mes/Día/Año" [matDatepicker]="picker3" formControlName="fecha_comunicada" required readonly>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker3"></mat-datepicker-toggle>
+                    <mat-datepicker #picker3></mat-datepicker>
+                  </mat-form-field>
+
+                  <mat-form-field class="example-form-field">
+                    <mat-label>Fecha de Denunciada</mat-label>
+                    <input matInput placeholder="Mes/Día/Año" [matDatepicker]="picker4" formControlName="fecha_denunciada" required readonly>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker4"></mat-datepicker-toggle>
+                    <mat-datepicker #picker4></mat-datepicker>
+                  </mat-form-field>
+
+                  </div>               
 
                 <div class="example-inline-container">
-
-                      <mat-form-field class="example-form-field">
-                        <mat-label>Fecha Denunciada</mat-label>
-                        <input matInput placeholder="Mes/Día/Año" [matDatepicker]="picker3" formControlName="fecha_denunciada" required readonly
-                        [value]="formCrear.get('fecha_denunciada')!.value | dateFormat">
-                        <mat-datepicker-toggle matIconSuffix [for]="picker3"></mat-datepicker-toggle>
-                        <mat-datepicker #picker3></mat-datepicker>
-                      </mat-form-field>
-
                       <mat-form-field class="example-form-field">
                         <mat-label>Numero de Radicacion</mat-label>
                         <input matInput type="number" formControlName="num_radicacion" required>
                       </mat-form-field>
-
-                      <mat-form-field class="example-form-field">
-                        <mat-label>Estado</mat-label>
-                        <mat-select formControlName="state" required>
-                          <mat-option value="no_confirmado">No Confirmado</mat-option>
-                          <mat-option value="confirmado">Confirmado</mat-option>
-                        </mat-select>
-                      </mat-form-field>
-
+     
                   </div>
 
               <div class="example-button-container">
                 <!-- Agrega tus botones aquí -->
                 <button mat-raised-button (click)="crearApremio()" color="primary" style="margin-right: 5px;">Aceptar</button>
-                <button mat-raised-button [routerLink]="['/nomencladores/divisiones/occm']" color="secundary">Volver</button>
+                <button mat-raised-button [routerLink]="['/operaciones/apremiar']" color="secundary">Volver</button>
               </div>
     
         </form>

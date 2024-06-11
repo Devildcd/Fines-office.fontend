@@ -21,8 +21,6 @@ import { DecretosLeyDialogComponent } from '../../components/decretos-ley-dialog
 export class OrganismosComponent {
 
   organismos: Organismo[] = [];
-  tiposMultas: TipoMulta[] = [];
-  decretosLey: DecretoLey[] = [];
   displayedColumns: string[] = ['select', 'id_organismo', 'nombre', 'asociado_id', 'tipo_multa_id', 'decretos', 'actions'];
   dataSource = new MatTableDataSource<Organismo>([]);
   selection = new SelectionModel<Organismo>(true, []);
@@ -35,12 +33,6 @@ export class OrganismosComponent {
                 public dialog: MatDialog ) { }
 
   ngOnInit() {
-    this.nomencladoresService.getTiposMultas().subscribe(( tiposMultas )=>{
-      this.tiposMultas = tiposMultas;
-    });
-    this.nomencladoresService.getDecretos().subscribe(( decretosLey )=>{
-      this.decretosLey = decretosLey;
-    });
     this.cargarOrganismos();
   }
 

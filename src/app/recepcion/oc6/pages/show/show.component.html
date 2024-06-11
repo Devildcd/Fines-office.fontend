@@ -28,7 +28,7 @@
             <div class="half-text d-flex">
               <strong>Organismo:</strong>
               <div class="col-lg-6 col-md-12">
-                <span *ngIf="modeloOc6.organismo_origen; else noIcon"  >{{ modeloOc6.occm_origen }}</span>
+                <span *ngIf="modeloOc6.occm_origen; else noIcon"  >{{ modeloOc6.occm_origen }}</span>
                 <ng-template #noIcon>
                   No
                 </ng-template>
@@ -72,18 +72,18 @@
               </div>
             </div>
 
-            <div class="half-text d-flex">
+            <!-- <div class="half-text d-flex">
               <strong>Multas:</strong>
               <div class="col-lg-6 col-md-12">
                 <span *ngIf="modeloOc6.multas; else noIcon">{{ modeloOc6.multas }}</span>
               </div>
-            </div>
+            </div> -->
 
           </div>
         </div>
       </div>
       <div class="example-button-container">
-        <button mat-raised-button color="secundary">Volver</button>
+        <button mat-raised-button [routerLink] = "['/recepción/modeloOC6/listado']" color="secundary">Volver</button>
       </div>      
     </div>
   

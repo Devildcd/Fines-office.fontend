@@ -41,13 +41,14 @@ export class EditComponent {
 
         this.formEditar.patchValue({ 
           occm: modeloOc6.occm,
-          organismo_origen: modeloOc6.occm_origen,
           cantidad_multas: modeloOc6.cantidad_multas,
           importe_total: modeloOc6.importe_total,
           suma_serie: modeloOc6.suma_serie,
           suma_dias: modeloOc6.suma_dias,
           estado: modeloOc6.estado,
-          multas: modeloOc6.multas
+          multas_crear: modeloOc6.multas_crear,
+          multas_recibidas: modeloOc6.multas_recibidas,
+          occm_origen: modeloOc6.occm_origen,
          });
       });
       this.nomencladoresService.getOCCMS().subscribe(
@@ -59,13 +60,14 @@ export class EditComponent {
 
   formEditar: FormGroup = this.fb.group({
     occm: ['', Validators.required],
-    occm_origen: ['', Validators.required],
     cantidad_multas: ['', Validators.required],
     importe_total: ['', Validators.required],
     suma_serie: ['', Validators.required],
     suma_dias: ['', Validators.required],
     estado: ['', Validators.required],
-    multas: [{}, Validators.required],
+    multas_crear: [[]],
+    multas_recibidas: [[]],
+    occm_origen: ['', Validators.required],
   });
 
   editarModeloOc6() {

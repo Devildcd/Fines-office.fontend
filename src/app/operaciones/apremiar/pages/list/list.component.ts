@@ -19,13 +19,12 @@ export class ListComponent {
   displayedColumns: string[] = [
     'select',
     'id_matriz',
-    'moneda',
-    'fecha_imp',
-    'fecha_gestion',
+    'mov_multa_id',
+    'estado',
+    'fecha_apremio',
     'fecha_comunicada',
     'fecha_denunciada',
     'num_radicacion',
-    'state',
     'actions'];
   dataSource = new MatTableDataSource<Apremiar>([]);
   selection = new SelectionModel<Apremiar>(true, []);
@@ -77,15 +76,12 @@ export class ListComponent {
   filtrarDatos() {
     this.dataSource.data = this.apremios.filter((apremiar) => {
       return apremiar.id_matriz.toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
-      apremiar.moneda.id_moneda.toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
-      apremiar.fecha_imp.toString().toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
-      apremiar.fecha_gestion.toString().toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
+      apremiar.mov_multa_id.toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
+      apremiar.estado.toString().toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
+      apremiar.fecha_apremio.toString().toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
       apremiar.fecha_comunicada.toString().toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
       apremiar.fecha_denunciada.toString().toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
-      apremiar.num_radicacion.toString().toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
-      apremiar.state.toLowerCase().includes(this.terminoBusqueda.toLowerCase())
-      
-      
+      apremiar.num_radicacion.toString().toLowerCase().includes(this.terminoBusqueda.toLowerCase()) 
     });
   }
 

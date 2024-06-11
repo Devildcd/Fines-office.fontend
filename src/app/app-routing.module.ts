@@ -4,10 +4,12 @@ import { ValidarTokenGuard } from './auth/guards/validar-token.guard';
 
 const routes: Routes = [
   // Lazy load
+  // auth
   {
     path: 'auth',
     loadChildren: () => import( './auth/auth.module'). then( m => m.AuthModule )
   },
+
   // nomencladores
   {
     path: 'nomencladores',
@@ -15,6 +17,7 @@ const routes: Routes = [
       import('./nomencladores/nomencladores.module').then((m) => m.NomencladoresModule),
     // canActivate: [ValidarTokenGuard],
   },
+
   // operaciones
   {
     path: 'operaciones/apremiar',
@@ -22,6 +25,14 @@ const routes: Routes = [
       import('./operaciones/apremiar/apremiar.module').then((m) => m.ApremiarModule),
     // canActivate: [ValidarTokenGuard],
   },
+
+  {
+    path: 'operaciones/cancelar',
+    loadChildren: () =>
+       import('./operaciones/cancelar/cancelar.module').then((m) => m.CancelarModule),
+    // canActivate: [ValidarTokenGuard],
+   },
+
   // recepcion
   {
     path: 'recepción/modeloOC5',
@@ -36,9 +47,62 @@ const routes: Routes = [
     // canActivate: [ValidarTokenGuard],
   },
   {
-    path: 'recepción/modeloOC40',
+    path: 'recepción/enviar-traslado',
     loadChildren: () =>
-      import('./recepcion/oc40/oc40.module').then((m) => m.Oc40Module),
+      import('./recepcion/enviar-traslado/enviar-traslado.module').then((m) => m.EnviarTrasladoModule),
+    // canActivate: [ValidarTokenGuard],
+  },
+
+  // base
+  {
+    path: 'base/matriz',
+    loadChildren: () =>
+      import('./base/matriz/matriz.module').then((m) => m.MatrizModule),
+    // canActivate: [ValidarTokenGuard],
+  },
+  {
+    path: 'base/centros-de-trabajos',
+    loadChildren: () =>
+      import('./base/centro-trabajo/centro-trabajo.module').then((m) => m.CentroTrabajoModule),
+    // canActivate: [ValidarTokenGuard],
+  },
+  {
+    path: 'base/contraventor',
+    loadChildren: () =>
+      import('./base/contraventor/contraventor.module').then((m) => m.ContraventorModule),
+    // canActivate: [ValidarTokenGuard],
+  },
+  {
+    path: 'base/sub-movimiento-multa',
+    loadChildren: () =>
+      import('./base/sub-mov-multa/sub-mov-multa.module').then((m) => m.SubMovMultaModule),
+    // canActivate: [ValidarTokenGuard],
+  },
+  {
+    path: 'base/operador',
+    loadChildren: () =>
+      import('./base/operador/operador.module').then((m) => m.OperadorModule),
+    // canActivate: [ValidarTokenGuard],
+  },
+  
+  // minint
+  {
+    path: 'minint/configuracion-api',
+    loadChildren: () =>
+      import('./minint/configuracion-api/configuracion-api.module').then((m) => m.ConfiguracionApiModule),
+    // canActivate: [ValidarTokenGuard],
+  },
+  {
+    path: 'minint/exportar-minint',
+    loadChildren: () =>
+      import('./minint/exportar-minint/exportar-minint.module').then((m) => m.ExportarMinintModule),
+    // canActivate: [ValidarTokenGuard],
+  },
+  // talonarios
+  {
+    path: 'talonarios/entrega-recepcion',
+    loadChildren: () =>
+      import('./talonarios/entrega-recepcion/entrega-recepcion.module').then((m) => m.EntregaRecepcionModule),
     // canActivate: [ValidarTokenGuard],
   },
   {

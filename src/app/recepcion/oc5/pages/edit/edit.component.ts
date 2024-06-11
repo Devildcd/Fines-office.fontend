@@ -49,7 +49,7 @@ export class EditComponent {
           suma_serie: modeloOc5.suma_serie,
           suma_dias: modeloOc5.suma_dias,
           estado: modeloOc5.estado,
-          multas: modeloOc5.multas
+          // multas: modeloOc5.multas
          });
       });
       this.nomencladoresService.getOCCMS().subscribe(
@@ -73,7 +73,7 @@ export class EditComponent {
     suma_serie: ['', Validators.required],
     suma_dias: ['', Validators.required],
     estado: ['', Validators.required],
-    multas: [{}, Validators.required],
+    multas: [[]],
   });
 
   editarModeloOc5() {

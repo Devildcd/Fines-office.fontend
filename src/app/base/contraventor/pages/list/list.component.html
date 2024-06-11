@@ -1,0 +1,288 @@
+<div class="container-pers">
+
+    <div class="card card d-flex flex-column">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-md-8">
+
+                    <h2 style="color: rgb(95, 95, 95);">Contraventores</h2>
+                </div>
+
+                <div class="row justify-content-end">
+                    <div class="col-md-5">
+                        <div class="input-group">
+                            <input type="text" class="form-control" [(ngModel)]="terminoBusqueda"
+                                (input)="filtrarDatos()" placeholder="Buscar">
+                            <div class="input-group-append">
+                                <button *ngIf="!terminoBusqueda" class="search-boton-pers" mat-raised-button
+                                    color="secondary" type="button">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                                <button (click)="clearBuscador()" *ngIf="terminoBusqueda" class="search-boton-pers"
+                                    mat-raised-button color="secondary" type="button">
+                                    <i class="fa fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-body flex-grow-1" style="margin-top: -20px;">
+
+                <div class="row mt-3">
+                    <div class="col-md-8">
+                        <div class="button-pers">
+                            <button mat-raised-button color="primary"
+                                [routerLink]="['/base/contraventor/crear']">Crear</button>
+                            <!-- <button mat-raised-button color="primary" >Crear</button> -->
+                            <button mat-raised-button color="secundary" style="margin-left: 5px;">Importar</button>
+                        </div>
+                    </div>
+
+                    <div class="additional-buttons"
+                        style="display: flex; justify-content: flex-end; align-items: center; margin-top: -45px; margin-bottom: 10px;">
+                        <div>
+                            <button mat-mini-fab color="primary" [matMenuTriggerFor]="menu">
+                                <i class="fas fa-ellipsis-v"></i> <!-- Icono de opciones de Font Awesome -->
+                            </button>
+
+                            <mat-menu #menu="matMenu">
+                                <button mat-menu-item>Opción 1</button>
+                                <button mat-menu-item>Opción 2</button>
+                            </mat-menu>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+
+                    <div *ngIf="loading" class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+
+                    <table *ngIf="!loading" mat-table [dataSource]="dataSource" class="mat-elevation-z8 custom-table">
+
+                        <ng-container matColumnDef="select">
+                            <th mat-header-cell *matHeaderCellDef class="custom-header">
+                                <mat-checkbox color="primary" (change)="$event ? toggleAllRows() : null"
+                                    [checked]="selection.hasValue() && isAllSelected()"
+                                    [indeterminate]="selection.hasValue() && !isAllSelected()"
+                                    [aria-label]="checkboxLabel()">
+                                </mat-checkbox>
+                            </th>
+                            <td mat-cell *matCellDef="let row">
+                                <mat-checkbox color="primary" (click)="$event.stopPropagation()"
+                                    (change)="$event ? selection.toggle(row) : null"
+                                    [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)">
+                                </mat-checkbox>
+                            </td>
+                        </ng-container>
+
+
+                        <ng-container matColumnDef="ci">
+                            <th mat-header-cell *matHeaderCellDef><strong> CI del Contraventor </strong></th>
+                            <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+                                    [routerLink]="['/base/contraventor/detalles/', element.id]"
+                                    class="link-estilizado">{{ element.ci }} </a> </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="nombre">
+                            <th mat-header-cell *matHeaderCellDef><strong> Nombre </strong></th>
+                            <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+                                    [routerLink]="['/base/contraventor/detalles/', element.id]"
+                                    class="link-estilizado">{{ element.nombre }} </a> </td>
+                        </ng-container>
+                        <ng-container matColumnDef="apellido1">
+                            <th mat-header-cell *matHeaderCellDef><strong> 1er. Apellido </strong></th>
+                            <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+                                    [routerLink]="['/base/contraventor/detalles/', element.id]"
+                                    class="link-estilizado">{{ element.apellido1 }} </a> </td>
+                        </ng-container>
+                        <ng-container matColumnDef="apellido2">
+                            <th mat-header-cell *matHeaderCellDef><strong> 2do. Apellido </strong></th>
+                            <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+                                    [routerLink]="['/base/contraventor/detalles/', element.id]"
+                                    class="link-estilizado">{{ element.apellido2  }} </a> </td>
+                        </ng-container>
+                        <ng-container matColumnDef="direccion">
+                            <th mat-header-cell *matHeaderCellDef><strong> Direccion </strong></th>
+                            <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+                                    [routerLink]="['/base/contraventor/detalles/', element.id]"
+                                    class="link-estilizado">{{ element.direccion }} </a> </td>
+                        </ng-container>
+                        <ng-container matColumnDef="direccion_garux">
+                            <th mat-header-cell *matHeaderCellDef><strong> Direccion del Contraventor </strong></th>
+                            <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+                                    [routerLink]="['/base/contraventor/detalles/', element.id]"
+                                    class="link-estilizado"> {{ element.direccion_garux }} </a> </td>
+                        </ng-container>
+                        <ng-container matColumnDef="provincia_id">
+                            <th mat-header-cell *matHeaderCellDef><strong> Provincia </strong></th>
+                            <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+                                    [routerLink]="['/base/contraventor/detalles/', element.id]"
+                                    class="link-estilizado"> {{ element.provincia_id }} </a> </td>
+
+                        </ng-container>
+                        <ng-container matColumnDef="municipio_id">
+                            <th mat-header-cell *matHeaderCellDef><strong> Municipio </strong></th>
+                            <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+                                    [routerLink]="['/base/contraventor/detalles/', element.id]"
+                                    class="link-estilizado"> {{ element.municipio_id }} </a> </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="distrito_id">
+                            <th mat-header-cell *matHeaderCellDef><strong> Distrito </strong></th>
+                            <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+                                    [routerLink]="['/base/contraventor/detalles/', element.id]"
+                                    class="link-estilizado"> {{ element.distrito_id }} </a> </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="cpopular_id">
+                            <th mat-header-cell *matHeaderCellDef><strong> Consejo Popular </strong></th>
+                            <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+                                    [routerLink]="['/base/contraventor/detalles/', element.id]"
+                                    class="link-estilizado">{{ element.cpopular_id }}</a>
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="zona_id">
+                            <th mat-header-cell *matHeaderCellDef><strong> Zona </strong></th>
+                            <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+                                *ngIf="element.ofic_con_distrito" [routerLink]="['/base/contraventor/detalles/', element.id]"
+                                    class="link-estilizado">{{ element.zona_id }}</a>
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="sitlaboral_id">
+                            <th mat-header-cell *matHeaderCellDef><strong> Situacion Laboral </strong></th>
+                            <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+                                    *ngIf="element"  [routerLink]="['/base/contraventor/detalles/', element.id]"
+                                    class="link-estilizado">{{ element.sitlaboral_id }} </a>
+                                     </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="sit_lab_id">
+                            <th mat-header-cell *matHeaderCellDef><strong> Centro de Trabajo </strong></th>
+                            <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+                                    [routerLink]="['/base/contraventor/detalles/', element.id]"
+                                    class="link-estilizado">{{ element.sit_lab_id }}</a>
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="nombre_ctrabajo">
+                            <th mat-header-cell *matHeaderCellDef><strong> Nombre Centro Trabajo </strong></th>
+                            <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+                                    [routerLink]="['/base/contraventor/detalles/', element.id]"
+                                    class="link-estilizado">{{ element.nombre_ctrabajo }}</a>
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="direccion_ctrabajo">
+                            <th mat-header-cell *matHeaderCellDef><strong> Direccion del Centro </strong></th>
+                            <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+                                    [routerLink]="['/base/contraventor/detalles/', element.id]"
+                                    class="link-estilizado">{{ element.direccion_ctrabajo }}</a>
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="menor_edad">
+                            <th mat-header-cell *matHeaderCellDef><strong> Menor de Edad  </strong></th>
+                            <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+                                    [routerLink]="['/base/contraventor/detalles/', element.id]"
+                                    class="link-estilizado"><i *ngIf="element.menor_edad" class="fa fa-check"></i> </a>
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="far">
+                            <th mat-header-cell *matHeaderCellDef><strong> Far </strong></th>
+                            <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+                                    [routerLink]="['/base/contraventor/detalles/', element.id]"
+                                    class="link-estilizado"><i *ngIf="element.far" class="fa fa-check"></i> </a>
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="pasaporte">
+                            <th mat-header-cell *matHeaderCellDef><strong> Extranjero </strong></th>
+                            <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+                                    [routerLink]="['/base/contraventor/detalles/', element.id]"
+                                    class="link-estilizado"><i *ngIf="element.pasaporte" class="fa fa-check"></i> </a>
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="cant_multa">
+                            <th mat-header-cell *matHeaderCellDef><strong> Multas Pendientes </strong></th>
+                            <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+                                    [routerLink]="['/base/contraventor/detalles/', element.id]"
+                                    class="link-estilizado">{{ element.cant_multa }}</a>
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="cant_importe">
+                            <th mat-header-cell *matHeaderCellDef><strong> Importe Total </strong></th>
+                            <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+                                    [routerLink]="['/base/contraventor/detalles/', element.id]"
+                                    class="link-estilizado">{{ element.cant_importe }}</a>
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="cant_mult_calc">
+                            <th mat-header-cell *matHeaderCellDef><strong> Multas Impuestas </strong></th>
+                            <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+                                    [routerLink]="['/base/contraventor/detalles/', element.id]"
+                                    class="link-estilizado">{{ element.cant_mult_calc }}</a>
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="carga">
+                            <th mat-header-cell *matHeaderCellDef><strong> Carga </strong></th>
+                            <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+                                    [routerLink]="['/base/contraventor/detalles/', element.id]"
+                                    class="link-estilizado"><i *ngIf="element.carga" class="fa fa-check"></i> </a>
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="fecha_actualizacion_suin">
+                            <th mat-header-cell *matHeaderCellDef><strong> Fecha SUIN </strong></th>
+                            <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+                                    [routerLink]="['/base/contraventor/detalles/', element.id]"
+                                    class="link-estilizado">{{ element.fecha_actualizacion_suin }}</a>
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="actions">
+                            <th mat-header-cell *matHeaderCellDef><strong>Acciones</strong></th>
+                            <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element">
+                                <div class="d-flex">
+                                    <button [routerLink]="['/base/contraventor/editar/', element.id]"
+                                        mat-mini-fab color="primary" style="margin-right: 5px;">
+                                        <i class="fa fa-edit" aria-hidden="true"></i>
+                                    </button>
+                                    <button mat-mini-fab (click)="eliminarContraventor(element.id)" color="warn">
+                                        <i class="fa fa-trash" aria-hidden="true"></i>
+                                    </button>
+
+                                </div>
+                            </td>
+                        </ng-container>
+
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let element; columns: displayedColumns;"
+                            (click)="selection.toggle(element)">
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+
+
+            <mat-paginator #paginator class="demo-paginator paginador-transparente" (page)="handlePageEvent($event)"
+                [length]="length" [pageSize]="pageSize" [disabled]="disabled"
+                [showFirstLastButtons]="showFirstLastButtons"
+                [pageSizeOptions]="showPageSizeOptions ? pageSizeOptions : []" [hidePageSize]="hidePageSize"
+                [pageIndex]="pageIndex" aria-label="Select page">
+            </mat-paginator>
+        </div>
+    </div>
+</div>

@@ -1,12 +1,12 @@
-import { SelectionModel } from '@angular/cdk/collections';
 import { Component, ViewChild } from '@angular/core';
-import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { Oc6 } from '../../interfaces/oc6.interface';
 import { MatTableDataSource } from '@angular/material/table';
+import { SelectionModel } from '@angular/cdk/collections';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { Oc6Service } from '../../services/oc6.service';
 import { Router } from '@angular/router';
 import { catchError, throwError } from 'rxjs';
 import Swal from 'sweetalert2';
-import { Oc6 } from '../../interfaces/oc6.interface';
-import { Oc6Service } from '../../services/oc6.service';
 
 @Component({
   selector: 'app-list',

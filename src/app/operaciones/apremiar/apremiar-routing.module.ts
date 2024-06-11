@@ -20,10 +20,10 @@ const routes: Routes = [
         path: 'crear', component: CreateComponent
       },
       {
-        path: 'editar', component: EditComponent
+        path: 'editar/:id', component: EditComponent
       },
       {
-        path: 'detalles', component: ShowComponent
+        path: 'detalles/:id', component: ShowComponent
       },
       {
         path: '**', redirectTo: 'listado', pathMatch: 'full'

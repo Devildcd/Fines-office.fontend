@@ -34,13 +34,14 @@ export class CreateComponent {
 
   formCrear: FormGroup = this.fb.group({
     occm: ['', Validators.required],
-    occm_origen: ['', Validators.required],
     cantidad_multas: ['', Validators.required],
     importe_total: ['', Validators.required],
     suma_serie: ['', Validators.required],
     suma_dias: ['', Validators.required],
     estado: ['', Validators.required],
-    multas: [{}, Validators.required],
+    multas_crear: [[]],
+    multas_recibidas: [[]],
+    occm_origen: ['', Validators.required],
   });
 
   crearModeloOc6() {

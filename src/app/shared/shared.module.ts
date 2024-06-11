@@ -10,6 +10,13 @@ import { NomencladoresMenuComponent } from './components/nomencladores-menu/nome
 import { LayoutsComponent } from './pages/layouts/layouts.component';
 import { RecepcionMenuComponent } from './components/recepcion-menu/recepcion-menu.component';
 import { BaseMenuComponent } from './components/base-menu/base-menu.component';
+import { AutenticacionMenuComponent } from './components/autenticacion-menu/autenticacion-menu.component';
+import { MinintMenuComponent } from './components/minint-menu/minint-menu.component';
+import { ConfiguracionMenuComponent } from './components/configuracion-menu/configuracion-menu.component';
+import { ErrorMenuComponent } from './components/error-menu/error-menu.component';
+import { CobroMenuComponent } from './components/cobro-menu/cobro-menu.component';
+import { OperacionesMenuComponent } from './components/operaciones-menu/operaciones-menu/operaciones-menu.component';
+import { TalonariosMenuComponent } from './components/talonarios-menu/talonarios-menu/talonarios-menu.component';
 
 
 
@@ -21,7 +28,14 @@ import { BaseMenuComponent } from './components/base-menu/base-menu.component';
     NomencladoresMenuComponent,
     LayoutsComponent,
     RecepcionMenuComponent,
-    BaseMenuComponent
+    BaseMenuComponent,
+    AutenticacionMenuComponent,
+    MinintMenuComponent,
+    ConfiguracionMenuComponent,
+    ErrorMenuComponent,
+    CobroMenuComponent,
+    OperacionesMenuComponent,
+    TalonariosMenuComponent
   ],
   imports: [
     CommonModule,

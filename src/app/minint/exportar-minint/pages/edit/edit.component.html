@@ -1,0 +1,64 @@
+
+<div class="container-pers">
+
+  <div class="card card d-flex flex-column">
+    <div class="card-header">
+      <div class="row">
+        <div class="col-md-8">
+            <h2 style="color: rgb(95, 95, 95);">Editar Exportacion</h2>
+        </div>
+    </div>
+
+  <div class="card-body flex-grow-1">
+      <form [formGroup]="formEditar">
+
+        <div class="example-inline-container">
+          <mat-form-field class="example-form-field">
+              <mat-label>Sequencia</mat-label>
+              <input matInput formControlName="sequence_id" required>
+            </mat-form-field>
+
+            <mat-form-field class="example-form-field">
+              <mat-label>Exportacion Anterior</mat-label>
+              <input matInput placeholder="Mes/Día/Año" [matDatepicker]="picker" formControlName="date_export_before" required readonly>
+              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+
+        <div class="example-inline-container">
+            <mat-form-field class="example-form-field">
+              <mat-label>Archivo Comprimido</mat-label>
+              <input matInput formControlName="nombre_zip" required>
+            </mat-form-field>
+
+            <mat-form-field class="example-form-field">
+              <mat-label>Archivo Seleccionado</mat-label>
+              <input matInput formControlName="archivo_select" required>
+            </mat-form-field>
+        </div>
+
+        <div class="example-inline-container">
+          <mat-form-field class="example-form-field" style="width: 50%;">
+            <mat-label>Fecha de Creado</mat-label>
+            <input matInput placeholder="Mes/Día/Año" [matDatepicker]="picker1" formControlName="fecha_creacion" required readonly>
+            <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+            <div class="example-button-container">
+              <!-- Agrega tus botones aquí -->
+              <button mat-raised-button (click)="editarExpMinint()" color="primary" style="margin-right: 5px;">Aceptar</button>
+              <button mat-raised-button [routerLink]="['/base/exportacion-minint/listado']" color="secundary">Volver</button>
+            </div>
+  
+      </form>
+  </div>
+
+  </div>
+</div> 
+
+
+
+

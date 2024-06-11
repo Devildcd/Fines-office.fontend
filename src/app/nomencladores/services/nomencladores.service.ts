@@ -329,7 +329,7 @@ export class NomencladoresService {
   }
 
 
-  putOCCM(id: number, occm: OCCM): Observable<Calendario> {
+  putOCCM(id: number, occm: OCCM): Observable<OCCM> {
 
     return this.http.put<OCCM>(`${this.baseUrl}/editar/occm/${id}/`, occm);
   }

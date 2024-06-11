@@ -1,0 +1,48 @@
+
+<div class="container-pers">
+
+    <div class="card card d-flex flex-column">
+      <div class="card-header">
+        <div class="row">
+          <div class="col-md-8">
+              <h2 style="color: rgb(95, 95, 95);">Editar Sub Movimiento de Multa</h2>
+          </div>
+      </div>
+  
+    <div class="card-body flex-grow-1">
+        <form [formGroup]="formEditar">
+  
+            <div class="example-inline-container">
+                <mat-form-field class="example-form-field">
+                    <mat-label>Matriz</mat-label>
+                    <mat-select formControlName="matriz" required>
+                      <mat-option *ngFor="let matriz of matrices" [value]="matriz.id">{{ matriz.c1 }}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+                  <mat-form-field class="example-form-field">
+                    <mat-label>Operacion</mat-label>
+                    <input matInput formControlName="operacion" required>
+                  </mat-form-field>
+
+                  <mat-form-field class="example-form-field">
+                    <mat-label>Identificador de Operacion</mat-label>
+                    <input matInput formControlName="operacion_id" required>
+                  </mat-form-field>
+              </div>
+
+              <div class="example-inline-container">
+                <button mat-raised-button  color="primary" style="margin-right: 5px;">Ver</button>
+              </div>
+
+              <div class="example-button-container">
+                <!-- Agrega tus botones aquí -->
+                <button mat-raised-button (click)="editarSubMovMulta()" color="primary" style="margin-right: 5px;">Aceptar</button>
+                <button mat-raised-button [routerLink]="['/base/sub-movimiento-multa/listado']" color="secundary">Volver</button>
+              </div>
+    
+        </form>
+    </div>
+  
+    </div>
+  </div> 

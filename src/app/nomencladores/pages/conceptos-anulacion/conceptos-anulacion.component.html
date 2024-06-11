@@ -84,11 +84,6 @@
                 <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a [routerLink]="['/nomencladores/divisiones/detalles/concepto-anulacion/', element.id]" class="link-estilizado">{{element.descripcion}} </a> </td>
               </ng-container>
             
-              <!-- <ng-container matColumnDef="activo">
-                <th mat-header-cell *matHeaderCellDef style="display: none;"> <strong> Activo </strong></th>
-                <td (click)="$event.stopPropagation()" style="display: none;" mat-cell *matCellDef="let provincia"> {{provincia.activo}} </td>
-              </ng-container> -->
-
               <ng-container matColumnDef="actions">
                 <th mat-header-cell *matHeaderCellDef><strong>Acciones</strong></th>
                 <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element">

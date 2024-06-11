@@ -1,0 +1,15 @@
+
+<a class="nav-link collapsed" href="" (click)="disableLink($event)" [matMenuTriggerFor]="recepcion" data-toggle="collapse">
+    <i class="fas fa-tag" style="margin-right: 10px;"></i>
+    <span>Operaciones</span>
+</a>
+
+<mat-menu #tools="matMenu">
+    <button [matMenuTriggerFor]="recepcion" mat-menu-item>Operaciones</button>
+  </mat-menu>
+  <mat-menu #recepcion="matMenu">
+    <button mat-menu-item [routerLink]="['/operaciones/apremiar/listado']">Apremiar</button>
+    <button mat-menu-item [routerLink]="['/operaciones/cancelar/listado']">Cancelar</button>
+
+  </mat-menu>
+  
