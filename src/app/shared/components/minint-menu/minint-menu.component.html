@@ -1,0 +1,13 @@
+
+<a class="nav-link collapsed" href="" (click)="disableLink($event)" [matMenuTriggerFor]="minint"  data-toggle="collapse">
+    <i class="fas fa-tag" style="margin-right: 10px;"></i>
+    <span>Minint</span>
+</a>
+
+<mat-menu #tools="matMenu">
+    <button [matMenuTriggerFor]="minint" mat-menu-item>Base</button>
+  </mat-menu>
+  <mat-menu #minint="matMenu">
+    <button mat-menu-item [routerLink]="['/minint/configuracion-api/listado']">Configuracion de la Api</button>
+     <button mat-menu-item [routerLink]="['/minint/exportar-minint/listado']">Exportar Minint</button>
+  </mat-menu>

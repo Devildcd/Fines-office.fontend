@@ -1,0 +1,49 @@
+
+<div class="container-pers">
+
+    <div class="card card d-flex flex-column">
+      <div class="card-header">
+        <div class="row">
+          <div class="col-md-8">
+              <h2 style="color: rgb(95, 95, 95);">Crear Configuracion</h2>
+          </div>
+      </div>
+  
+    <div class="card-body flex-grow-1">
+        <form [formGroup]="formCrear">
+  
+            <div class="example-inline-container">
+                <mat-form-field class="example-form-field">
+                    <mat-label>Url</mat-label>
+                    <input matInput formControlName="url" required>
+                  </mat-form-field>
+              </div>
+
+              <div class="example-inline-container">
+                <mat-form-field class="example-form-field">
+                    <mat-label>Llave</mat-label>
+                    <input matInput formControlName="llave" required>
+                  </mat-form-field>
+
+                  <mat-form-field class="example-form-field">
+                    <mat-label>Token</mat-label>
+                    <input matInput formControlName="token" required>
+                  </mat-form-field>
+              </div>
+
+              <div class="example-button-container">
+                <!-- Agrega tus botones aquí -->
+                <button mat-raised-button (click)="crearConfApi()" color="primary" style="margin-right: 5px;">Aceptar</button>
+                <button mat-raised-button [routerLink]="['/minint/configuracion-api/listado']" color="secundary">Volver</button>
+              </div>
+    
+        </form>
+    </div>
+  
+    </div>
+  </div> 
+  
+  
+
+
+

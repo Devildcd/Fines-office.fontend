@@ -85,7 +85,7 @@
                             <th mat-header-cell *matHeaderCellDef><strong> Organismo </strong></th>
                             <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
                                     [routerLink]="['/recepción/modeloOC5/detalles/', element.id]"
-                                    class="link-estilizado">{{ element.occm }} </a> </td>
+                                    class="link-estilizado">{{ element.occm.id_occm }} </a> </td>
                         </ng-container>
 
                         <ng-container matColumnDef="organismo_origen">

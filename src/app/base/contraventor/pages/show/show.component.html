@@ -1,0 +1,200 @@
+
+<div *ngIf="loading" class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+  
+  <div class="container-pers">
+  
+    <div class="card card d-flex flex-column">
+      <div class="card-header">
+        <div class="row">
+          <div class="col-md-8">
+              <h2 style="color: rgb(95, 95, 95);">Detalles de Contraventor</h2>
+          </div>
+      </div>
+  
+    <div *ngIf="!loading" class="card-body flex-grow-1">
+      <div class="container-fluid"> 
+        <div class="row desplazador-horizontal">
+          <div class="col-lg-6 col-md-12">
+            
+            <div class="half-text d-flex">
+                <strong>Carnet de Identidad:</strong>
+                <div class="col-lg-6 col-md-12">
+                  <span>{{ contraventor.ci }}</span>
+                </div>
+              </div>
+
+              <div class="half-text d-flex">
+                <strong>Nombre:</strong>
+                <div class="col-lg-6 col-md-12">
+                  <span>{{ contraventor.nombre }}</span>
+                </div>
+              </div>
+
+            <div class="half-text d-flex">
+                <strong>Apellido 1:</strong>
+                <div class="col-lg-6 col-md-12">
+                  <span>{{ contraventor.apellido1 }}</span>
+                </div>
+              </div>
+
+              <div class="half-text d-flex">
+                <strong>Apellido 2:</strong>
+                <div class="col-lg-6 col-md-12">
+                  <span>{{ contraventor.apellido2 }}</span>
+                </div>
+              </div>
+
+              <div class="half-text d-flex">
+                <strong>Dirección:</strong>
+                <div class="col-lg-6 col-md-12">
+                  <span>{{ contraventor.direccion }}</span>
+                </div>
+              </div>
+
+              <div class="half-text d-flex">
+                <strong>Dirección del Contraventor:</strong>
+                <div class="col-lg-6 col-md-12">
+                  <span>{{ contraventor.direccion_garux }}</span>
+                </div>
+              </div>
+
+              <div class="half-text d-flex">
+                <strong>Provincia:</strong>
+                <div class="col-lg-6 col-md-12">
+                  <span>{{ contraventor.provincia_id }}</span>
+                </div>
+              </div>
+
+              <div class="half-text d-flex">
+                <strong>Municipio:</strong>
+                <div class="col-lg-6 col-md-12">
+                  <span>{{ contraventor.municipio_id }}</span>
+                </div>
+              </div>
+
+              <div class="half-text d-flex">
+                <strong>Distrito:</strong>
+                <div class="col-lg-6 col-md-12">
+                  <span>{{ contraventor.distrito_id }}</span>
+                </div>
+              </div>
+
+              <div class="half-text d-flex">
+                <strong>Consejo Popular:</strong>
+                <div class="col-lg-6 col-md-12">
+                  <span>{{ contraventor.cpopular_id }}</span>
+                </div>
+              </div>
+
+              <div class="half-text d-flex">
+                <strong>Zona:</strong>
+                <div class="col-lg-6 col-md-12">
+                  <span>{{ contraventor.zona_id }}</span>
+                </div>
+              </div>
+
+              <div class="half-text d-flex">
+                <strong>Situacion Laboral:</strong>
+                <div class="col-lg-6 col-md-12">
+                  <span>{{ contraventor.sitlaboral_id }}</span>
+                </div>
+              </div>
+          </div>
+
+          <div class="col-lg-6 col-md-12">
+              <div class="half-text d-flex">
+                <strong>Centro de Trabajo:</strong>
+                <div class="col-lg-6 col-md-12">
+                  <span>{{ contraventor.sit_lab_id }}</span>
+                </div>
+              </div>
+
+              <div class="half-text d-flex">
+                <strong>Nombre de Centro de Trabajo:</strong>
+                <div class="col-lg-6 col-md-12">
+                  <span>{{ contraventor.nombre_ctrabajo }}</span>
+                </div>
+              </div>
+
+              <div class="half-text d-flex">
+                <strong>Dirección de Centro de Trabajo:</strong>
+                <div class="col-lg-6 col-md-12">
+                  <span>{{ contraventor.direccion_ctrabajo }}</span>
+                </div>
+              </div>
+            
+              <div class="half-text d-flex">
+                <strong>Menor de Edad:</strong>
+                <div class="col-lg-6 col-md-12">
+                  <span *ngIf="contraventor.menor_edad; else noIcon"><i class="fas fa-check"></i></span>
+                  <ng-template #noIcon>
+                    <span> No</span>
+                  </ng-template>
+                </div>
+              </div>
+
+              <div class="half-text d-flex">
+                <strong>Far:</strong>
+                <div class="col-lg-6 col-md-12">
+                  <span *ngIf="contraventor.far; else noIcon"><i class="fas fa-check"></i></span>
+                </div>
+              </div>
+
+              <div class="half-text d-flex">
+                <strong>Extranjero:</strong>
+                <div class="col-lg-6 col-md-12">
+                  <span *ngIf="contraventor.pasaporte; else noIcon"><i class="fas fa-check"></i></span>
+                </div>
+              </div>
+
+              <div class="half-text d-flex">
+                <strong>Multas Pendientes:</strong>
+                <div class="col-lg-6 col-md-12">
+                  <span>{{ contraventor.cant_multa }}</span>
+                </div>
+              </div>
+
+              <div class="half-text d-flex">
+                <strong>Importe Total:</strong>
+                <div class="col-lg-6 col-md-12">
+                  <span>{{ contraventor.cant_importe }}</span>
+                </div>
+              </div>
+
+              <div class="half-text d-flex">
+                <strong>Multas Impuestas:</strong>
+                <div class="col-lg-6 col-md-12">
+                  <span>{{ contraventor.cant_mult_calc }}</span>
+                </div>
+              </div>
+
+              <div class="half-text d-flex">
+                <strong>Carga:</strong>
+                <div class="col-lg-6 col-md-12">
+                  <span *ngIf="contraventor.carga; else noIcon"  ><i class="fas fa-check"></i></span>
+                </div>
+              </div>
+
+              <div class="half-text d-flex">
+                <strong>Fecha SUIN:</strong>
+                <div class="col-lg-6 col-md-12">
+                  <span>{{ contraventor.fecha_actualizacion_suin }}</span>
+                </div>
+              </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="example-button-container">
+        <button mat-raised-button [routerLink]="['/base/contraventor/listado']" color="secundary">Volver</button>
+      </div>     
+    </div>
+  
+    </div>
+  </div> 
+  
+  
+
+

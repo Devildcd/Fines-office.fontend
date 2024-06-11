@@ -30,14 +30,16 @@
 
 
 
-<ul *ngIf="mostrarMenu || showSidebar " class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" style="height: 100%;" id="accordionSidebar">
+<ul *ngIf="mostrarMenu || showSidebar " class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
+  style="height: 100%;" id="accordionSidebar">
 
   <!-- Sidebar - Brand -->
-  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="" (click)="disableLink($event)" id="homeLink">
-      <div class="sidebar-brand-icon">
-        <i class="fa fa-address-card"></i>
-      </div>
-      <div class="sidebar-brand-text mx-3">CGM <sup>2</sup></div>
+  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="" (click)="disableLink($event)"
+    id="homeLink">
+    <div class="sidebar-brand-icon">
+      <i class="fa fa-address-card"></i>
+    </div>
+    <div class="sidebar-brand-text mx-3">CGM <sup>2</sup></div>
   </a>
 
   <!-- Divider -->
@@ -45,9 +47,9 @@
 
   <!-- Nav Item - Dashboard -->
   <li class="nav-item active">
-      <a class="nav-link" [routerLink]="['/nomencladores/inicio']">
-          <i class="fas fa-home" style="margin-right: 10px;"></i>
-          <span>Página Principal</span></a>
+    <a class="nav-link" [routerLink]="['/nomencladores/inicio']">
+      <i class="fas fa-home" style="margin-right: 10px;"></i>
+      <span>Página Principal</span></a>
   </li>
 
   <!-- Divider -->
@@ -55,29 +57,55 @@
 
   <!-- Heading -->
   <div class="sidebar-heading">
-      Contenidos
+    Contenidos
   </div>
 
-  <li class="nav-item" [routerLinkActive] = "['active']">
-    <app-base-menu></app-base-menu>
-</li>
-
-  <!-- Nav Item - Pages Collapse Menu -->
-  <li class="nav-item" [routerLinkActive] = "['active']">
-      <app-nomencladores-menu></app-nomencladores-menu>
+  <li class="nav-item" [routerLinkActive]="['active']">
+    <app-autenticacion-menu></app-autenticacion-menu>
   </li>
 
-  <!-- Nav Item - Utilities Collapse Menu -->
+  <li class="nav-item" [routerLinkActive]="['active']">
+    <app-nomencladores-menu></app-nomencladores-menu>
+  </li>
+
+  <li class="nav-item" [routerLinkActive]="['active']">
+    <app-minint-menu></app-minint-menu>
+  </li>
+
+  <li class="nav-item" [routerLinkActive]="['active']">
+    <app-configuracion-menu></app-configuracion-menu>
+  </li>
+
+  <li class="nav-item" [routerLinkActive]="['active']">
+    <app-base-menu></app-base-menu>
+  </li>
+
   <li class="nav-item" [routerLinkActive] = "['active']">
-    <app-recepcion-menu></app-recepcion-menu>
+    <app-talonarios-menu></app-talonarios-menu>
+  </li>
+
+  <li class="nav-item" [routerLinkActive] = "['active']">
+    <app-operaciones-menu></app-operaciones-menu>
 </li>
+
+  <li class="nav-item" [routerLinkActive]="['active']">
+    <app-recepcion-menu></app-recepcion-menu>
+  </li>
+
+  <li class="nav-item" [routerLinkActive]="['active']">
+    <app-error-menu></app-error-menu>
+  </li>
+
+  <li class="nav-item" [routerLinkActive]="['active']">
+    <app-cobro-menu></app-cobro-menu>
+  </li>
 
   <!-- Divider -->
   <hr class="sidebar-divider d-none d-md-block">
 
   <!-- Sidebar Toggler (Sidebar) -->
   <div class="text-center d-none d-md-inline">
-      <button class="rounded-circle border-0" (click)="toggleSidebar()" id="sidebarToggle"></button>
+    <button class="rounded-circle border-0" (click)="toggleSidebar()" id="sidebarToggle"></button>
   </div>
 
 </ul>

@@ -1,0 +1,173 @@
+
+
+<div class="container-pers">
+
+    <div class="card card d-flex flex-column">
+      <div class="card-header">
+        <div class="row">
+          <div class="col-md-8">
+              <h2 style="color: rgb(95, 95, 95);">Editar Contraventor</h2>
+          </div>
+      </div>
+  
+    <div class="card-body flex-grow-1">
+        <form [formGroup]="formEditar">
+
+            <div class="example-inline-container">
+                <mat-form-field class="example-form-field">
+                    <mat-label>Nombre</mat-label>
+                    <input matInput formControlName="nombre" required>
+                  </mat-form-field>
+
+                <mat-form-field class="example-form-field">
+                  <mat-label>Carnet de Identidad</mat-label>
+                  <input matInput formControlName="ci" required>
+                </mat-form-field>
+              </div>
+
+              <div class="example-inline-container">
+                <mat-form-field class="example-form-field">
+                    <mat-label>Apellido 1</mat-label>
+                    <input matInput formControlName="apellido1" required>
+                  </mat-form-field>
+
+                  <mat-form-field class="example-form-field">
+                    <mat-label>Apellido 2</mat-label>
+                    <input matInput formControlName="apellido2" required>
+                  </mat-form-field>
+                </div>
+
+                <div class="example-inline-container">
+                    <mat-form-field class="example-form-field" >
+                        <mat-label>Dirección</mat-label>
+                        <textarea matInput formControlName="direccion" required rows="2"></textarea>
+                    </mat-form-field>
+                    <mat-form-field class="example-form-field" >
+                        <mat-label>Dirección del Contraventor</mat-label>
+                        <textarea matInput formControlName="direccion_garux" required rows="2"></textarea>
+                    </mat-form-field>
+                  </div>
+
+                  <div class="example-inline-container">
+                    <mat-form-field class="example-form-field">
+                        <mat-label>Provincia</mat-label>
+                        <mat-select formControlName="provincia_id" required>
+                          <mat-option *ngFor="let provincia of provincias" [value]="provincia.id">{{ provincia.nombre }}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+
+                      <mat-form-field class="example-form-field">
+                        <mat-label>Municipio</mat-label>
+                        <mat-select formControlName="municipio_id" required>
+                          <mat-option *ngFor="let municipio of municipios" [value]="municipio.id">{{ municipio.nombre }}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+
+                      <mat-form-field class="example-form-field">
+                        <mat-label>Distrito</mat-label>
+                        <mat-select formControlName="distrito_id" required>
+                          <mat-option *ngFor="let distrito of distritos" [value]="distrito.id">{{ distrito.nombre }}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                  </div>
+
+                  <div class="example-inline-container">
+                      <mat-form-field class="example-form-field">
+                        <mat-label>Consejo Popular</mat-label>
+                        <mat-select formControlName="cpopular_id" required>
+                          <mat-option *ngFor="let cpopular of cpopulares" [value]="cpopular.id">{{ cpopular.nombre }}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+
+                      <mat-form-field class="example-form-field">
+                        <mat-label>Zona</mat-label>
+                        <mat-select formControlName="zona_id" required>
+                          <mat-option *ngFor="let zona of zonas" [value]="zona.id">{{ zona.nombre }}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+
+                      <mat-form-field class="example-form-field">
+                        <mat-label>Situacion Laboral</mat-label>
+                        <mat-select formControlName="sitlaboral_id" required>
+                          <mat-option *ngFor="let sitLaboral of sitLaborales" [value]="sitLaboral.id">{{ sitLaboral.descripcion }}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                  </div>
+
+                  <div class="example-inline-container">
+                      <mat-form-field class="example-form-field">
+                        <mat-label>Centro de Trabajo</mat-label>
+                        <mat-select formControlName="sit_lab_id" required>
+                          <mat-option *ngFor="let centro of centroTrabajos" [value]="centro.id">{{ centro.nombre }}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+
+                      <mat-form-field class="example-form-field">
+                        <mat-label>Centro de Trabajo 1</mat-label>
+                        <input matInput formControlName="nombre_ctrabajo" required>
+                      </mat-form-field>
+                  </div>
+
+                  <div class="example-inline-container">
+                    <mat-form-field class="example-form-field">
+                      <mat-label>Direccion Centro Trabajo</mat-label>
+                      <input matInput formControlName="direccion_ctrabajo" required>
+                    </mat-form-field>
+
+                    <mat-form-field class="example-form-field">
+                      <mat-label>Fecha SUIN</mat-label>
+                      <input matInput formControlName="fecha_actualizacion_suin" required>
+                    </mat-form-field>
+                  </div>
+
+                  <div class="example-inline-container">
+                    <mat-form-field class="example-form-field">
+                      <mat-label>Multas Pendientes</mat-label>
+                      <input matInput formControlName="cant_multa" required>
+                    </mat-form-field>
+
+                    <mat-form-field class="example-form-field">
+                      <mat-label>Importe Total a Pagar</mat-label>
+                      <input matInput formControlName="cant_importe" required>
+                    </mat-form-field>
+
+                    <mat-form-field class="example-form-field">
+                      <mat-label>Multas Impuestas</mat-label>
+                      <input matInput formControlName="cant_mult_calc" required>
+                    </mat-form-field>
+                    </div>
+
+                    <div class="example-inline-container">
+                      
+                    <mat-checkbox formControlName="menor_edad" color="primary">
+                      Menor de Edad
+                  </mat-checkbox>
+    
+                  <mat-checkbox formControlName="far" color="primary">
+                    Far
+                </mat-checkbox>
+
+                <mat-checkbox formControlName="pasaporte" color="primary">
+                    Extranjero
+                </mat-checkbox>
+
+                <mat-checkbox formControlName="carga" color="primary">
+                    Carga
+                </mat-checkbox>
+                    </div>
+
+              <div class="example-button-container">
+                <!-- Agrega tus botones aquí -->
+                <button mat-raised-button (click)="editarContraventor()" color="primary" style="margin-right: 5px;">Aceptar</button>
+                <button mat-raised-button [routerLink]="['/base/contraventor/listado']" color="secundary">Volver</button>
+              </div>
+    
+        </form>
+    </div>
+ 
+    </div>
+  </div> 
+</div>
+
+
+

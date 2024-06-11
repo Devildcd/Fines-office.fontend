@@ -1,0 +1,182 @@
+
+<div *ngIf="loading" class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+  
+  <div class="container-pers">
+  
+    <div class="card card d-flex flex-column">
+      <div class="card-header">
+        <div class="row">
+          <div class="col-md-8">
+              <h2 style="color: rgb(95, 95, 95);">Detalles de Matriz</h2>
+          </div>
+      </div>
+  
+    <div *ngIf="!loading" class="card-body flex-grow-1">
+      <div class="container-fluid"> 
+        <div class="row desplazador-horizontal">
+          <div class="col-lg-6 col-md-12">
+            
+            <div class="half-text d-flex">
+                <strong>Temporal:</strong>
+                <div class="col-lg-6 col-md-12">
+                  <span *ngIf="matriz.temporal; else noIcon"><i class="fas fa-check"></i></span>
+                  <ng-template #noIcon>
+                    <span> No</span>
+                  </ng-template>
+                </div>
+              </div>
+
+              <div class="half-text d-flex">
+                <strong>Modelo Oc5:</strong>
+                <div class="col-lg-6 col-md-12">
+                  <span>{{ matriz.oc5!.estado }}</span>
+                </div>
+              </div>
+
+            <div class="half-text d-flex">
+                <strong>Organismo Impositor:</strong>
+                <div class="col-lg-6 col-md-12">
+                  <span>{{ matriz.impositor!.nombre }}</span>
+                </div>
+              </div>
+
+              <div class="half-text d-flex">
+                <strong>Talon:</strong>
+                <div class="col-lg-6 col-md-12">
+                  <span>{{ matriz.talon! }}</span>
+                </div>
+              </div>
+
+              <div class="half-text d-flex">
+                <strong>Serie:</strong>
+                <div class="col-lg-6 col-md-12">
+                  <span>{{ matriz.c1 }}</span>
+                </div>
+              </div>
+
+              <div class="half-text d-flex">
+                <strong>Serie:</strong>
+                <div class="col-lg-6 col-md-12">
+                  <span>{{ matriz.c2 }}</span>
+                </div>
+              </div>
+
+              <div class="half-text d-flex">
+                <strong>Fecha:</strong>
+                <div class="col-lg-6 col-md-12">
+                  <span>{{ matriz.fecha }}</span>
+                </div>
+              </div>
+
+              <div class="half-text d-flex">
+                <strong>Importe:</strong>
+                <div class="col-lg-6 col-md-12">
+                  <span>{{ matriz.importe }}</span>
+                </div>
+              </div>
+
+              <div class="half-text d-flex">
+                <strong>Decreto Ley Articulo Inciso:</strong>
+                <div class="col-lg-6 col-md-12">
+                  <span>{{ matriz.dley_art_inc?.descripcion }}</span>
+                </div>
+              </div>
+
+              <div class="half-text d-flex">
+                <strong>Tipo de Multa:</strong>
+                <div class="col-lg-6 col-md-12">
+                  <span>{{ matriz.tipo_multa?.descripcion}}</span>
+                </div>
+              </div>
+
+              <div class="half-text d-flex">
+                <strong>Estado de Multa:</strong>
+                <div class="col-lg-6 col-md-12">
+                  <span>{{ matriz.estado_multa_id.situacion}}</span>
+                </div>
+              </div>
+          </div>
+
+          <div class="col-lg-6 col-md-12">
+              <div class="half-text d-flex">
+                <strong>Modelo Oc6:</strong>
+                <div class="col-lg-6 col-md-12">
+                  <span>{{ matriz.oc6?.estado }}</span>
+                </div>
+              </div>
+
+              <div class="half-text d-flex">
+                <strong>Devuelve:</strong>
+                <div class="col-lg-6 col-md-12">
+                  <span>{{ matriz.devolver }}</span>
+                </div>
+              </div>
+
+              <div class="half-text d-flex">
+                <strong>Recibida por Traslado:</strong>
+                <div class="col-lg-6 col-md-12">
+                  <span *ngIf="matriz.recibida_traslado; else noIcon"><i class="fas fa-check"></i></span>
+                  <ng-template #noIcon>
+                    <span> No</span>
+                  </ng-template>
+                </div>
+              </div>
+            
+              <div class="half-text d-flex">
+                <strong>Moneda:</strong>
+                <div class="col-lg-6 col-md-12">
+                  <span>{{ matriz.moneda?.id_moneda }}</span>
+                </div>
+              </div>
+
+              <div class="half-text d-flex">
+                <strong>Moneda:</strong>
+                <div class="col-lg-6 col-md-12">
+                  <span>{{ matriz.conceptraslado?.descripcion }}</span>
+                </div>
+              </div>
+
+              <div class="half-text d-flex">
+                <strong>Contraventor:</strong>
+                <div class="col-lg-6 col-md-12">
+                  <span>{{ matriz.contraventor?.nombre }}</span>
+                </div>
+              </div>
+
+              <div class="half-text d-flex">
+                <strong>Nivel Superior:</strong>
+                <div class="col-lg-6 col-md-12">
+                  <span *ngIf="matriz.nivel; else noIcon"  ><i class="fas fa-check"></i></span>
+                </div>
+              </div>
+
+              <div class="half-text d-flex">
+                <strong>Fecha de Creacion:</strong>
+                <div class="col-lg-6 col-md-12">
+                  <span>{{ matriz.fecha_creacion }}</span>
+                </div>
+              </div>
+
+              <div class="half-text d-flex">
+                <strong>Fecha de Edicion:</strong>
+                <div class="col-lg-6 col-md-12">
+                  <span>{{ matriz.fecha_edicion }}</span>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+      <div class="example-button-container">
+        <button mat-raised-button [routerLink]="['/base/matriz/listado']" color="secundary">Volver</button>
+      </div>     
+    </div>
+  
+    </div>
+  </div> 
+  
+  
+
+
+

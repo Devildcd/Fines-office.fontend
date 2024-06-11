@@ -1,0 +1,67 @@
+
+
+<div class="container-pers">
+
+    <div class="card card d-flex flex-column">
+      <div class="card-header">
+        <div class="row">
+          <div class="col-md-8">
+              <h2 style="color: rgb(95, 95, 95);">Editar Centro de Trabajo</h2>
+          </div>
+      </div>
+  
+    <div class="card-body flex-grow-1">
+        <form [formGroup]="formEditar">
+  
+            <div class="example-inline-container">
+                <mat-form-field class="example-form-field">
+                    <mat-label>Nombre</mat-label>
+                    <input matInput formControlName="nombre" required>
+                  </mat-form-field>
+
+                <mat-form-field class="example-form-field">
+                    <mat-label>Dirección</mat-label>
+                    <input matInput formControlName="direccion" required>
+                  </mat-form-field>
+
+                  <mat-form-field class="example-form-field">
+                    <mat-label>Entrar Organismo de Trabajo</mat-label>
+                    <input matInput formControlName="organismo_trabajo" required>
+                  </mat-form-field>
+              </div>
+
+              <div class="example-inline-container">
+                <mat-form-field class="example-form-field">
+                    <mat-label>Organismo de Trabajo</mat-label>
+                    <mat-select formControlName="organismo_trabajo_id" required>
+                      <mat-option *ngFor="let organismo of organismos" [value]="organismo.id">{{ organismo.nombre }}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+                  <mat-form-field class="example-form-field">
+                    <mat-label>Municipio</mat-label>
+                    <mat-select formControlName="municipio" required>
+                      <mat-option *ngFor="let municipio of municipios" [value]="municipio.id">{{ municipio.nombre }}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+                  <mat-checkbox formControlName="carga" color="primary">
+                    Carga
+                </mat-checkbox>
+              </div>
+  
+              <div class="example-button-container">
+                <!-- Agrega tus botones aquí -->
+                <button mat-raised-button (click)="editarCentroTrabajo()" color="primary" style="margin-right: 5px;">Aceptar</button>
+                <button mat-raised-button [routerLink]="['/base/centros-de-trabajos/listado']" color="secundary">Volver</button>
+              </div>
+    
+        </form>
+    </div>
+  
+    </div>
+  </div> 
+  
+  
+
+

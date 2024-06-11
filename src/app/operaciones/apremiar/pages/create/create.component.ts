@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Moneda } from 'src/app/nomencladores/interfaces/moneda.interface';
+import { EstadoMulta } from 'src/app/nomencladores/interfaces/estado-multa.interface';
 import { Apremiar } from 'src/app/operaciones/interfaces/apremiar.interface';
 import { ApremiarService } from '../../services/apremiar.service';
 import { Router } from '@angular/router';
@@ -17,8 +17,9 @@ import { DatePipe } from '@angular/common';
 export class CreateComponent {
 
   apremiar!: Apremiar;
-  matrices: any[] = [];
-  monedas: Moneda[] = [];
+  id_matriz: any[] = [];
+  mov_multa_id: any[] = [];
+  estados: EstadoMulta[]= [];
   submitted = false;
 
   constructor(
@@ -36,22 +37,21 @@ export class CreateComponent {
     //     this.occmPadre = occmPadre;
     //   }
     // );
-    this.nomencladoresService.getMonedas().subscribe(
-      (monedas)=>{
-        this.monedas = monedas;
+    this.nomencladoresService.getEstadosMultas().subscribe(
+      (estados)=>{
+        this.estados = estados;
       }
     );
   }
 
   formCrear: FormGroup = this.fb.group({
     id_matriz: [null, Validators.required],
-    moneda: [null, Validators.required],
-    fecha_imp: [null],
-    fecha_gestion: [null, Validators.required],
-    fecha_comunicada: [null, Validators.required],
-    fecha_denunciada: [null],
-    num_radicacion: [null],
-    state: ['no_confirmado'],
+    mov_multa_id: ['', Validators.required],
+    estado: ['', Validators.required],
+    fecha_apremio: ['', Validators.required],
+    fecha_comunicada: ['', Validators.required],
+    fecha_denunciada:['', Validators.required],
+    num_radicacion: ['', Validators.required],
   });
 
   crearApremio() {
@@ -104,8 +104,7 @@ export class CreateComponent {
 
    formatDates(formData: any): any {
     const formattedData = { ...formData };
-    formattedData.fecha_imp = this.datePipe.transform(formData.fecha_imp, 'yyyy-MM-dd');
-    formattedData.fecha_gestion = this.datePipe.transform(formData.fecha_gestion, 'yyyy-MM-dd');
+    formattedData.fecha_apremio = this.datePipe.transform(formData.fecha_apremio, 'yyyy-MM-dd');
     formattedData.fecha_comunicada = this.datePipe.transform(formData.fecha_comunicada, 'yyyy-MM-dd');
     formattedData.fecha_denunciada = this.datePipe.transform(formData.fecha_denunciada, 'yyyy-MM-dd');
     return formattedData;

@@ -26,7 +26,7 @@
 
                 <mat-form-field class="example-form-field">
                   <mat-label>OCCM</mat-label>
-                  <mat-select formControlName="occm" required>
+                  <mat-select formControlName="occm">
                     <mat-option *ngFor="let occm of occms" [value]="occm.id">{{ occm.id_occm }}</mat-option>
                   </mat-select>
                 </mat-form-field>

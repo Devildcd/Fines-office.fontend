@@ -82,14 +82,14 @@ export class OccmComponent {
     this.dataSource.data = this.occm.filter((occm) => {
       return occm.id_occm.toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
       occm.nit.toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
-      occm.descripcion.toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
-      occm.direccion.toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
-      occm.telefono.toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
+      occm.descripcion?.toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
+      occm.direccion?.toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
+      occm.telefono?.toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
       occm.provincia_id?.nombre.toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
       occm.municipio_id?.nombre.toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
       occm.distrito_id?.nombre.toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
       occm.tipo_oficina_id?.descripcion.toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
-      occm.padre_id?.descripcion.toLowerCase().includes(this.terminoBusqueda.toLowerCase());
+      occm.padre_id?.descripcion?.toLowerCase().includes(this.terminoBusqueda.toLowerCase());
       
     });
   }

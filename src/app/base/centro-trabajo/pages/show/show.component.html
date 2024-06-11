@@ -1,0 +1,82 @@
+
+<div *ngIf="loading" class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+  
+  <div class="container-pers">
+  
+    <div class="card card d-flex flex-column">
+      <div class="card-header">
+        <div class="row">
+          <div class="col-md-8">
+              <h2 style="color: rgb(95, 95, 95);">Detalles del Centro de Trabajo</h2>
+          </div>
+      </div>
+  
+    <div *ngIf="!loading" class="card-body flex-grow-1">
+      <div class="container-fluid"> 
+        <div class="row desplazador-horizontal">
+          <div class="col-lg-6 col-md-12">
+            
+            <div class="half-text d-flex">
+                <strong>Nombre:</strong>
+                <div class="col-lg-6 col-md-12">
+                  <span>{{ centroTrabajo.nombre }}</span>
+                </div>
+              </div>
+  
+            <div class="half-text d-flex">
+              <strong>Dirección:</strong>
+              <div class="col-lg-6 col-md-12">
+                <span>{{ centroTrabajo.direccion }}</span>
+              </div>
+            </div>
+
+            <div class="half-text d-flex">
+                <strong>Centro de Trabajo Entrado:</strong>
+                <div class="col-lg-6 col-md-12">
+                  <span>{{ centroTrabajo.organismo_trabajo }}</span>
+                </div>
+              </div>
+
+          </div>
+          <div class="col-lg-6 col-md-12">
+            
+              <div class="half-text d-flex">
+                <strong>Centro de Trabajo:</strong>
+                <div class="col-lg-6 col-md-12">
+                  <span *ngIf="centroTrabajo.organismo_trabajo_id; else noIcon"  >{{ centroTrabajo.organismo_trabajo_id }}</span>
+                  <ng-template #noIcon>
+                    No
+                  </ng-template>
+                </div>
+              </div>
+
+              <div class="half-text d-flex">
+                <strong>Municipio:</strong>
+                <div class="col-lg-6 col-md-12">
+                  <span *ngIf="centroTrabajo.municipio; else noIcon"  >{{ centroTrabajo.municipio }}</span>
+                </div>
+              </div>
+
+            <div class="half-text d-flex">
+              <strong>Carga:</strong>
+              <div class="col-lg-6 col-md-12">
+                <span>{{ centroTrabajo.carga }}</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="example-button-container">
+        <button mat-raised-button [routerLink]="['/base/centros-de-trabajos/listado']" color="secundary">Volver</button>
+      </div>     
+    </div>
+  
+    </div>
+  </div> 
+  
+  
+
+

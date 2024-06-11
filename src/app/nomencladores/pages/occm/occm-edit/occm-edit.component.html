@@ -27,19 +27,19 @@
                 
                 <mat-form-field class="example-form-field">
                   <mat-label>Telefono</mat-label>
-                  <input matInput formControlName="telefono" required>
+                  <input matInput formControlName="telefono">
                 </mat-form-field>
               </div>
 
               <div class="example-inline-container">
                 <mat-form-field class="example-form-field" >
                   <mat-label>Dirección</mat-label>
-                  <textarea matInput formControlName="direccion" required rows="2"></textarea>
+                  <textarea matInput formControlName="direccion" rows="2"></textarea>
               </mat-form-field>
 
                 <mat-form-field class="example-form-field" >
                   <mat-label>Descripción</mat-label>
-                  <textarea matInput formControlName="descripcion" required rows="2"></textarea>
+                  <textarea matInput formControlName="descripcion" rows="2"></textarea>
               </mat-form-field>
                 </div>
 
@@ -47,21 +47,21 @@
 
                   <mat-form-field class="example-form-field">
                     <mat-label>Provincia</mat-label>
-                    <mat-select formControlName="provincia_id" required>
+                    <mat-select formControlName="provincia_id">
                       <mat-option *ngFor="let provincia of provincias" [value]="provincia.id">{{ provincia.nombre }}</mat-option>
                     </mat-select>
                   </mat-form-field>
 
                   <mat-form-field class="example-form-field">
                     <mat-label>Municipio</mat-label>
-                    <mat-select formControlName="municipio_id" required>
+                    <mat-select formControlName="municipio_id">
                       <mat-option *ngFor="let municipio of municipios" [value]="municipio.id">{{ municipio.nombre }}</mat-option>
                     </mat-select>
                   </mat-form-field>
                 
                   <mat-form-field class="example-form-field">
                     <mat-label>Distrito</mat-label>
-                    <mat-select formControlName="distrito_id" required>
+                    <mat-select formControlName="distrito_id">
                       <mat-option *ngFor="let distrito of distritos" [value]="distrito.id">{{ distrito.nombre }}</mat-option>
                     </mat-select>
                   </mat-form-field>
@@ -77,7 +77,7 @@
 
                     <mat-form-field class="example-form-field">
                       <mat-label>Oficina Superior</mat-label>
-                      <mat-select formControlName="padre_id" required>
+                      <mat-select formControlName="padre_id">
                         <mat-option *ngFor="let oficina of occmPadre" [value]="oficina.id">{{ oficina.descripcion }}</mat-option>
                       </mat-select>
                     </mat-form-field>
