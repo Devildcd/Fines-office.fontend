@@ -116,10 +116,10 @@ export class EditComponent {
   }
 
   formatDates(formData: any): any {
-    const apremiar = { ...formData };
-    apremiar.fecha_apremio = this.datePipe.transform(formData.fecha_apremio, 'yyyy-MM-dd');
-    apremiar.fecha_comunicada = this.datePipe.transform(formData.fecha_comunicada, 'yyyy-MM-dd');
-    apremiar.fecha_denunciada = this.datePipe.transform(formData.fecha_denunciada, 'yyyy-MM-dd');
-    return apremiar;
+    const formattedData = { ...formData };
+    formattedData.fecha_apremio = this.datePipe.transform(formData.fecha_apremio, 'yyyy-MM-dd');
+    formattedData.fecha_comunicada = this.datePipe.transform(formData.fecha_comunicada, 'yyyy-MM-dd');
+    formattedData.fecha_denunciada = this.datePipe.transform(formData.fecha_denunciada, 'yyyy-MM-dd');
+    return formattedData;
   }
 }

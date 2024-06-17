@@ -35,12 +35,36 @@ const routes: Routes = [
        import('./operaciones/devolucion/devolucion.module').then((m) => m.DevolucionModule),
     // canActivate: [ValidarTokenGuard],
    },
+  {
+    path: 'operaciones/duplicar',
+    loadChildren: () =>
+       import('./operaciones/duplicar/duplicar.module').then((m) => m.DuplicarModule),
+    // canActivate: [ValidarTokenGuard],
+   },
+  {
+    path: 'operaciones/comunicacion-embargo',
+    loadChildren: () =>
+       import('./operaciones/comunicacion-embargo/comunicacion-embargo.module').then((m) => m.ComunicacionEmbargoModule),
+    // canActivate: [ValidarTokenGuard],
+   },
+  {
+    path: 'operaciones/convenio-plazo',
+    loadChildren: () =>
+       import('./operaciones/convenio-plazo/convenio-plazo.module').then((m) => m.ConvenioPlazoModule),
+    // canActivate: [ValidarTokenGuard],
+   },
 
    // talonarios
   {
     path: 'talonarios/entrega-recepcion',
     loadChildren: () =>
       import('./talonarios/entrega-recepcion/entrega-recepcion.module').then((m) => m.EntregaRecepcionModule),
+    // canActivate: [ValidarTokenGuard],
+  },
+  {
+    path: 'talonarios/imposicion',
+    loadChildren: () =>
+      import('./talonarios/imposicion/imposicion.module').then((m) => m.ImposicionModule),
     // canActivate: [ValidarTokenGuard],
   },
 

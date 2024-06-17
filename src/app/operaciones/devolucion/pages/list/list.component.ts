@@ -87,7 +87,7 @@ export class ListComponent {
       devolucion.organismo.toString().toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
       devolucion.decreto_ley.toString().toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
       devolucion.observaciones.toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
-      devolucion.state.toString().toLowerCase().includes(this.terminoBusqueda.toLowerCase())
+      devolucion.state.toLowerCase().includes(this.terminoBusqueda.toLowerCase())
     });
   }
   

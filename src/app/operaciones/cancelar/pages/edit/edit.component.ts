@@ -111,8 +111,8 @@ export class EditComponent {
   }
 
   formatDates(formData: any): any {
-    const cancelar = { ...formData };
-    cancelar.fecha_cancelacion = this.datePipe.transform(formData.fecha_cancelacion, 'yyyy-MM-dd');
-    return cancelar;
+    const formattedData = { ...formData };
+    formattedData.fecha_cancelacion = this.datePipe.transform(formData.fecha_cancelacion, 'yyyy-MM-dd');
+    return formattedData;
   }
 }

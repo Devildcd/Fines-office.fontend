@@ -1,0 +1,53 @@
+<div *ngIf="loading" class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+  
+  <div class="container-pers">
+  
+    <div class="card card d-flex flex-column">
+      <div class="card-header">
+        <div class="row">
+          <div class="col-md-8">
+              <h2 style="color: rgb(95, 95, 95);">Detalles</h2>
+          </div>
+      </div>
+  
+    <div *ngIf="!loading" class="card-body flex-grow-1">
+      <div class="container-fluid"> 
+        <div class="row desplazador-horizontal">
+          <div class="col-lg-6 col-md-12">
+            <div class="half-text d-flex">
+              <strong>Matriz:</strong>
+              <div class="col-lg-6 col-md-12">
+                <span *ngIf="duplicar.id_matriz">{{ duplicar.id_matriz }}</span>
+              </div>
+            </div>
+            </div>
+
+            <div class="half-text d-flex">
+              <strong>Movimiento:</strong>
+              <div class="col-lg-6 col-md-12">
+                  <span *ngIf="duplicar.mov_multa_id">{{ duplicar.mov_multa_id }}</span>
+                </div>
+            </div>
+            
+            <div class="half-text d-flex">
+                <strong>Fecha:</strong>
+                <div class="col-lg-6 col-md-12">
+                  <span>{{ duplicar.fecha}}</span>
+                </div>
+            </div>
+            
+        </div>
+
+    </div>
+      <div class="example-button-container">
+        <button mat-raised-button [routerLink]="['/operaciones/duplicar/listado']" color="secundary">Volver</button>
+      </div>
+
+    </div>
+  
+   
+  </div> 
+  
+

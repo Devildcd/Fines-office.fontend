@@ -1,0 +1,90 @@
+<div *ngIf="loading" class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">Loading...</span>
+</div>
+
+<div class="container-pers">
+
+    <div class="card card d-flex flex-column">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-md-8">
+                    <h2 style="color: rgb(95, 95, 95);">Detalles de la Imposición</h2>
+                </div>
+            </div>
+
+            <div *ngIf="!loading" class="card-body flex-grow-1">
+                <div class="container-fluid">
+                    <div class="row desplazador-horizontal">
+
+                        <div class="col-lg-6 col-md-12">
+                            <div class="half-text d-flex">
+                                <strong>Serie:</strong>
+                                <div class="col-lg-6 col-md-12">
+                                    <span>{{ imposicions.serie }}</span>
+                                </div>
+                            </div>
+
+                            <div class="half-text d-flex">
+                                <strong>Letra del Talón:</strong>
+                                <div class="col-lg-6 col-md-12">
+                                    <span>{{ imposicions.letra }}</span>
+                                </div>
+                            </div>
+
+                            <div class="half-text d-flex">
+                                <strong>Estado:</strong>
+                                <div class="col-lg-6 col-md-12">
+                                    <span>{{ imposicions.estado }}</span>
+                                </div>
+                            </div>
+
+                            <div class="half-text d-flex">
+                                <strong>OCCM:</strong>
+                                <div class="col-lg-6 col-md-12">
+                                    <span>{{ imposicions.occm.descripcion}}</span>
+                                </div>
+                            </div>
+
+                            <div class="half-text d-flex">
+                                <strong>Organismo:</strong>
+                                <div class="col-lg-6 col-md-12">
+                                    <span>{{ imposicions.organismo.nombre}}</span>
+                                </div>
+                            </div>
+
+                            <div class="half-text d-flex">
+                                <strong>Entrega y Recepción:</strong>
+                                <div class="col-lg-6 col-md-12">
+                                    <span>{{ imposicions.id_Entrega_Recepcion_Imposicion.serie}}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-12">
+                            <div class="half-text d-flex">
+                                <strong>Activo:</strong>
+                                <div class="col-lg-6 col-md-12">
+                                    <span>{{ imposicions.activo}}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-12">
+                            <div class="half-text d-flex">
+                                <strong>Talones destinados a las multas forestales:</strong>
+                                <div class="col-lg-6 col-md-12">
+                                    <span>{{ imposicions.forestal}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="example-button-container">
+                <button mat-raised-button [routerLink]="['/talonarios/imposicion/listado']"
+                    color="secundary">Volver</button>
+            </div>
+        </div>
+
+    </div>
+</div>

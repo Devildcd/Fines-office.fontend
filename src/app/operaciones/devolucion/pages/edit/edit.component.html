@@ -18,14 +18,14 @@
 
             <div class="example-inline-container">
                 <mat-form-field class="example-form-field">
-                  <mat-label>Fecha</mat-label>
+                  <mat-label>Matriz</mat-label>
                   <input matInput formControlName="id_matriz" required>
                 </mat-form-field>
                 
                 <mat-form-field class="example-form-field">
                     <mat-label>Concepto Devolución </mat-label>
                     <mat-select formControlName="concepto_devolucion_id" required>
-                      <mat-option *ngFor="let conceptoDevolucion of conceptoDevoluciones" [value]="conceptosDevolucion.id">{{ conceptoDevoluciones.descripcion }}</mat-option>
+                      <mat-option *ngFor="let conceptoDevolucion of conceptoDevoluciones" [value]="conceptoDevolucion.id">{{ conceptoDevolucion.descripcion }}</mat-option>
                     </mat-select>
                   </mat-form-field>
          
@@ -42,66 +42,60 @@
                   <input matInput placeholder="Mes/Día/Año" [matDatepicker]="picker" formControlName="matriz_fecha" required readonly>
                   <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                   <mat-datepicker #picker></mat-datepicker>
-                </mat-form-field>
-
-                
+                </mat-form-field>   
             </div>
             
             <div class="example-inline-container">
                   <mat-form-field class="example-form-field">
                     <mat-label>Concepto Cancelación </mat-label>
                     <mat-select formControlName="ccancel_id" required>
-                      <mat-option *ngFor="let conceptosCancelacion of conceptosCancelaciones" [value]="conceptosCancelacion.id">{{ conceptosCancelacion.descripcion }}</mat-option>
-                    </mat-select>
-                  </mat-form-field>
-
-                  <mat-form-field class="example-form-field">
-                    <mat-label>Tipos de Multas </mat-label>
-                    <mat-select formControlName="tipo_multa_id" required>
-                      <mat-option *ngFor="let tipoMulta of tipoMultas" [value]="tipoMultas.id">{{ tipoMultas.descripcion }}</mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                
-              </div>
-
-            <div class="example-inline-container">
-                  <mat-form-field class="example-form-field">
-                    <mat-label>Organismos</mat-label>
-                    <mat-select formControlName="organismos" required>
-                      <mat-option *ngFor="let organismo of organismos" [value]="organismos.id">{{ organismos.descripcion }}</mat-option>
+                      <mat-option *ngFor="let conceptoCancelacion of conceptoCancelaciones" [value]="conceptoCancelacion.id">{{ conceptoCancelacion.descripcion }}</mat-option>
                     </mat-select>
                   </mat-form-field>
 
                   <mat-form-field class="example-form-field">
                     <mat-label>Tipo Multa </mat-label>
                     <mat-select formControlName="tipo_multa_id" required>
-                      <mat-option *ngFor="let tipoMulta of tipoMultas" [value]="tipoMultas.id">{{ tipoMultas.descripcion }}</mat-option>
+                      <mat-option *ngFor="let tipoMulta of tipoMultas" [value]="tipoMulta.id">{{ tipoMulta.descripcion }}</mat-option>
                     </mat-select>
                   </mat-form-field>
-                
               </div>
               
             <div class="example-inline-container">
                   <mat-form-field class="example-form-field">
                     <mat-label>Organismos</mat-label>
                     <mat-select formControlName="organismos" required>
-                      <mat-option *ngFor="let organismo of organismos" [value]="organismos.id">{{ organismos.descripcion }}</mat-option>
+                      <mat-option *ngFor="let organismo of organismos" [value]="organismo.id">{{ organismo.id_organismo }}</mat-option>
                     </mat-select>
                   </mat-form-field>
 
                   <mat-form-field class="example-form-field">
-                    <mat-label>Tipo Multa </mat-label>
-                    <mat-select formControlName="tipo_multa_id" required>
-                      <mat-option *ngFor="let tipoMulta of tipoMultas" [value]="tipoMultas.id">{{ tipoMultas.descripcion }}</mat-option>
+                    <mat-label>Decreto Ley </mat-label>
+                    <mat-select formControlName="decreto_ley" required>
+                      <mat-option *ngFor="let  decretoLey of decretoLeyes" [value]="decretoLey.id">{{ decretoLey.descripcion }}</mat-option>
                     </mat-select>
-                  </mat-form-field>
-                
+                  </mat-form-field>                
               </div>
+              
+              <div class="example-inline-container">
 
+                <mat-form-field class="example-form-field">
+                  <mat-label>Notas </mat-label>
+                  <input formControlName="organismos" placeholder="Observaciones"required>
+                </mat-form-field>
+
+                <mat-form-field class="example-form-field">
+                  <mat-label>Estado </mat-label>
+                  <mat-select formControlName="state" required>
+                    <mat-option value="no_confirmado">No Confirmado</mat-option>
+                    <mat-option value="confirmado">confirmado</mat-option>
+                  </mat-select>
+                </mat-form-field>              
+                </div>
               <div class="example-button-container">
                 <!-- Agrega tus botones aquí -->
-                <button mat-raised-button (click)="editarCancelar()" color="primary" style="margin-right: 5px;">Aceptar</button>
-                <button mat-raised-button [routerLink]="['/operaciones/cancelar']" color="secundary">Volver</button>
+                <button mat-raised-button (click)="editarDevolucion()" color="primary" style="margin-right: 5px;">Aceptar</button>
+                <button mat-raised-button [routerLink]="['/operaciones/devolucion']" color="secundary">Volver</button>
               </div>
     
         </form>

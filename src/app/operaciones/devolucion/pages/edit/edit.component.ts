@@ -25,7 +25,7 @@ export class EditComponent {
   conceptoCancelaciones: ConceptoCancelacion[] = [];
   tipoMultas: TipoMulta[] = [];
   organismos: Organismo[] = [];
-  decretoleyes: DecretoLeyArticuloInciso[] = [];
+  decretoLeyes: DecretoLeyArticuloInciso[] = [];
   submitted = false;
   loading = true;
 
@@ -55,9 +55,9 @@ export class EditComponent {
           conceptoCancelaciones: devolucion.ccancel_id,
           tipoMultas: devolucion.tipo_multa_id,
           organismos: devolucion.organismo,
-          decretoleyes: devolucion.decreto_ley,
+          decretoLeyes: devolucion.decreto_ley,
           observaciones: devolucion.observaciones,
-          notas: devolucion.state,
+          estados: devolucion.state,
          });
       });
  
@@ -76,8 +76,8 @@ export class EditComponent {
     this.nomencladoresService.getOrganismos().subscribe( (organismos)=>{
       this.organismos = organismos;
     });
-    this.nomencladoresService.getDecLeyArticulosIncisos().subscribe( (decretoleyes)=>{
-      this.decretoleyes = decretoleyes;
+    this.nomencladoresService.getDecLeyArticulosIncisos().subscribe( (decretoLeyes)=>{
+      this.decretoLeyes = decretoLeyes;
     });
   }
 
@@ -140,8 +140,9 @@ export class EditComponent {
   }
 
   formatDates(formData: any): any {
-    const devolucion = { ...formData };
-    devolucion.matriz_fecha = this.datePipe.transform(formData.matriz_fecha, 'yyyy-MM-dd');
-    return devolucion;
+    const formattedData = { ...formData };
+    formattedData.matriz_fecha = this.datePipe.transform(formData.matriz_fecha, 'yyyy-MM-dd');
+    return formattedData;
   }
+
 }
