@@ -106,6 +106,12 @@ const routes: Routes = [
     // canActivate: [ValidarTokenGuard],
   },
   {
+    path: 'talonarios/imposicion',
+    loadChildren: () =>
+      import('./talonarios/imposicion/imposicion.module').then((m) => m.ImposicionModule),
+    // canActivate: [ValidarTokenGuard],
+  },
+  {
     path: '**', redirectTo: 'auth'
   }
 ];

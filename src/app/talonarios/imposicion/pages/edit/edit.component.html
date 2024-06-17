@@ -1,0 +1,89 @@
+<div class="container-pers">
+
+    <div class="card card d-flex flex-column">
+      <div class="card-header">
+        <div class="row">
+          <div class="col-md-8">
+            <h2 style="color: rgb(95, 95, 95);">Editar Imposición</h2>
+          </div>
+        </div>
+  
+        <div class="card-body flex-grow-1">
+          <form [formGroup]="formEditar">
+  
+            <div class="example-inline-container">
+                <mat-form-field class="example-form-field">
+                    <mat-label>Organismo</mat-label>
+                    <mat-select formControlName="organismo" required>
+                        <mat-option *ngFor="let organismo of organismos" [value]="organismo.id">{{
+                            organismo.nombre }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="example-form-field">
+                    <mat-label>OCCM</mat-label>
+                    <mat-select formControlName="occm" required>
+                        <mat-option *ngFor="let occm of occms" [value]="occm.id">{{ occm.descripcion
+                            }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="example-form-field">
+                    <mat-label>Entrega y Recepción</mat-label>
+                    <mat-select formControlName="id_Entrega_Recepcion_Imposicion" required>
+                        <mat-option *ngFor="let id_Entrega_Recepcion of id_Entregas_Recepcions"
+                            [value]="id_Entrega_Recepcion.id">{{ id_Entrega_Recepcion.serie }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div class="example-inline-container">
+
+                <mat-form-field class="example-form-field">
+                    <mat-label>Serie del Talón</mat-label>
+                    <input matInput type="text" formControlName="serie" required>
+                </mat-form-field>
+
+                <mat-form-field class="example-form-field">
+                    <mat-label>Letra del Talón</mat-label>
+                    <input matInput type="text" formControlName="letra" required>
+                </mat-form-field>
+
+                <mat-form-field class="example-form-field">
+                    <mat-label>Estado</mat-label>
+                    <mat-select formControlName="estado" required>
+                        <mat-option value="No confirmado">No confirmado</mat-option>
+                        <mat-option value="Confirmado">Confirmado</mat-option>
+                        <mat-option value="Cancelado">Cancelado</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div class="example-inline-container">
+                <div class="example-inline-container">
+                    <mat-checkbox formControlName="activo" color="primary">
+                        Activo
+                    </mat-checkbox>
+                </div>
+
+                <div class="example-inline-container">
+                    <mat-checkbox formControlName="forestal" color="primary">
+                        Talones destinados a las multas forestales
+                    </mat-checkbox>
+                </div>
+            </div>
+  
+            <div class="example-button-container">
+              <!-- Agrega tus botones aquí -->
+              <button mat-raised-button (click)=" editarImposicion()" color="primary"
+                style="margin-right: 5px;">Aceptar</button>
+              <button mat-raised-button [routerLink]="['/talonarios/imposicion/listado']"
+                color="secundary">Volver</button>
+            </div>
+  
+          </form>
+        </div>
+  
+      </div>
+    </div>
+  </div>
