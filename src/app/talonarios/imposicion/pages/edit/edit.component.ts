@@ -4,9 +4,9 @@ import { OCCM } from 'src/app/nomencladores/interfaces/occm.interface';
 import { Organismo } from 'src/app/nomencladores/interfaces/organismo.interface';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NomencladoresService } from 'src/app/nomencladores/services/nomencladores.service';
-import { EntregaRecepcionService } from 'src/app/talonarios/entrega-recepcion/services/entrega-recepcion.service';
+import { EntregaRecepcionImposicionService } from 'src/app/talonarios/entrega-recepcion-imposicion/services/entrega-recepcion-imposicion.service';
 import { ImposicionService } from '../../services/imposicion.service';
-import { EntregaRecepcion } from 'src/app/talonarios/entrega-recepcion/interfaces/entrega-recepcion.interface';
+import { EntregaRecepcionImposicion } from 'src/app/talonarios/entrega-recepcion-imposicion/interfaces/entrega-recepcion-imposicion.interface';
 import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs';
 import Swal from 'sweetalert2';
@@ -19,16 +19,16 @@ import Swal from 'sweetalert2';
 export class EditComponent {
 
   imposicions!: Imposicion;
-  occms!: OCCM[] ;
+  occms!: OCCM[];
   organismos!: Organismo[];
-  id_Entregas_Recepcions!: EntregaRecepcion[];
+  id_Entregas_Recepcions_Imposicions!: EntregaRecepcionImposicion[];
   submitted = false;
   loading = true;
 
   constructor(
     private fb: FormBuilder,
     private imposicionService: ImposicionService,
-    private entregarecepcionService: EntregaRecepcionService,
+    private entregarecepcionimposicionService: EntregaRecepcionImposicionService,
     private nomencladoresService: NomencladoresService,
     private router: Router,
     private activeRoute: ActivatedRoute
@@ -59,16 +59,16 @@ export class EditComponent {
         this.occms = occms;
       }
     );
+    this.entregarecepcionimposicionService.getEntregas_Recepcion_Imposicion().subscribe(
+      (id_Entregas_Recepcions_Imposicions) => {
+        this.id_Entregas_Recepcions_Imposicions = id_Entregas_Recepcions_Imposicions;
+      }
+    );
     this.nomencladoresService.getOrganismos().subscribe(
       (organismos) => {
         this.organismos = organismos;
       }
     );
-    this.entregarecepcionService.getEntregas_Recepcion_Imposicion().subscribe(
-      (id_Entregas_Recepcions)=>{
-        this.id_Entregas_Recepcions = id_Entregas_Recepcions;
-      }
-    )
   }
 
   formEditar: FormGroup = this.fb.group({
@@ -83,9 +83,9 @@ export class EditComponent {
   });
 
   editarImposicion() {
-    if ( this.formEditar.untouched ) {
+    if (this.formEditar.untouched) {
       // El formulario es inválido o no se ha tocadocls
-      
+
       Swal.fire({
         icon: 'error',
         title: '¡Error!',
@@ -96,7 +96,7 @@ export class EditComponent {
     }
 
     const imposicions = this.formEditar.value;
-    this.imposicionService.putImposicion( this.imposicions.id!, imposicions ).subscribe(
+    this.imposicionService.putImposicion(this.imposicions.id!, imposicions).subscribe(
       (imposicions) => {
         Swal.fire({
           icon: 'success',

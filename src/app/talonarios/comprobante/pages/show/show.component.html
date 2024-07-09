@@ -1,0 +1,91 @@
+<div *ngIf="loading" class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">Loading...</span>
+</div>
+
+<div class="container-pers">
+
+    <div class="card card d-flex flex-column">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-md-8">
+                    <h2 style="color: rgb(95, 95, 95);">Detalles de la Imposición</h2>
+                </div>
+            </div>
+
+            <div *ngIf="!loading" class="card-body flex-grow-1">
+                <div class="container-fluid">
+                    <div class="row desplazador-horizontal">
+
+                        <div class="col-lg-6 col-md-12">
+                            <div class="half-text d-flex">
+                                <strong>Serie:</strong>
+                                <div class="col-lg-6 col-md-12">
+                                    <span>{{ comprobantes.serie }}</span>
+                                </div>
+                            </div>
+
+                            <div class="half-text d-flex">
+                                <strong>Letra del Talón:</strong>
+                                <div class="col-lg-6 col-md-12">
+                                    <span>{{ comprobantes.letra }}</span>
+                                </div>
+                            </div>
+
+                            <div class="half-text d-flex">
+                                <strong>Estado:</strong>
+                                <div class="col-lg-6 col-md-12">
+                                    <span>{{ comprobantes.estado }}</span>
+                                </div>
+                            </div>
+
+                            <div class="half-text d-flex">
+                                <strong>OCCM:</strong>
+                                <div class="col-lg-6 col-md-12">
+                                    <span>{{ comprobantes.occm.descripcion}}</span>
+                                </div>
+                            </div>
+
+                            <!-- <div class="half-text d-flex">
+                                <strong>Organismo:</strong>
+                                <div class="col-lg-6 col-md-12">
+                                    <span>{{ imposicions.organismo.nombre}}</span>
+                                </div>
+                            </div> -->
+
+                            <div class="half-text d-flex">
+                                <strong>Entrega Recepción y Comprobante:</strong>
+                                <div class="col-lg-6 col-md-12">
+                                    <span>{{ comprobantes.id_Entrega_Recepcion_Comprobante.serie}}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-12">
+                            <div class="half-text d-flex">
+                                <strong>Activo:</strong>
+                                <div class="col-lg-6 col-md-12">
+                                    <span>{{ comprobantes.activo}}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-12">
+                            <div class="half-text d-flex">
+                                <strong>Operador:</strong>
+                                <div class="col-lg-6 col-md-12">
+                                    <span>{{ comprobantes.operador}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="example-button-container">
+                <button mat-raised-button [routerLink]="['/talonarios/comprobante/listado']"
+                    color="secundary">Volver</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+

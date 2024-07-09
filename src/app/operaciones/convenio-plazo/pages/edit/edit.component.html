@@ -1,0 +1,71 @@
+
+<div *ngIf="loading" class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+
+<div class="container-pers">
+
+    <div class="card card d-flex flex-column">
+      <div class="card-header">
+        <div class="row">
+          <div class="col-md-8">
+              <h2 style="color: rgb(95, 95, 95);">Editar Comunicación Embargo</h2>
+          </div>
+      </div>
+  
+    <div *ngIf="!loading" class="card-body flex-grow-1">
+        <form [formGroup]="formEditar">
+          <div class="example-inline-container">   
+            <mat-form-field class="example-form-field">
+                <mat-label>Mes </mat-label>
+                <mat-select formControlName="mes" required>
+                  <mat-option value="enero">Enero</mat-option>
+                  <mat-option value="febrero">Febrero</mat-option>
+                  <mat-option value="marzo">Marzo</mat-option>
+                  <mat-option value="abril">Abril</mat-option>
+                  <mat-option value="mayo">Mayo</mat-option>
+                  <mat-option value="junio">Junio</mat-option>
+                  <mat-option value="julio">Julio</mat-option>
+                  <mat-option value="agosto">Agosto</mat-option>
+                  <mat-option value="septiembre">Septiembre</mat-option>
+                  <mat-option value="octubre">Octubre</mat-option>
+                  <mat-option value="noviembre">Noviembre</mat-option>
+                  <mat-option value="diciembre">Diciembre</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="example-form-field">
+                <mat-label>Número de Plazo</mat-label>
+                <input matInput formControlName="plazo" required>
+            </mat-form-field>    
+        </div>
+
+        <div class="example-inline-container">  
+            <mat-form-field class="example-form-field">
+                <mat-label>Importe del Plazo</mat-label>
+                <input matInput type="number" maxlength="8" formControlName="importe_plazo" required>
+            </mat-form-field>
+
+            <mat-form-field class="example-form-field">
+                <mat-label>Convenio de Pago </mat-label>
+                <mat-select formControlName="convenio_pago_id" required>
+                <mat-option *ngFor="let convenioPago of convenioPagos" [value]="convenioPago.id">{{ convenioPago.plazos_convenio }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+            
+              <div class="example-button-container">
+                <!-- Agrega tus botones aquí -->
+                <button mat-raised-button (click)="editarConvenioPlazo()" color="primary" style="margin-right: 5px;">Aceptar</button>
+                <button mat-raised-button [routerLink]="['/operaciones/convenio-plazo']" color="secundary">Volver</button>
+              </div>
+    
+        </form>
+    </div>
+ 
+    </div>
+  </div> 
+
+
+
+

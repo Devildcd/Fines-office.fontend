@@ -68,6 +68,8 @@
                     </mat-select>
                   </mat-form-field>
               </div>
+
+              <button (click)="openDialog()" mat-button color="primary">Crear Multa</button>
   
               <div class="example-button-container">
                 <!-- Agrega tus botones aquí -->
@@ -80,5 +82,97 @@
   
     </div>
   </div> 
+
+  <!-- Dialog -->
+<ng-template #dialogTemplate let-dialogRef="dialogRef">
+  <h1 mat-dialog-title>Crear Multas</h1>
+  <div mat-dialog-content class="mat-typography">
+    <form [formGroup]="formCrearMulta">
+  
+      <div class="example-inline-container">
+          <mat-form-field class="example-form-field">
+            <mat-label>Decreto-Articulo-Inciso</mat-label>
+            <input matInput type="number" formControlName="dley_art_inc" required>
+            </mat-form-field>
+        
+            <mat-form-field class="example-form-field">
+              <mat-label>Impositor</mat-label>
+              <input matInput type="number" formControlName="impositor" required>
+            </mat-form-field>
+        </div>
+
+        <div class="example-inline-container">
+          <mat-form-field class="example-form-field">
+            <mat-label>Talon</mat-label>
+            <input matInput type="number" formControlName="talon" required>
+          </mat-form-field>
+
+          <mat-form-field class="example-form-field">
+            <mat-label>Importe</mat-label>
+            <input matInput type="number" formControlName="importe" required>
+          </mat-form-field>
+
+          <mat-form-field class="example-form-field">
+            <mat-label>Tipo de Multa</mat-label>
+            <input matInput type="number" formControlName="tipo_multa" required>
+          </mat-form-field>
+        </div>
+
+        <div class="example-inline-container">
+          <mat-form-field class="example-form-field">
+            <mat-label>Estado de Multa</mat-label>
+            <input matInput type="number" formControlName="estado_multa_id" required>
+          </mat-form-field>
+
+          <mat-form-field class="example-form-field">
+            <mat-label>Moneda</mat-label>
+            <input matInput type="number" formControlName="moneda" required>
+          </mat-form-field>
+
+          <mat-form-field class="example-form-field">
+            <mat-label>Fecha</mat-label>
+              <input matInput placeholder="Mes/Día/Año" [matDatepicker]="picker" formControlName="fecha" required readonly>
+              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+
+        <div class="example-inline-container">
+          <mat-form-field class="example-form-field">
+            <mat-label>Concepto de Traslado</mat-label>
+            <input matInput type="number" formControlName="conceptraslado" required>
+          </mat-form-field>
+
+          <mat-form-field class="example-form-field">
+            <mat-label>Contraventor</mat-label>
+            <input matInput type="number" formControlName="contraventor" required>
+          </mat-form-field>
+        </div>
+
+        <div class="example-inline-container">
+          <mat-checkbox formControlName="temporal" color="primary">
+            Temporal
+          </mat-checkbox>
+          <mat-checkbox formControlName="devolver" color="primary">
+            Devolver
+          </mat-checkbox>
+          <mat-checkbox formControlName="recibida_traslado" color="primary">
+            Traslado Recibida
+          </mat-checkbox>
+          <mat-checkbox formControlName="carga" color="primary">
+            Carga
+          </mat-checkbox>
+          <mat-checkbox formControlName="nivel" color="primary">
+            Nivel
+          </mat-checkbox>
+        </div>
+        
+        </form>
+        </div>
+        <div mat-dialog-actions align="end">
+          <button mat-raised-button color="primary" (click)="agregarMulta()">Guardar</button>
+          <button mat-raised-button color="warn" (click)="dialogRef.close()">Cerrar</button>
+        </div>
+        </ng-template>
   
   

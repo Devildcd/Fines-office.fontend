@@ -60,7 +60,7 @@
                       <mat-form-field class="example-form-field">
                         <mat-label>Decreto Ley</mat-label>
                         <mat-select formControlName="dley_art_inc" required>
-                          <mat-option *ngFor="let decretoLey of decretosLey" [value]="decretoLey.id">{{ decretoLey.articulo }}</mat-option>
+                          <mat-option *ngFor="let decretoLey of decretosLey" [value]="decretoLey.id">{{ decretoLey.articulo.id_articulo }}</mat-option>
                         </mat-select>
                       </mat-form-field>
                   </div>

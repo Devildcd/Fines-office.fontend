@@ -7,20 +7,24 @@
           <div class="col-md-8">
               <h2 style="color: rgb(95, 95, 95);">Crear Apremio</h2>
           </div>
-      </div>
+        </div>
   
     <div class="card-body flex-grow-1">
         <form [formGroup]="formCrear">
 
             <div class="example-inline-container">
                 <mat-form-field class="example-form-field">
-                  <mat-label>Matriz</mat-label>
-                  <input matInput formControlName="id_matriz" required>
+                  <mat-label>Matriz </mat-label>
+                  <mat-select formControlName="id_matriz" required>
+                    <mat-option *ngFor="let matriz of matrices" [value]="matriz.id">{{ matriz.c1 }}</mat-option>
+                  </mat-select>
                 </mat-form-field>
-              
+                
                 <mat-form-field class="example-form-field">
-                  <mat-label>Movimiento</mat-label>
-                  <input matInput formControlName="mov_multa_id" required>
+                  <mat-label>Movimiento </mat-label>
+                  <mat-select formControlName="mov_multa_id" required>
+                    <mat-option *ngFor="let movimientoMulta of movimientoMultas" [value]="movimientoMulta.id">{{ movimientoMulta.operacion }}</mat-option>
+                  </mat-select>
                 </mat-form-field>
 
               </div>
@@ -44,7 +48,7 @@
                  
                 <div class="example-inline-container">
                   <mat-form-field class="example-form-field">
-                    <mat-label>Fecha de comunición</mat-label>
+                    <mat-label>Fecha de Comunición</mat-label>
                     <input matInput placeholder="Mes/Día/Año" [matDatepicker]="picker3" formControlName="fecha_comunicada" required readonly>
                     <mat-datepicker-toggle matIconSuffix [for]="picker3"></mat-datepicker-toggle>
                     <mat-datepicker #picker3></mat-datepicker>
@@ -61,7 +65,7 @@
 
                 <div class="example-inline-container">
                       <mat-form-field class="example-form-field">
-                        <mat-label>Numero de Radicacion</mat-label>
+                        <mat-label>Número de Radicación</mat-label>
                         <input matInput type="number" formControlName="num_radicacion" required>
                       </mat-form-field>
      

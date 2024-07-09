@@ -7,6 +7,10 @@ import { Router } from '@angular/router';
 import { NomencladoresService } from 'src/app/nomencladores/services/nomencladores.service';
 import Swal from 'sweetalert2';
 import { DatePipe } from '@angular/common';
+import { Matriz } from 'src/app/base/matriz/interfaces/matriz.interface';
+import { SubMovMulta } from 'src/app/base/sub-mov-multa/interfaces/sub-mov-multa.interface';
+import { MatrizService } from 'src/app/base/matriz/services/matriz.service';
+import { SubMovMultaService } from 'src/app/base/sub-mov-multa/services/sub-mov-multa.service';
 
 @Component({
   selector: 'app-create',
@@ -17,8 +21,8 @@ import { DatePipe } from '@angular/common';
 export class CreateComponent {
 
   apremiar!: Apremiar;
-  id_matriz: any[] = [];
-  mov_multa_id: any[] = [];
+  matrices: Matriz[] = [];
+  movimientoMultas: SubMovMulta[] = [];
   estados: EstadoMulta[]= [];
   submitted = false;
 
@@ -26,6 +30,8 @@ export class CreateComponent {
     private fb: FormBuilder,
     private datePipe: DatePipe,
     private apremiarService: ApremiarService,
+    private matrizService: MatrizService,
+    private movimientoMultaService: SubMovMultaService,
     private nomencladoresService: NomencladoresService,
     private router: Router
   ) {}
@@ -37,11 +43,22 @@ export class CreateComponent {
     //     this.occmPadre = occmPadre;
     //   }
     // );
+    this.matrizService.getMatrices().subscribe(
+      (matrices)=>{
+        this.matrices = matrices;
+      }
+    );
+    this.movimientoMultaService.getSubMovMultas().subscribe(
+      (movimientoMultas)=>{
+        this.movimientoMultas = movimientoMultas;
+      }
+    );
     this.nomencladoresService.getEstadosMultas().subscribe(
       (estados)=>{
         this.estados = estados;
       }
     );
+    
   }
 
   formCrear: FormGroup = this.fb.group({

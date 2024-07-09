@@ -68,9 +68,9 @@ export class ListComponent {
       )
       .subscribe((imposicions) => {
         this.imposicions = imposicions;
-        console.log(this.imposicions)
+        //console.log(this.imposicions)
         this.dataSource.data = imposicions;
-        console.log(this.imposicions);
+        //console.log(this.imposicions);
         this.loading = false;
         // console.log(this.token);
       });

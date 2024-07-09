@@ -1,0 +1,118 @@
+
+<div *ngIf="loading" class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+
+<div class="container-pers">
+
+    <div class="card card d-flex flex-column">
+      <div class="card-header">
+        <div class="row">
+          <div class="col-md-8">
+              <h2 style="color: rgb(95, 95, 95);">Editar Comunicación Embargo</h2>
+          </div>
+      </div>
+  
+    <div *ngIf="!loading" class="card-body flex-grow-1">
+        <form [formGroup]="formEditar">
+            <div class="example-inline-container">
+                <mat-form-field class="example-form-field">
+                  <mat-label>Matriz de la Multa:</mat-label>
+                  <mat-select formControlName="matriz_id" required>
+                    <mat-option *ngFor="let matriz of matrices" [value]="matriz.id">{{ matriz.c1 }}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                
+                <mat-form-field class="example-form-field">
+                  <mat-label>Consecutivo: </mat-label>
+                  <mat-select formControlName="cant_plazos" required>
+                    <mat-option *ngFor="let consecutivo of consecutivos" [value]="consecutivo.id">{{ consecutivo.organismo.nombre }}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+            </div>
+            
+            <div class="example-inline-container">  
+              <mat-form-field class="example-form-field">
+                <mat-label>Importe de la Multa:</mat-label>
+                <input matInput type="number" formControlName="importe" required>
+              </mat-form-field>
+
+              <mat-form-field class="example-form-field">
+                  <mat-label>Cantidad de Plazos:</mat-label>
+                  <input matInput type="number" formControlName="cant_plazos" required>
+              </mat-form-field>    
+              </div>
+              
+              <div class="example-inline-container"> 
+                <mat-form-field class="example-form-field">
+                  <mat-label>Mes de Inicio de Pago</mat-label>
+                  <mat-select formControlName="mes_inicio" required>
+                    <mat-option value="enero">Enero</mat-option>
+                    <mat-option value="febrero">Febrero</mat-option>
+                    <mat-option value="marzo">Marzo</mat-option>
+                    <mat-option value="abril">Abril</mat-option>
+                    <mat-option value="mayo">Mayo</mat-option>
+                    <mat-option value="junio">Junio</mat-option>
+                    <mat-option value="julio">Julio</mat-option>
+                    <mat-option value="agosto">Agosto</mat-option>
+                    <mat-option value="septiembre">Septiembre</mat-option>
+                    <mat-option value="octubre">Octubre</mat-option>
+                    <mat-option value="noviembre">Noviembre</mat-option>
+                    <mat-option value="diciembre">Diciembre</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                
+                <mat-form-field class="example-form-field">
+                    <mat-label>Fecha de Cancelación:</mat-label>
+                    <input matInput placeholder="Mes/Día/Año" [matDatepicker]="picker" formControlName="fecha_cancelacion" required readonly>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </div>
+            
+            <div class="example-inline-container">
+              <mat-form-field class="example-form-field">
+                <mat-label>Estado del Convenio:</mat-label>
+                <mat-select formControlName="estado" required>
+                  <mat-option value="draft">Borrador</mat-option>
+                  <mat-option value="preconvenio">Preconvenio</mat-option>
+                  <mat-option value="proceso">Proceso</mat-option>
+                  <mat-option value="roto">Convenio roto</mat-option>
+                  <mat-option value="pagado">Pagado</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+                <mat-form-field class="example-form-field">
+                    <mat-label>Notas:</mat-label>
+                    <input matInput placeholder="observaciones" formControlName="observaciones" required>
+                </mat-form-field>
+            </div>
+
+            <div class="example-inline-container">
+              <mat-checkbox formControlName="carga_inicial" color="primary">
+                Carga Inicial
+            </mat-checkbox>
+
+              <mat-checkbox formControlName="no_romper" color="primary">
+                No romper Convenio
+            </mat-checkbox>
+            </div>
+
+            <div class="example-inline-container">
+              <button mat-raised-button  color="primary" style="margin-right: 5px;">Ver</button>
+            </div>              
+            <div class="example-button-container">
+                <!-- Agrega tus botones aquí -->
+             <button mat-raised-button (click)="editarConvenio()" color="primary" style="margin-right: 5px;">Aceptar</button>
+             <button mat-raised-button [routerLink]="['/operaciones/convenio']" color="secundary">Volver</button>
+            </div>
+    
+        </form>
+    </div>
+ 
+    </div>
+  </div> 
+
+
+

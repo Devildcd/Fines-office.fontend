@@ -85,7 +85,7 @@
                             <th mat-header-cell *matHeaderCellDef><strong> Serie </strong></th>
                             <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
                                     [routerLink]="['/talonarios/imposicion/detalles/', element.id]"
-                                    class="link-estilizado">{{ element.fecha }} </a> </td>
+                                    class="link-estilizado">{{ element.serie }} </a> </td>
                         </ng-container>
 
                         <ng-container matColumnDef="letra">
@@ -110,8 +110,8 @@
                             <th mat-header-cell *matHeaderCellDef><strong> Organismo </strong></th>
                             <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
                                     [routerLink]="['/talonarios/imposicion/detalles/', element.id]"
-                                    class="link-estilizado"> {{ element.organismo.nombre }} </a> </td>
-                        </ng-container>
+                                    class="link-estilizado"> {{ element.organismo?.nombre }} </a> </td>
+                        </ng-container> 
                         <ng-container matColumnDef="id_Entrega_Recepcion_Imposicion">
                             <th mat-header-cell *matHeaderCellDef><strong> Entrega y Recepción </strong></th>
                             <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a

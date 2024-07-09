@@ -23,7 +23,8 @@ import { DecretoLeyArticuloInciso } from 'src/app/nomencladores/interfaces/decre
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
-  styleUrls: ['./create.component.css']
+  styleUrls: ['./create.component.css'],
+  providers: [DatePipe]
 })
 export class CreateComponent {
 

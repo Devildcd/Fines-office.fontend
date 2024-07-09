@@ -1,0 +1,116 @@
+
+<div class="container-pers">
+
+    <div class="card card d-flex flex-column">
+      <div class="card-header">
+        <div class="row">
+          <div class="col-md-8">
+              <h2 style="color: rgb(95, 95, 95);">Crear Comunicación Embargo</h2>
+          </div>
+      </div>
+  
+    <div class="card-body flex-grow-1">
+  
+        <form [formGroup]="formCrear">
+            <div class="example-inline-container">
+                <mat-form-field class="example-form-field">
+                  <mat-label>Municipio </mat-label>
+                  <mat-select formControlName="municipio_id" required>
+                    <mat-option *ngFor="let municipio of municipios" [value]="municipio.id">{{ municipio.nombre }}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                
+                <mat-form-field class="example-form-field">
+                  <mat-label>Matriz </mat-label>
+                  <mat-select formControlName="id_matriz" required>
+                    <mat-option *ngFor="let matriz of matrices" [value]="matriz.id">{{ matriz.c1 }}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              
+              <div class="example-inline-container">  
+                <mat-form-field class="example-form-field">
+                  <mat-label>Contraventor</mat-label>
+                  <input matInput formControlName="contraventor" required>
+                </mat-form-field>    
+
+                <mat-form-field class="example-form-field">
+                    <mat-label>Importe Pendiente</mat-label>
+                    <input matInput type="number" formControlName="importe_pen" required>
+                </mat-form-field>
+              </div>
+              
+              <div class="example-inline-container">
+                <mat-form-field class="example-form-field">
+                  <mat-label>Importe Liquidado</mat-label>
+                  <input matInput type="number" formControlName="importe_liq" required>
+                </mat-form-field>
+
+                  <mat-checkbox formControlName="confirmado" color="primary">
+                    Confirmado
+                  </mat-checkbox>
+              </div>
+              
+              <div class="example-inline-container">
+              <mat-form-field class="example-form-field">
+                  <mat-label>Fecha Comunicación</mat-label>
+                  <input matInput placeholder="Mes/Día/Año" [matDatepicker]="picker" formControlName="fecha_comunicacion" required readonly>
+                  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+
+                <mat-form-field class="example-form-field">
+                    <mat-label>Recibido por: </mat-label>
+                    <input matInput formControlName="recibido_por" required>
+                </mat-form-field>
+              </div>
+              
+              <div class="example-inline-container">
+              <mat-form-field class="example-form-field">
+                  <mat-label>Cargo </mat-label>
+                  <input matInput formControlName="cargo" required>
+              </mat-form-field>
+
+                <mat-form-field class="example-form-field">
+                    <mat-label>Notas</mat-label>
+                    <input matInput placeholder="observaciones" formControlName="observaciones" required>
+                </mat-form-field>
+            </div>
+
+            <div class="example-inline-container">
+              <mat-form-field class="example-form-field">
+                <mat-label>Mes</mat-label>
+                <input matInput placeholder="Mes/Día/Año" [matDatepicker]="picker1" formControlName="mes" required readonly>
+                <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+              </mat-form-field>
+
+              <mat-form-field class="example-form-field">
+                <mat-label>Estado</mat-label>
+                <mat-select formControlName="state">
+                  <mat-option value="Proceso">Proceso</mat-option>
+                  <mat-option value="enProceso">En Proceso</mat-option>
+                  <mat-option value="roto">Roto</mat-option>
+                  <mat-option value="embargoRoto">Embargo roto</mat-option>
+                  <mat-option value="pagado">Pagado</mat-option>
+                  <mat-option value="noPagado">No Pagado</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+              <div class="example-button-container">
+                <!-- Agrega tus botones aquí -->
+                <button mat-raised-button (click)="crearComunicacionEmbargo()" color="primary" style="margin-right: 5px;">Aceptar</button>
+                <button mat-raised-button [routerLink]="['/operaciones/comunicacion-embargo/listado']" color="secundary">Volver</button>
+              </div>
+    
+        </form>
+    </div>
+  
+    </div>
+  </div> 
+  </div>
+  
+  
+  
+

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Cancelar } from 'src/app/operaciones/interfaces/cancelar.interfaces';
+import { Matriz } from 'src/app/base/matriz/interfaces/matriz.interface';
+import { SubMovMulta } from 'src/app/base/sub-mov-multa/interfaces/sub-mov-multa.interface';
 import { ConceptoCancelacion } from '../../../../nomencladores/interfaces/concepto-cancelacion.interface';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CancelarService } from '../../services/cancelar.service';
@@ -8,6 +10,8 @@ import { switchMap } from 'rxjs';
 import Swal from 'sweetalert2';
 import { DatePipe } from '@angular/common';
 import { NomencladoresService } from 'src/app/nomencladores/services/nomencladores.service';
+import { MatrizService } from 'src/app/base/matriz/services/matriz.service';
+import { SubMovMultaService } from 'src/app/base/sub-mov-multa/services/sub-mov-multa.service';
 
 
 @Component({
@@ -18,8 +22,8 @@ import { NomencladoresService } from 'src/app/nomencladores/services/nomenclador
 })
 export class EditComponent {
   cancelar!: Cancelar;
-  matrices: any[] = [];
-  mov_multa_id: any[] = [];
+  matrices: Matriz[] = [];
+  movimientoMultas: SubMovMulta[] = [];
   conceptosCancelaciones: ConceptoCancelacion[] = [];
   submitted = false;
   loading = true;
@@ -27,6 +31,8 @@ export class EditComponent {
   constructor(
     private fb: FormBuilder,
     private datePipe: DatePipe,
+    private matrizService: MatrizService,
+    private movimientoMultaService: SubMovMultaService,
     private cancelarService: CancelarService,
     private nomencladoresService: NomencladoresService,
     private router: Router,
@@ -50,7 +56,16 @@ export class EditComponent {
          });
       });
  
-
+      this.matrizService.getMatrices().subscribe(
+        (matrices)=>{
+          this.matrices = matrices;
+        }
+      );
+      this.movimientoMultaService.getSubMovMultas().subscribe(
+        (movimientoMultas)=>{
+          this.movimientoMultas = movimientoMultas;
+        }
+      );
 
     this.nomencladoresService.getConceptosCancelacion().subscribe( (conceptosCancelaciones)=>{
       this.conceptosCancelaciones = conceptosCancelaciones;

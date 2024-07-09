@@ -19,7 +19,7 @@ export class Oc37Service {
     //   'Authorization': `Bearer ${localStorage.getItem('token')}`
     // });
 
-    return this.http.get<Oc37[]>(`${this.baseUrl}/lista/oc37`);
+    return this.http.get<Oc37[]>(`${this.baseUrl}/lista/oc37/`);
   }
 
   getModeloOc37(id: number): Observable<Oc37> {
