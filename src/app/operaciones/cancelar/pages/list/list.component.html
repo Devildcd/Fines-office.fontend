@@ -86,14 +86,14 @@
                             <th mat-header-cell *matHeaderCellDef><strong> Matriz </strong></th>
                             <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
                                     [routerLink]="['/operaciones/cancelar/detalles/', element.id]"
-                                    class="link-estilizado">{{ element.id_matriz }} </a> </td>
+                                    class="link-estilizado">{{ element.id_matriz.c1 }} </a> </td>
                         </ng-container>
 
                         <ng-container matColumnDef="mov_multa_id">
                             <th mat-header-cell *matHeaderCellDef><strong> Movimiento </strong></th>
                             <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
                                     [routerLink]="['/operaciones/cancelar/detalles/', element.id]"
-                                    class="link-estilizado">{{ element.mov_multa_id}} </a> </td>
+                                    class="link-estilizado">{{ element.mov_multa_id.operacion}} </a> </td>
                         </ng-container>
 
                         <ng-container matColumnDef="fecha_cancelacion">
@@ -107,7 +107,7 @@
                             <th mat-header-cell *matHeaderCellDef><strong> Concepto Cancelación </strong></th>
                             <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
                                     [routerLink]="['/operaciones/cancelar/detalles/', element.id]"
-                                    class="link-estilizado">{{ element.ccancel_id}} </a> </td>
+                                    class="link-estilizado">{{ element.ccancel_id.descripcion}} </a> </td>
                         </ng-container>
 
                         <ng-container matColumnDef="notas">

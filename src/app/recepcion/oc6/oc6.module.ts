@@ -9,6 +9,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { MaterialModule } from 'src/app/material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Oc6RoutingModule } from './oc6-routing.module';
+import { DialogCrearMultaComponent } from './components/dialog-crear-multa/dialog-crear-multa.component';
 
 
 
@@ -18,7 +19,8 @@ import { Oc6RoutingModule } from './oc6-routing.module';
     EditComponent,
     ShowComponent,
     CreateComponent,
-    HomeComponent
+    HomeComponent,
+    DialogCrearMultaComponent
   ],
   imports: [
     CommonModule,

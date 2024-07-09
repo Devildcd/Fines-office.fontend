@@ -1,6 +1,6 @@
 import { OCCM } from "src/app/nomencladores/interfaces/occm.interface";
 import { Organismo } from "src/app/nomencladores/interfaces/organismo.interface";
-import { EntregaRecepcion } from "../../entrega-recepcion/interfaces/entrega-recepcion.interface";
+import { EntregaRecepcionImposicion } from "../../entrega-recepcion-imposicion/interfaces/entrega-recepcion-imposicion.interface";
 
 export interface Imposicion {
     id?: number,
@@ -9,7 +9,7 @@ export interface Imposicion {
     estado: string,
     occm: OCCM;
     organismo: Organismo;
-    id_Entrega_Recepcion_Imposicion: EntregaRecepcion
+    id_Entrega_Recepcion_Imposicion: EntregaRecepcionImposicion
     activo: boolean,
     forestal: boolean;
 }

@@ -32,6 +32,51 @@ const routes: Routes = [
        import('./operaciones/cancelar/cancelar.module').then((m) => m.CancelarModule),
     // canActivate: [ValidarTokenGuard],
    },
+  {
+    path: 'operaciones/devolucion',
+    loadChildren: () =>
+       import('./operaciones/devolucion/devolucion.module').then((m) => m.DevolucionModule),
+    // canActivate: [ValidarTokenGuard],
+   },
+  {
+    path: 'operaciones/duplicar',
+    loadChildren: () =>
+       import('./operaciones/duplicar/duplicar.module').then((m) => m.DuplicarModule),
+    // canActivate: [ValidarTokenGuard],
+   },
+  {
+    path: 'operaciones/comunicacion-embargo',
+    loadChildren: () =>
+       import('./operaciones/comunicacion-embargo/comunicacion-embargo.module').then((m) => m.ComunicacionEmbargoModule),
+    // canActivate: [ValidarTokenGuard],
+   },
+  {
+    path: 'operaciones/convenio-plazo',
+    loadChildren: () =>
+       import('./operaciones/convenio-plazo/convenio-plazo.module').then((m) => m.ConvenioPlazoModule),
+    // canActivate: [ValidarTokenGuard],
+   },
+   
+   {
+     path: 'operaciones/convenio',
+     loadChildren: () =>
+        import('./operaciones/convenio/convenio.module').then((m) => m.ConvenioModule),
+     // canActivate: [ValidarTokenGuard],
+    },
+    
+   {
+     path: 'operaciones/ajustar',
+     loadChildren: () =>
+        import('./operaciones/ajustar/ajustar.module').then((m) => m.AjustarModule),
+     // canActivate: [ValidarTokenGuard],
+    },
+
+  {
+    path: 'operaciones/cancelar',
+    loadChildren: () =>
+       import('./operaciones/cancelar/cancelar.module').then((m) => m.CancelarModule),
+    // canActivate: [ValidarTokenGuard],
+   },
 
   // recepcion
   {
@@ -100,15 +145,27 @@ const routes: Routes = [
   },
   // talonarios
   {
-    path: 'talonarios/entrega-recepcion',
+    path: 'talonarios/entrega-recepcion-imposicion',
     loadChildren: () =>
-      import('./talonarios/entrega-recepcion/entrega-recepcion.module').then((m) => m.EntregaRecepcionModule),
+      import('./talonarios/entrega-recepcion-imposicion/entrega-recepcion-imposicion.module').then((m) => m.EntregaRecepcionImposicionModule),
+    // canActivate: [ValidarTokenGuard],
+  },
+  {
+    path: 'talonarios/entrega-recepcion-comprobante',
+    loadChildren: () =>
+      import('./talonarios/entrega-recepcion-comprobante/entrega-recepcion-comprobante.module').then((m) => m.EntregaRecepcionComprobanteModule),
     // canActivate: [ValidarTokenGuard],
   },
   {
     path: 'talonarios/imposicion',
     loadChildren: () =>
       import('./talonarios/imposicion/imposicion.module').then((m) => m.ImposicionModule),
+    // canActivate: [ValidarTokenGuard],
+  },
+  {
+    path: 'talonarios/comprobante',
+    loadChildren: () =>
+      import('./talonarios/comprobante/comprobante.module').then((m) => m.ComprobanteModule),
     // canActivate: [ValidarTokenGuard],
   },
   {

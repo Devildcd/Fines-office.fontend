@@ -92,7 +92,7 @@
                             <th mat-header-cell *matHeaderCellDef><strong> Matriz </strong></th>
                             <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
                                     [routerLink]="['/recepción/modeloOC5/detalles/', element.id]"
-                                    class="link-estilizado">{{ element.organismo_origen }} </a> </td>
+                                    class="link-estilizado">{{ element.organismo_origen.nombre }} </a> </td>
                         </ng-container>
 
                         <ng-container matColumnDef="cantidad_multas">
@@ -161,4 +161,6 @@
         </div>
     </div>
 </div>
+
+
 

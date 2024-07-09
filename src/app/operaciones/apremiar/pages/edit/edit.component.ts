@@ -2,6 +2,8 @@ import { DatePipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EstadoMulta } from 'src/app/nomencladores/interfaces/estado-multa.interface';
+import { Matriz } from 'src/app/base/matriz/interfaces/matriz.interface';
+import { SubMovMulta } from 'src/app/base/sub-mov-multa/interfaces/sub-mov-multa.interface';
 import { Apremiar } from 'src/app/operaciones/interfaces/apremiar.interface';
 import { ApremiarService } from '../../services/apremiar.service';
 import { NomencladoresService } from 'src/app/nomencladores/services/nomencladores.service';
@@ -17,8 +19,8 @@ import Swal from 'sweetalert2';
 })
 export class EditComponent {
   apremiar!: Apremiar;
-  matrices: any[] = [];
-  mov_multa_id: any[] = [];
+  matrices: Matriz[] = [];
+  movimientos: SubMovMulta[] = [];
   estados: EstadoMulta[] = [];
   submitted = false;
   loading = true;

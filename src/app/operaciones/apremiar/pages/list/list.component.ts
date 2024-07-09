@@ -75,8 +75,8 @@ export class ListComponent {
 
   filtrarDatos() {
     this.dataSource.data = this.apremios.filter((apremiar) => {
-      return apremiar.id_matriz.toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
-      apremiar.mov_multa_id.toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
+      return apremiar.id_matriz.toString().toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
+      apremiar.mov_multa_id.toString().toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
       apremiar.estado.toString().toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
       apremiar.fecha_apremio.toString().toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
       apremiar.fecha_comunicada.toString().toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
@@ -112,7 +112,7 @@ export class ListComponent {
     if (!row) {
       return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
     }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id_matriz + 1}`;
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.num_radicacion + 1}`;
   }
 
   length = 50;

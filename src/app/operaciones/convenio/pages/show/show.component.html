@@ -1,0 +1,119 @@
+<div *ngIf="loading" class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+  
+  <div class="container-pers">
+  
+    <div class="card card d-flex flex-column">
+      <div class="card-header">
+        <div class="row">
+          <div class="col-md-8">
+              <h2 style="color: rgb(95, 95, 95);">Detalles</h2>
+          </div>
+      </div>
+  
+    <div *ngIf="!loading" class="card-body flex-grow-1">
+      <div class="container-fluid"> 
+        <div class="row desplazador-horizontal">
+          <div class="col-lg-6 col-md-12">
+            <div class="half-text d-flex">
+              <strong>Matriz de la Multa:</strong>
+              <div class="col-lg-6 col-md-12">
+                <span *ngIf="convenio.matriz_id; else noIcon">{{ convenio.matriz_id }}</span>
+              </div>
+            </div>
+            
+            <div class="half-text d-flex">
+              <strong>Consecutivo:</strong>
+              <div class="col-lg-6 col-md-12">
+                <span *ngIf="convenio.consecutivo_id; else noIcon">{{ convenio.consecutivo_id }}</span>
+              </div>
+            </div>
+
+            <div class="half-text d-flex">
+              <strong>Importe de la Multa:</strong>
+              <div class="col-lg-6 col-md-12">
+                <span *ngIf="convenio.importe; else noIcon"  >{{ convenio.importe }}</span>
+                <ng-template #noIcon>
+                  No
+                </ng-template>
+              </div>
+            </div>
+
+            <div class="half-text d-flex">
+                <strong>Cantidad de Plazos:</strong>
+                <div class="col-lg-6 col-md-12">
+                  <span>{{ convenio.cant_plazos }}</span>
+                </div>
+              </div>
+  
+            <div class="half-text d-flex">
+              <strong>Mes de Inicio de Pago:</strong>
+              <div class="col-lg-6 col-md-12">
+                <span>{{ convenio.mes_inicio }}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 col-md-12">
+              <div class="half-text d-flex">
+                  <strong>Fecha de Cancelación:</strong>
+                  <div class="col-lg-6 col-md-12">
+                    <span>{{ convenio.fecha_cancelacion }}</span>
+                  </div>
+                </div>
+
+            <div class="half-text d-flex">
+                <strong>Estado del Convenio:</strong>
+                <div class="col-lg-6 col-md-12">
+                  <span>{{ convenio.estado }}</span>
+                </div>
+              </div>
+
+              <div class="half-text d-flex">
+                  <strong>Notas:</strong>
+                  <div class="col-lg-6 col-md-12">
+                    <span>{{ convenio.observaciones }}</span>
+                  </div>
+                </div>
+
+            </div>
+            
+            <div class="col-lg-6 col-md-12">
+              <div class="half-text d-flex">
+                <strong>Carga Inicial:</strong>
+                <div class="col-lg-6 col-md-12">
+                  <span>{{ convenio.carga_inicial }}</span>
+                </div>
+              </div>
+
+              <div class="half-text d-flex">
+                  <strong>No Romper Convenio:</strong>
+                  <div class="col-lg-6 col-md-12">
+                    <span>{{ convenio.no_romper }}</span>
+                  </div>
+                </div>
+
+
+            <div class="half-text d-flex">
+              <strong>Plazos:</strong>
+              <div class="col-lg-6 col-md-12">
+                <span>{{ convenio.plazos_convenio }}</span>
+              </div>
+            </div>
+        </div>
+
+
+
+        </div>
+      </div>
+      <div class="example-button-container">
+        <button mat-raised-button [routerLink]="['/operaciones/convenio/listado']" color="secundary">Volver</button>
+      </div>     
+    </div>
+  
+    </div>
+  </div> 
+  
+
+

@@ -8,6 +8,10 @@ import { DatePipe } from '@angular/common';
 import { CancelarService } from '../../services/cancelar.service';
 import { NomencladoresService } from 'src/app/nomencladores/services/nomencladores.service';
 import Swal from 'sweetalert2';
+import { Matriz } from 'src/app/base/matriz/interfaces/matriz.interface';
+import { SubMovMulta } from 'src/app/base/sub-mov-multa/interfaces/sub-mov-multa.interface';
+import { MatrizService } from 'src/app/base/matriz/services/matriz.service';
+import { SubMovMultaService } from 'src/app/base/sub-mov-multa/services/sub-mov-multa.service';
 
 
 
@@ -20,14 +24,16 @@ import Swal from 'sweetalert2';
 export class CreateComponent {
 
   cancelar!: Cancelar;
-  matrices: any[] = [];
-  mov_multa_id: any[] = [];
+  matrices: Matriz[] = [];
+  movimientoMultas: SubMovMulta[] = [];
   conceptosCancelaciones: ConceptoCancelacion[] = [];
   submitted = false;
 
   constructor(
     private fb: FormBuilder,
     private datePipe: DatePipe,
+    private matrizService: MatrizService,
+    private movimientoMultaService: SubMovMultaService,
     private cancelarService: CancelarService,
     private nomencladoresService: NomencladoresService,
     private router: Router
@@ -40,6 +46,16 @@ export class CreateComponent {
     //     this.occmPadre = occmPadre;
     //   }
     // );
+    this.matrizService.getMatrices().subscribe(
+      (matrices)=>{
+        this.matrices = matrices;
+      }
+    );
+    this.movimientoMultaService.getSubMovMultas().subscribe(
+      (movimientoMultas)=>{
+        this.movimientoMultas = movimientoMultas;
+      }
+    );
     this.nomencladoresService.getConceptosCancelacion().subscribe(
       (conceptosCancelaciones)=>{
         this.conceptosCancelaciones = conceptosCancelaciones;
@@ -105,7 +121,7 @@ export class CreateComponent {
 
    formatDates(formData: any): any {
     const formattedData = { ...formData };
-    formattedData.matriz_fecha = this.datePipe.transform(formData.matriz_fecha, 'yyyy-MM-dd');
+    formattedData.fecha_cancelacion = this.datePipe.transform(formData.fecha_cancelacion, 'yyyy-MM-dd');
     return formattedData;
   }
 }

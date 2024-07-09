@@ -14,7 +14,7 @@ export class MatrizService {
   constructor(private http: HttpClient) { }
 
   getMatrices(): Observable<Matriz[]> {
-    return this.http.get<Matriz[]>(`${this.baseUrl}/lista/matriz`);
+    return this.http.get<Matriz[]>(`${this.baseUrl}/lista/matriz/`);
   }
 
   getMatriz(id: number): Observable<Matriz> {

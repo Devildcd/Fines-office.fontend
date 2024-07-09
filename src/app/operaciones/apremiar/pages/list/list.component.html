@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-md-8">
 
-                    <h2 style="color: rgb(95, 95, 95);">Apremios</h2>
+                    <h2 style="color: rgb(95, 95, 95);">Apremiar</h2>
                 </div>
 
                 <div class="row justify-content-end">
@@ -81,26 +81,25 @@
                             </td>
                         </ng-container>
 
-
                         <ng-container matColumnDef="id_matriz">
                             <th mat-header-cell *matHeaderCellDef><strong> Matriz </strong></th>
                             <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
                                     [routerLink]="['/operaciones/apremiar/', element.id]"
-                                    class="link-estilizado">{{ element.id_matriz }} </a> </td>
+                                    class="link-estilizado">{{ element.id_matriz.c1 }} </a> </td>
                         </ng-container>
 
                         <ng-container matColumnDef="mov_multa_id">
                             <th mat-header-cell *matHeaderCellDef><strong> Movimiento </strong></th>
                             <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
                                     [routerLink]="['/operaciones/apremiar/', element.id]"
-                                    class="link-estilizado">{{ element.mov_multa_id }} </a> </td>
+                                    class="link-estilizado">{{ element.mov_multa_id.operacion }} </a> </td>
                         </ng-container>
 
                         <ng-container matColumnDef="estado">
                             <th mat-header-cell *matHeaderCellDef><strong> Estado nuevo de la multa </strong></th>
                             <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
                                     [routerLink]="['/operaciones/apremiar/', element.id]"
-                                    class="link-estilizado">{{ element.estado }} </a> </td>
+                                    class="link-estilizado">{{ element.estado.descripcion }} </a> </td>
                         </ng-container>
 
                         <ng-container matColumnDef="fecha_apremio">
@@ -111,7 +110,7 @@
                         </ng-container>
 
                         <ng-container matColumnDef="fecha_comunicada">
-                            <th mat-header-cell *matHeaderCellDef><strong> Fecha de comunición </strong></th>
+                            <th mat-header-cell *matHeaderCellDef><strong> Fecha de Comunición </strong></th>
                             <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
                                     [routerLink]="['/operaciones/apremiar/', element.id]"
                                     class="link-estilizado">{{ element.fecha_comunicada }} </a> </td>

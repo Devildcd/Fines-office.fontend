@@ -18,20 +18,24 @@
 
             <div class="example-inline-container">
                 <mat-form-field class="example-form-field">
-                  <mat-label>Matriz</mat-label>
-                  <input matInput formControlName="id_matriz" required>
+                  <mat-label>Matriz </mat-label>
+                  <mat-select formControlName="id_matriz" required>
+                    <mat-option *ngFor="let matriz of matrices" [value]="matriz.id">{{ matriz.c1 }}</mat-option>
+                  </mat-select>
                 </mat-form-field>
                 
                 <mat-form-field class="example-form-field">
                   <mat-label>Movimiento</mat-label>
-                  <input matInput formControlName="mov_multa_id" required>
+                  <mat-select formControlName="mov_multa_id" required>
+                    <mat-option *ngFor="let movimientoMulta of movimientoMultas" [value]="movimientoMulta.id">{{ movimientoMulta.operacion }}</mat-option>
+                  </mat-select>
                 </mat-form-field>
          
               </div>
               
               <div class="example-inline-container"> 
                 <mat-form-field class="example-form-field">
-                  <mat-label>Fecha de cancelación</mat-label>
+                  <mat-label>Fecha de Cancelación</mat-label>
                   <input matInput placeholder="Mes/Día/Año" [matDatepicker]="picker" formControlName="fecha_cancelacion" required readonly>
                   <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                   <mat-datepicker #picker></mat-datepicker>

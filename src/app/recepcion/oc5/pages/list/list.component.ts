@@ -1,5 +1,5 @@
 import { SelectionModel } from '@angular/cdk/collections';
-import { Component, ViewChild } from '@angular/core';
+import { Component,  ViewChild } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
@@ -7,6 +7,7 @@ import { catchError, throwError } from 'rxjs';
 import Swal from 'sweetalert2';
 import { OC5 } from '../../interfaces/oc5.interface';
 import { Oc5Service } from '../../services/oc5.service';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-list',
@@ -32,6 +33,7 @@ export class ListComponent {
   terminoBusqueda: string = '';
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+  
 
   constructor(private oc5Service: Oc5Service,
               private router: Router) { }

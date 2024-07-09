@@ -1,0 +1,124 @@
+<div *ngIf="loading" class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+  
+  <div class="container-pers">
+  
+    <div class="card card d-flex flex-column">
+      <div class="card-header">
+        <div class="row">
+          <div class="col-md-8">
+              <h2 style="color: rgb(95, 95, 95);">Detalles</h2>
+          </div>
+      </div>
+  
+    <div *ngIf="!loading" class="card-body flex-grow-1">
+      <div class="container-fluid"> 
+        <div class="row desplazador-horizontal">
+          <div class="col-lg-6 col-md-12">
+            <div class="half-text d-flex">
+              <strong>Municipio:</strong>
+              <div class="col-lg-6 col-md-12">
+                <span *ngIf="comunicacionEmbargo.municipio_id; else noIcon">{{ comunicacionEmbargo.municipio_id }}</span>
+              </div>
+            </div>
+            
+            <div class="half-text d-flex">
+              <strong>Matriz:</strong>
+              <div class="col-lg-6 col-md-12">
+                <span *ngIf="comunicacionEmbargo.id_matriz; else noIcon">{{ comunicacionEmbargo.id_matriz }}</span>
+              </div>
+            </div>
+
+            <div class="half-text d-flex">
+              <strong>Contraventor:</strong>
+              <div class="col-lg-6 col-md-12">
+                <span *ngIf="comunicacionEmbargo.contraventor; else noIcon"  >{{ comunicacionEmbargo.contraventor }}</span>
+                <ng-template #noIcon>
+                  No
+                </ng-template>
+              </div>
+            </div>
+
+            <div class="half-text d-flex">
+                <strong>Importe Pendiente:</strong>
+                <div class="col-lg-6 col-md-12">
+                  <span>{{ comunicacionEmbargo.importe_pen }}</span>
+                </div>
+              </div>
+  
+            <div class="half-text d-flex">
+              <strong>Importe Liquidado:</strong>
+              <div class="col-lg-6 col-md-12">
+                <span>{{ comunicacionEmbargo.importe_liq }}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 col-md-12">
+              <div class="half-text d-flex">
+                  <strong>Confirmado:</strong>
+                  <div class="col-lg-6 col-md-12">
+                    <span>{{ comunicacionEmbargo.confirmado }}</span>
+                  </div>
+                </div>
+
+            <div class="half-text d-flex">
+                <strong>Fecha de Comunición:</strong>
+                <div class="col-lg-6 col-md-12">
+                  <span>{{ comunicacionEmbargo.fecha_comunicacion }}</span>
+                </div>
+              </div>
+
+            <div class="half-text d-flex">
+              <strong>Recibido por:</strong>
+              <div class="col-lg-6 col-md-12">
+                <span>{{ comunicacionEmbargo.recibido_por }}</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-lg-6 col-md-12">
+              <div class="half-text d-flex">
+                  <strong>Cargo:</strong>
+                  <div class="col-lg-6 col-md-12">
+                    <span>{{ comunicacionEmbargo.cargo }}</span>
+                  </div>
+                </div>
+
+            <div class="half-text d-flex">
+                <strong>Notas:</strong>
+                <div class="col-lg-6 col-md-12">
+                  <span>{{ comunicacionEmbargo.observaciones }}</span>
+                </div>
+              </div>
+
+            <div class="half-text d-flex">
+              <strong>Mes:</strong>
+              <div class="col-lg-6 col-md-12">
+                <span>{{ comunicacionEmbargo.mes }}</span>
+              </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6 col-md-12">
+              <div class="half-text d-flex">
+                <strong>Estado:</strong>
+                <div class="col-lg-6 col-md-12">
+                  <span>{{ comunicacionEmbargo.state }}</span>
+                </div>
+              </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="example-button-container">
+        <button mat-raised-button [routerLink]="['/operaciones/comunicacion-embargo/listado']" color="secundary">Volver</button>
+      </div>     
+    </div>
+  
+    </div>
+  </div> 
+  
+
+

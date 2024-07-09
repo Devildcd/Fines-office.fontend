@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import { Imposicion } from '../../interfaces/imposicion.interface';
 import { OCCM } from 'src/app/nomencladores/interfaces/occm.interface';
 import { Organismo } from 'src/app/nomencladores/interfaces/organismo.interface';
-import { EntregaRecepcion } from 'src/app/talonarios/entrega-recepcion/interfaces/entrega-recepcion.interface';
+import { EntregaRecepcionImposicion } from 'src/app/talonarios/entrega-recepcion-imposicion/interfaces/entrega-recepcion-imposicion.interface';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ImposicionService } from '../../services/imposicion.service';
 import { NomencladoresService } from 'src/app/nomencladores/services/nomencladores.service';
 import { Router } from '@angular/router';
-import { EntregaRecepcionService } from 'src/app/talonarios/entrega-recepcion/services/entrega-recepcion.service';
+import { EntregaRecepcionImposicionService } from 'src/app/talonarios/entrega-recepcion-imposicion/services/entrega-recepcion-imposicion.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -20,14 +20,14 @@ export class CreateComponent {
   imposicion!: Imposicion;
   occms: OCCM[] = [];
   organismos: Organismo[] = [];
-  id_Entregas_Recepcions: EntregaRecepcion[] = []
+  id_Entregas_Recepcions: EntregaRecepcionImposicion[] = []
   submitted = false;
 
   constructor(
     private fb: FormBuilder,
     private imposicionService: ImposicionService,
     private nomencladoresService: NomencladoresService,
-    private entregarecepcionService: EntregaRecepcionService,
+    private entregarecepcionService: EntregaRecepcionImposicionService,
     private router: Router
   ) {}
 
@@ -61,7 +61,6 @@ export class CreateComponent {
   });
 
   crearImposicion() {
-
     if (this.formCrear.invalid || this.formCrear.untouched) {
       // El formulario es inválido o no se ha tocado
       Swal.fire({
@@ -105,5 +104,4 @@ export class CreateComponent {
       // }
     );
   }
-
 }

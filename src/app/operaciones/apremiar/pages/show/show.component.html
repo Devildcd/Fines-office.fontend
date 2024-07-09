@@ -51,7 +51,7 @@
           </div>
           <div class="col-lg-6 col-md-12">
             <div class="half-text d-flex">
-                <strong>Fecha de comunición:</strong>
+                <strong>Fecha de Comunición:</strong>
                 <div class="col-lg-6 col-md-12">
                   <span>{{ apremiar.fecha_comunicada }}</span>
                 </div>
@@ -65,16 +65,9 @@
               </div>
 
             <div class="half-text d-flex">
-              <strong>Fecha de Denuncia:</strong>
-              <div class="col-lg-6 col-md-12">
-                <span>{{ apremiar.num_radicacion }}</span>
-              </div>
-            </div>
-
-            <div class="half-text d-flex">
               <strong>Numero de radicación:</strong>
               <div class="col-lg-6 col-md-12">
-                <span *ngIf=" apremiar.num_radicacion ; else noIcon">{{ apremiar.num_radicacion }}</span>
+                <span>{{ apremiar.num_radicacion }}</span>
               </div>
             </div>
 

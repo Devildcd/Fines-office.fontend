@@ -75,7 +75,7 @@ export class ListComponent {
 
   filtrarDatos() {
     this.dataSource.data = this.cancelaciones.filter((cancelar) => {
-      return cancelar.id_matriz.toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
+      return cancelar.id_matriz.toString().toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
       cancelar.mov_multa_id.toString().toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
       cancelar.fecha_cancelacion.toString().toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
       cancelar.ccancel_id.toString().toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
@@ -110,7 +110,7 @@ export class ListComponent {
     if (!row) {
       return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
     }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id_matriz + 1}`;
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.notas + 1}`;
   }
 
   length = 50;

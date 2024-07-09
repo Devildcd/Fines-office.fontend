@@ -42,8 +42,8 @@ export class EditComponent {
         console.log(  this.modeloOc5 );
 
         this.formEditar.patchValue({ 
-          occm: modeloOc5.occm,
-          organismo_origen: modeloOc5.organismo_origen,
+          occm: modeloOc5.occm.id,
+          organismo_origen: modeloOc5.organismo_origen.id,
           cantidad_multas: modeloOc5.cantidad_multas,
           importe_total: modeloOc5.importe_total,
           suma_serie: modeloOc5.suma_serie,

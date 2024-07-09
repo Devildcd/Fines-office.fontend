@@ -1,0 +1,73 @@
+<div *ngIf="loading" class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+  
+  <div class="container-pers">
+  
+    <div class="card card d-flex flex-column">
+      <div class="card-header">
+        <div class="row">
+          <div class="col-md-8">
+              <h2 style="color: rgb(95, 95, 95);">Detalles</h2>
+          </div>
+      </div>
+  
+    <div *ngIf="!loading" class="card-body flex-grow-1">
+      <div class="container-fluid"> 
+        <div class="row desplazador-horizontal">
+          <div class="col-lg-6 col-md-12">
+            <div class="half-text d-flex">
+              <strong>Matriz:</strong>
+              <div class="col-lg-6 col-md-12">
+                <span *ngIf="ajustar.matriz_id">{{ ajustar.matriz_id.c1 }}</span>
+              </div>
+            </div>
+            </div>
+
+            <div class="half-text d-flex">
+              <strong>Concepto de Ajuste:</strong>
+              <div class="col-lg-6 col-md-12">
+                  <span *ngIf="ajustar.concepto_ajuste_id">{{ ajustar.concepto_ajuste_id.descripcion }}</span>
+                </div>
+            </div>
+            
+            <div class="half-text d-flex">
+              <strong>Importe Ajustado :</strong>
+              <div class="col-lg-6 col-md-12">
+                <span>{{ ajustar.importe_ajustado }}</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="half-text d-flex">
+            <strong>No. Res(Auto):</strong>
+            <div class="col-lg-6 col-md-12">
+              <span *ngIf="ajustar.no_res">{{ ajustar.no_res }}</span>
+            </div>
+          </div>
+          
+          <div class="half-text d-flex">
+            <strong>Observaciones:</strong>
+            <div class="col-lg-6 col-md-12">
+              <span *ngIf="ajustar.observaciones">{{ ajustar.observaciones }}</span>
+            </div>
+          </div>
+          
+          <div class="half-text d-flex">
+            <strong>Movimiento:</strong>
+            <div class="col-lg-6 col-md-12">
+                <span *ngIf="ajustar.mov_multa_id">{{ ajustar.mov_multa_id.operacion }}</span>
+              </div>
+          </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="example-button-container">
+        <button mat-raised-button [routerLink]="['/operaciones/ajustar/listado']" color="secundary">Volver</button>
+      </div>     
+    </div>
+  
+   
+  </div> 
+  

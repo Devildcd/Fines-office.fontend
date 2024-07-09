@@ -19,7 +19,7 @@
             <div class="half-text d-flex">
               <strong>Matriz:</strong>
               <div class="col-lg-6 col-md-12">
-                <span *ngIf="cancelar.id_matriz">{{ cancelar.id_matriz }}</span>
+                <span *ngIf="cancelar.id_matriz">{{ cancelar.id_matriz.c1 }}</span>
               </div>
             </div>
             </div>
@@ -27,16 +27,22 @@
             <div class="half-text d-flex">
               <strong>Movimiento:</strong>
               <div class="col-lg-6 col-md-12">
-                  <span *ngIf="cancelar.mov_multa_id">{{ cancelar.mov_multa_id }}</span>
+                  <span *ngIf="cancelar.mov_multa_id">{{ cancelar.mov_multa_id.operacion }}</span>
                 </div>
               </div>
             
             <div class="half-text d-flex">
-                <strong>Concepto Cancelación:</strong>
+                <strong>Fecha Cancelación :</strong>
                 <div class="col-lg-6 col-md-12">
-                  <span>{{ cancelar.ccancel_id }}</span>
+                  <span>{{ cancelar.fecha_cancelacion }}</span>
                 </div>
               </div>
+          </div>
+          <div class="half-text d-flex">
+            <strong>Concepto Cancelación:</strong>
+            <div class="col-lg-6 col-md-12">
+              <span>{{ cancelar.ccancel_id.descripcion }}</span>
+            </div>
           </div>
           
             <div class="half-text d-flex">

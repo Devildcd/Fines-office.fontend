@@ -1,14 +1,17 @@
-
-<a class="nav-link collapsed" href="" (click)="disableLink($event)" [matMenuTriggerFor]="recepcion" data-toggle="collapse">
-    <i class="fas fa-tag" style="margin-right: 10px;"></i>
-    <span>Talonarios</span>
+<a class="nav-link collapsed" href="" (click)="disableLink($event)" [matMenuTriggerFor]="recepcion"
+  data-toggle="collapse">
+  <i class="fas fa-tag" style="margin-right: 10px;"></i>
+  <span>Talonarios</span>
 </a>
 
 <mat-menu #tools="matMenu">
-    <button [matMenuTriggerFor]="recepcion" mat-menu-item>Talonarios</button>
-  </mat-menu>
-  <mat-menu #recepcion="matMenu">
-    <button mat-menu-item [routerLink]="['/talonarios/entrega-recepcion/listado']">Entrega y Recepción</button>
-	<button mat-menu-item [routerLink]="['/talonarios/imposicion/listado']">Imposición</button>
-  </mat-menu>
-  
+  <button [matMenuTriggerFor]="recepcion" mat-menu-item>Talonarios</button>
+</mat-menu>
+<mat-menu #recepcion="matMenu">
+  <button mat-menu-item [routerLink]="['/talonarios/comprobante/listado']">Comprobante</button>
+  <button mat-menu-item [routerLink]="['/talonarios/entrega-recepcion-imposicion/listado']">Entrega Recepción e
+    Imposición</button>
+  <button mat-menu-item [routerLink]="['/talonarios/entrega-recepcion-comprobante/listado']">Entrega Recepción y
+    Comprobante</button>
+  <button mat-menu-item [routerLink]="['/talonarios/imposicion/listado']">Imposición</button>
+</mat-menu>

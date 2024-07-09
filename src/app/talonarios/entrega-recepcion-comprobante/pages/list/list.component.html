@@ -1,0 +1,202 @@
+<div class="container-pers">
+
+    <div class="card card d-flex flex-column">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-md-8">
+
+                    <h2 style="color: rgb(95, 95, 95);">Entrega Recepción y Comprobante</h2>
+                </div>
+
+                <div class="row justify-content-end">
+                    <div class="col-md-5">
+                        <div class="input-group">
+                            <input type="text" class="form-control" [(ngModel)]="terminoBusqueda"
+                                (input)="filtrarDatos()" placeholder="Buscar">
+                            <div class="input-group-append">
+                                <button *ngIf="!terminoBusqueda" class="search-boton-pers" mat-raised-button
+                                    color="secondary" type="button">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                                <button (click)="clearBuscador()" *ngIf="terminoBusqueda" class="search-boton-pers"
+                                    mat-raised-button color="secondary" type="button">
+                                    <i class="fa fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-body flex-grow-1" style="margin-top: -20px;">
+
+                <div class="row mt-3">
+                    <div class="col-md-8">
+                        <div class="button-pers">
+                            <button mat-raised-button color="primary"
+                                [routerLink]="['/talonarios/entrega-recepcion-comprobante/crear']">Crear</button>
+                            <!-- <button mat-raised-button color="primary" >Crear</button> -->
+                            <button mat-raised-button color="secundary" style="margin-left: 5px;">Importar</button>
+                        </div>
+                    </div>
+
+                    <div class="additional-buttons"
+                        style="display: flex; justify-content: flex-end; align-items: center; margin-top: -45px; margin-bottom: 10px;">
+                        <div>
+                            <button mat-mini-fab color="primary" [matMenuTriggerFor]="menu">
+                                <i class="fas fa-ellipsis-v"></i> <!-- Icono de opciones de Font Awesome -->
+                            </button>
+
+                            <mat-menu #menu="matMenu">
+                                <button mat-menu-item>Opción 1</button>
+                                <button mat-menu-item>Opción 2</button>
+                            </mat-menu>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+
+                    <div *ngIf="loading" class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+
+                    <table *ngIf="!loading" mat-table [dataSource]="dataSource" class="mat-elevation-z8 custom-table">
+
+                        <ng-container matColumnDef="select">
+                            <th mat-header-cell *matHeaderCellDef class="custom-header">
+                                <mat-checkbox color="primary" (change)="$event ? toggleAllRows() : null"
+                                    [checked]="selection.hasValue() && isAllSelected()"
+                                    [indeterminate]="selection.hasValue() && !isAllSelected()"
+                                    [aria-label]="checkboxLabel()">
+                                </mat-checkbox>
+                            </th>
+                            <td mat-cell *matCellDef="let row">
+                                <mat-checkbox color="primary" (click)="$event.stopPropagation()"
+                                    (change)="$event ? selection.toggle(row) : null"
+                                    [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)">
+                                </mat-checkbox>
+                            </td>
+                        </ng-container>
+
+
+                        <ng-container matColumnDef="fecha">
+                            <th mat-header-cell *matHeaderCellDef><strong> Fecha </strong></th>
+                            <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+                                    [routerLink]="['/talonarios/entrega-recepcion-comprobante/detalles/', element.id]"
+                                    class="link-estilizado">{{ element.fecha }} </a> </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="movimiento">
+                            <th mat-header-cell *matHeaderCellDef><strong> Movimiento </strong></th>
+                            <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+                                [routerLink]="['/talonarios/entrega-recepcion-comprobante/detalles/', element.id]"
+                                class="link-estilizado">{{ element.movimiento}} </a> </td>
+                        </ng-container>
+                        <ng-container matColumnDef="codentrada">
+                            <th mat-header-cell *matHeaderCellDef><strong> Código Entrega </strong></th>
+                            <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+                                [routerLink]="['/talonarios/entrega-recepcion-comprobante/detalles/', element.id]"
+                                class="link-estilizado">{{ element.codentrada }} </a> </td>
+                        </ng-container>
+                        <ng-container matColumnDef="entregadox">
+                            <th mat-header-cell *matHeaderCellDef><strong> Entregado por </strong></th>
+                            <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+                                [routerLink]="['/talonarios/entrega-recepcion-comprobante/detalles/', element.id]"
+                                class="link-estilizado">{{ element.entregadox }} </a> </td>
+                        </ng-container>
+                        <ng-container matColumnDef="recibidox">
+                            <th mat-header-cell *matHeaderCellDef><strong> Recibido por </strong></th>
+                            <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+                                [routerLink]="['/talonarios/entrega-recepcion-comprobante/detalles/', element.id]"
+                                class="link-estilizado">{{ element.recibidox }} </a> </td>
+                        </ng-container>
+                        <ng-container matColumnDef="referencia">
+                            <th mat-header-cell *matHeaderCellDef><strong> Referencia </strong></th>
+                            <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+                                [routerLink]="['/talonarios/entrega-recepcion-comprobante/detalles/', element.id]"
+                                class="link-estilizado"> {{ element.referencia }} </a> </td>
+                        </ng-container>
+                        <ng-container matColumnDef="serie">
+                            <th mat-header-cell *matHeaderCellDef><strong> Serie </strong></th>
+                            <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+                                [routerLink]="['/talonarios/entrega-recepcion-comprobante/detalles/', element.id]"
+                                class="link-estilizado"> {{ element.serie }} </a> </td>
+
+                        </ng-container>
+                        <ng-container matColumnDef="numerd">
+                            <th mat-header-cell *matHeaderCellDef><strong> NumerD </strong></th>
+                            <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+                                [routerLink]="['/talonarios/entrega-recepcion-comprobante/detalles/', element.id]"
+                                class="link-estilizado"> {{ element.numerd }} </a> </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="numerh">
+                            <th mat-header-cell *matHeaderCellDef><strong> NumerH </strong></th>
+                            <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+                                [routerLink]="['/talonarios/entrega-recepcion-comprobante/detalles/', element.id]"
+                                class="link-estilizado"> {{ element.numerh }} </a> </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="carga_inicial">
+                            <th mat-header-cell *matHeaderCellDef><strong> Carga Inicial </strong></th>
+                            <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+                                [routerLink]="['/talonarios/entrega-recepcion-comprobante/detalles/', element.id]"
+                                class="link-estilizado"> {{ element.carga_inicial }} </a> </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="activo">
+                            <th mat-header-cell *matHeaderCellDef><strong> Activo </strong></th>
+                            <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+                                [routerLink]="['/talonarios/entrega-recepcion-comprobante/detalles/', element.id]"
+                                class="link-estilizado"> {{ element.activo}} </a> </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="occm_destino">
+                            <th mat-header-cell *matHeaderCellDef><strong> Occm </strong></th>
+                            <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+                                [routerLink]="['/talonarios/entrega-recepcion-comprobante/detalles/', element.id]"
+                                class="link-estilizado"> {{ element.occm_destino.descripcion }} </a> </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="operador">
+                            <th mat-header-cell *matHeaderCellDef><strong> Operador </strong></th>
+                            <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+                                [routerLink]="['/talonarios/entrega-recepcion-comprobante/detalles/', element.id]"
+                                class="link-estilizado"> {{ element.operador }} </a> </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="actions">
+                            <th mat-header-cell *matHeaderCellDef><strong>Acciones</strong></th>
+                            <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element">
+                                <div class="d-flex">
+                                    <button [routerLink]="['/talonarios/entrega-recepcion-comprobante/editar/', element.id]"
+                                        mat-mini-fab color="primary" style="margin-right: 5px;">
+                                        <i class="fa fa-edit" aria-hidden="true"></i>
+                                    </button>
+                                    <button mat-mini-fab (click)="eliminarEntregaRecepcionComprobante(element.id)" color="warn">
+                                        <i class="fa fa-trash" aria-hidden="true"></i>
+                                    </button>
+
+                                </div>
+                            </td>
+                        </ng-container>
+
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let element; columns: displayedColumns;"
+                            (click)="selection.toggle(element)">
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <mat-paginator #paginator class="demo-paginator paginador-transparente" (page)="handlePageEvent($event)"
+                [length]="length" [pageSize]="pageSize" [disabled]="disabled"
+                [showFirstLastButtons]="showFirstLastButtons"
+                [pageSizeOptions]="showPageSizeOptions ? pageSizeOptions : []" [hidePageSize]="hidePageSize"
+                [pageIndex]="pageIndex" aria-label="Select page">
+            </mat-paginator>
+        </div>
+    </div>
+</div>
