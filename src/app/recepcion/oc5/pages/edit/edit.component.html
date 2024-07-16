@@ -2,77 +2,282 @@
 
 <div class="container-pers">
 
-    <div class="card card d-flex flex-column">
-      <div class="card-header">
-        <div class="row">
-          <div class="col-md-8">
-              <h2 style="color: rgb(95, 95, 95);">Crear Modelo Oc5</h2>
-          </div>
-      </div>
-  
-    <div class="card-body flex-grow-1">
-        <form [formGroup]="formEditar">
-  
+  <div class="card card d-flex flex-column">
+    <div class="card-header">
+      <div class="row">
+        <div class="col-md-8">
+            <h2 style="color: rgb(95, 95, 95);">Crear Modelo Oc5</h2>
+        </div>
+    </div>
+
+  <div class="card-body flex-grow-1">
+      <form [formGroup]="formEditar">
+
+          <div class="example-inline-container">
+              <mat-form-field class="example-form-field">
+                  <mat-label>Oficina</mat-label>
+                  <mat-select formControlName="occm" required>
+                    <mat-option *ngFor="let occm of occms" [value]="occm.id">{{ occm.id_occm }}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+            
+                <mat-form-field class="example-form-field">
+                  <mat-label>Organismo</mat-label>
+                  <mat-select formControlName="organismo_origen" required>
+                    <mat-option *ngFor="let organismo of organismos" [value]="organismo.id">{{ organismo.nombre }}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+            </div>
+
             <div class="example-inline-container">
-                <mat-form-field class="example-form-field">
-                    <mat-label>Oficina</mat-label>
-                    <mat-select formControlName="occm" required>
-                      <mat-option *ngFor="let occm of occms" [value]="occm.id">{{ occm.id_occm }}</mat-option>
-                    </mat-select>
-                  </mat-form-field>
-              
-                  <mat-form-field class="example-form-field">
-                    <mat-label>Organismo</mat-label>
-                    <mat-select formControlName="organismo_origen" required>
-                      <mat-option *ngFor="let organismo of organismos" [value]="organismo.id">{{ organismo.nombre }}</mat-option>
-                    </mat-select>
-                  </mat-form-field>
-              </div>
+              <mat-form-field class="example-form-field">
+                  <mat-label>Cantidad de Multas</mat-label>
+                  <input matInput type="number" formControlName="cantidad_multas" required>
+                </mat-form-field>
 
-              <div class="example-inline-container">
-                <mat-form-field class="example-form-field">
-                    <mat-label>Cantidad de Multas</mat-label>
-                    <input matInput type="number" formControlName="cantidad_multas" required>
-                  </mat-form-field>
+              <mat-form-field class="example-form-field">
+                  <mat-label>Importe Total</mat-label>
+                  <input matInput type="number" formControlName="importe_total" required>
+                </mat-form-field>
 
                 <mat-form-field class="example-form-field">
-                    <mat-label>Importe Total</mat-label>
-                    <input matInput type="number" formControlName="importe_total" required>
-                  </mat-form-field>
+                  <mat-label>Suma de Serie</mat-label>
+                  <input matInput type="number" formControlName="suma_serie" required>
+                </mat-form-field>
+            </div>
 
-                  <mat-form-field class="example-form-field">
-                    <mat-label>Suma de Serie</mat-label>
-                    <input matInput type="number" formControlName="suma_serie" required>
-                  </mat-form-field>
-              </div>
+            <div class="example-inline-container">
 
-              <div class="example-inline-container">
+              <mat-form-field class="example-form-field">
+                  <mat-label>Suma de Dias</mat-label>
+                  <input matInput type="number" formControlName="suma_dias" required>
+                </mat-form-field>
+
+                <!-- <mat-form-field class="example-form-field">
+                  <mat-label>OC37</mat-label>
+                  <mat-select formControlName="oc_37">
+                    <mat-option *ngFor="let modeloOc37 of modelosOc37" [value]="modeloOc37.id">{{ modeloOc37 }}</mat-option>
+                  </mat-select>
+                </mat-form-field> -->
 
                 <mat-form-field class="example-form-field">
-                    <mat-label>Suma de Dias</mat-label>
-                    <input matInput type="number" formControlName="suma_dias" required>
-                  </mat-form-field>
+                  <mat-label>Estado</mat-label>
+                  <mat-select formControlName="estado" required>
+                    <mat-option value="draft">No Confirmado</mat-option>
+                    <mat-option value="done">Confirmado</mat-option>
+                  </mat-select>
+                </mat-form-field>
+            </div>
 
-                  <mat-form-field class="example-form-field">
-                    <mat-label>Estado</mat-label>
-                    <mat-select formControlName="estado" required>
-                      <mat-option value="draft">No Confirmado</mat-option>
-                      <mat-option value="done">Confirmado</mat-option>
-                    </mat-select>
-                  </mat-form-field>
+            <button (click)="openDialog()" mat-button color="primary">Nueva Multa</button>
+            <button mat-button (click)="openDialog1()" color="primary">Eliminar Multa</button>
+            <div class="example-button-container">
+              <!-- Agrega tus botones aquí -->
+              <button mat-raised-button (click)="editarModeloOc5()" color="primary" style="margin-right: 5px;">Aceptar</button>
+              <button mat-raised-button [routerLink]="['/recepción/modeloOC5/listado']" color="secundary">Volver</button>
+            </div>
+  
+      </form>
+  </div>
+
+  </div>
+</div> 
+
+<!-- Dialog crear multas -->
+<ng-template #dialogTemplate let-dialogRef="dialogRef">
+<h1 mat-dialog-title>Crear Multas</h1>
+<div *ngIf="success" class="alert alert-info" role="alert">
+  Exito!
+</div>
+<div mat-dialog-content class="mat-typography">
+  <form [formGroup]="formCrearMulta">
+
+    <div class="example-inline-container">
+        <mat-form-field class="example-form-field">
+          <mat-label>Decreto-Articulo-Inciso</mat-label>
+          <input matInput type="number" formControlName="dley_art_inc" required>
+          </mat-form-field>
+      
+          <mat-form-field class="example-form-field">
+            <mat-label>Impositor</mat-label>
+            <input matInput type="number" formControlName="impositor" required>
+          </mat-form-field>
+      </div>
+
+      <div class="example-inline-container">
+        <mat-form-field class="example-form-field">
+          <mat-label>Talon</mat-label>
+          <input matInput type="number" formControlName="talon" required>
+        </mat-form-field>
+
+        <mat-form-field class="example-form-field">
+          <mat-label>Importe</mat-label>
+          <input matInput type="number" formControlName="importe" required>
+        </mat-form-field>
+
+        <mat-form-field class="example-form-field">
+          <mat-label>Tipo de Multa</mat-label>
+          <input matInput type="number" formControlName="tipo_multa" required>
+        </mat-form-field>
+      </div>
+
+      <div class="example-inline-container">
+        <mat-form-field class="example-form-field">
+          <mat-label>Estado de Multa</mat-label>
+          <input matInput type="number" formControlName="estado_multa_id" required>
+        </mat-form-field>
+
+        <mat-form-field class="example-form-field">
+          <mat-label>Moneda</mat-label>
+          <input matInput type="number" formControlName="moneda" required>
+        </mat-form-field>
+
+        <mat-form-field class="example-form-field">
+          <mat-label>Fecha</mat-label>
+            <input matInput placeholder="Mes/Día/Año" [matDatepicker]="picker" formControlName="fecha" required readonly>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+      </div>
+
+      <div class="example-inline-container">
+        <mat-form-field class="example-form-field">
+          <mat-label>Concepto de Traslado</mat-label>
+          <input matInput type="number" formControlName="conceptraslado" required>
+        </mat-form-field>
+
+        <mat-form-field class="example-form-field">
+          <mat-label>Contraventor</mat-label>
+          <input matInput type="number" formControlName="contraventor" required>
+        </mat-form-field>
+      </div>
+
+      <div class="example-inline-container">
+        <mat-checkbox formControlName="temporal" color="primary">
+          Temporal
+        </mat-checkbox>
+        <mat-checkbox formControlName="devolver" color="primary">
+          Devolver
+        </mat-checkbox>
+        <mat-checkbox formControlName="recibida_traslado" color="primary">
+          Traslado Recibida
+        </mat-checkbox>
+        <mat-checkbox formControlName="carga" color="primary">
+          Carga
+        </mat-checkbox>
+        <mat-checkbox formControlName="nivel" color="primary">
+          Nivel
+        </mat-checkbox>
+      </div>
+      
+      </form>
+      </div>
+      <div mat-dialog-actions align="end">
+        <button mat-raised-button color="primary" (click)="agregarMulta()">Guardar</button>
+        <button mat-raised-button color="warn" (click)="dialogRef.close()">Cerrar</button>
+      </div>
+      </ng-template>
+
+       <!-- Dialog mostrar multas -->
+<ng-template #dialogTemplate1 let-dialogRef="dialogRef">
+  <h1 mat-dialog-title>Multas Relacionadas</h1>
+  <div mat-dialog-content>
+    <table *ngIf="!loading" mat-table [dataSource]="dataSource" class="custom-table">
+
+      <ng-container matColumnDef="fecha">
+          <th mat-header-cell *matHeaderCellDef><strong> Fecha </strong></th>
+          <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+                  [routerLink]="['/recepción/modeloOC5/detalles/', element.id]"
+                  class="link-estilizado">{{ element.fecha }} </a> </td>
+      </ng-container>
+
+      <ng-container matColumnDef="importe">
+          <th mat-header-cell *matHeaderCellDef><strong> Importe </strong></th>
+          <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+                  [routerLink]="['/recepción/modeloOC5/detalles/', element.id]"
+                  class="link-estilizado">{{ element.importe }} </a> </td>
+      </ng-container>
+
+      <ng-container matColumnDef="impositor">
+          <th mat-header-cell *matHeaderCellDef><strong> Impositor </strong></th>
+          <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+                  [routerLink]="['/recepción/modeloOC5/detalles/', element.id]"
+                  class="link-estilizado">{{ element.impositor}} </a> </td>
+      </ng-container>
+
+      <ng-container matColumnDef="talon">
+          <th mat-header-cell *matHeaderCellDef><strong> Talon </strong></th>
+          <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+                  [routerLink]="['/recepción/modeloOC5/detalles/', element.id]"
+                  class="link-estilizado">{{ element.talon }} </a> </td>
+      </ng-container>
+
+      <ng-container matColumnDef="dley_art_inc">
+          <th mat-header-cell *matHeaderCellDef><strong> Decreto </strong></th>
+          <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+                  [routerLink]="['/recepción/modeloOC5/detalles/', element.id]"
+                  class="link-estilizado">{{ element.dley_art_inc }} </a> </td>
+      </ng-container>
+
+      <ng-container matColumnDef="tipo_multa">
+          <th mat-header-cell *matHeaderCellDef><strong> Tipo Multa </strong></th>
+          <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+                  [routerLink]="['/recepción/modeloOC5/detalles/', element.id]"
+                  class="link-estilizado">{{ element.tipo_multa }} </a> </td>
+      </ng-container>
+
+      <ng-container matColumnDef="moneda">
+        <th mat-header-cell *matHeaderCellDef><strong> Moneda </strong></th>
+        <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+                [routerLink]="['/recepción/modeloOC5/detalles/', element.id]"
+                class="link-estilizado"> {{ element.moneda }} </a> </td>
+    </ng-container>
+
+  <ng-container matColumnDef="contraventor">
+    <th mat-header-cell *matHeaderCellDef><strong> Contraventor </strong></th>
+    <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+            [routerLink]="['/recepción/modeloOC5/detalles/', element.id]"
+            class="link-estilizado"> {{ element.contraventor }} </a> </td>
+</ng-container>
+
+<ng-container matColumnDef="devolver">
+  <th mat-header-cell *matHeaderCellDef><strong> Devuelve </strong></th>
+  <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+          [routerLink]="['/recepción/modeloOC5/detalles/', element.id]"
+          class="link-estilizado"> <i *ngIf="element.devolver" class="fas fa-check"></i> </a> </td>
+</ng-container>
+
+<ng-container matColumnDef="nivel">
+  <th mat-header-cell *matHeaderCellDef><strong> Nivel </strong></th>
+  <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+          [routerLink]="['/recepción/modeloOC5/detalles/', element.id]"
+          class="link-estilizado"> <i *ngIf="element.nivel" class="fas fa-check"></i> </a> </td>
+</ng-container>
+      
+      <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef><strong>Acciones</strong></th>
+          <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element; let i = index">
+              <div class="d-flex">
+                  <!-- <button 
+                      mat-mini-fab color="primary" style="margin-right: 5px;">
+                      <i class="fa fa-edit" aria-hidden="true"></i>
+                  </button> -->
+                  <button mat-button (click)="eliminarMulta(i)" color="warn">
+                      Eliminar
+                  </button>
+
               </div>
-  
-              <div class="example-button-container">
-                <!-- Agrega tus botones aquí -->
-                <button mat-raised-button (click)="editarModeloOc5()" color="primary" style="margin-right: 5px;">Aceptar</button>
-                <button mat-raised-button [routerLink]="['/recepción/modeloOC5/listado']" color="secundary">Volver</button>
-              </div>
-    
-        </form>
-    </div>
-  
-    </div>
-  </div> 
-  
-  
+          </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let element; columns: displayedColumns;">
+      </tr>
+  </table>
+  </div>
+  <div mat-dialog-actions align="end">
+      <button mat-raised-button color="warn" (click)="dialogRef.close()">Cerrar</button>
+  </div>
+</ng-template>
+
 

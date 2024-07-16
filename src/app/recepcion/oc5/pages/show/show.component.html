@@ -81,7 +81,7 @@
 
           </div>
         </div>
-        <button (click)="openDialog()" mat-raised-button color="primary"> Ver Multas</button>
+        <button (click)="openDialog()" mat-button color="primary"> Ver Multas</button>
       </div>
       <div class="example-button-container">
         <button mat-raised-button [routerLink]="['/recepción/modeloOC5/listado']" color="secundary">Volver</button>
@@ -94,7 +94,7 @@
 <ng-template #dialogTemplate let-dialogRef="dialogRef">
   <h1 mat-dialog-title>Multas Relacionadas</h1>
   <div mat-dialog-content>
-    <table *ngIf="!loading" mat-table [dataSource]="dataSource" class="mat-elevation-z8 custom-table">
+    <table *ngIf="!loading" mat-table [dataSource]="dataSource" class="custom-table">
 
       <ng-container matColumnDef="fecha">
           <th mat-header-cell *matHeaderCellDef><strong> Fecha </strong></th>
@@ -116,29 +116,26 @@
                   [routerLink]="['/recepción/modeloOC5/detalles/', element.id]"
                   class="link-estilizado">{{ element.impositor}} </a> </td>
       </ng-container>
+
       <ng-container matColumnDef="talon">
           <th mat-header-cell *matHeaderCellDef><strong> Talon </strong></th>
           <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
                   [routerLink]="['/recepción/modeloOC5/detalles/', element.id]"
                   class="link-estilizado">{{ element.talon }} </a> </td>
       </ng-container>
+
       <ng-container matColumnDef="dley_art_inc">
           <th mat-header-cell *matHeaderCellDef><strong> Decreto </strong></th>
           <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
                   [routerLink]="['/recepción/modeloOC5/detalles/', element.id]"
                   class="link-estilizado">{{ element.dley_art_inc }} </a> </td>
       </ng-container>
+
       <ng-container matColumnDef="tipo_multa">
-          <th mat-header-cell *matHeaderCellDef><strong> Tipo de Multa </strong></th>
+          <th mat-header-cell *matHeaderCellDef><strong> Tipo Multa </strong></th>
           <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
                   [routerLink]="['/recepción/modeloOC5/detalles/', element.id]"
                   class="link-estilizado">{{ element.tipo_multa }} </a> </td>
-      </ng-container>
-      <ng-container matColumnDef="estado_multa_id">
-          <th mat-header-cell *matHeaderCellDef><strong> Estado Multa </strong></th>
-          <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
-                  [routerLink]="['/recepción/modeloOC5/detalles/', element.id]"
-                  class="link-estilizado"> {{ element.estado_multa_id }} </a> </td>
       </ng-container>
 
       <ng-container matColumnDef="moneda">
@@ -148,35 +145,26 @@
                 class="link-estilizado"> {{ element.moneda }} </a> </td>
     </ng-container>
 
-    <ng-container matColumnDef="conceptraslado">
-      <th mat-header-cell *matHeaderCellDef><strong> Concepto de Traslado </strong></th>
-      <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
-              [routerLink]="['/recepción/modeloOC5/detalles/', element.id]"
-              class="link-estilizado"> {{ element.conceptraslado }} </a> </td>
-  </ng-container>
-
   <ng-container matColumnDef="contraventor">
     <th mat-header-cell *matHeaderCellDef><strong> Contraventor </strong></th>
     <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
             [routerLink]="['/recepción/modeloOC5/detalles/', element.id]"
             class="link-estilizado"> {{ element.contraventor }} </a> </td>
 </ng-container>
-      
-      <ng-container matColumnDef="actions">
-          <th mat-header-cell *matHeaderCellDef><strong>Acciones</strong></th>
-          <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element">
-              <div class="d-flex">
-                  <button [routerLink]="['/recepción/modeloOC5/editar/', element.id]"
-                      mat-mini-fab color="primary" style="margin-right: 5px;">
-                      <i class="fa fa-edit" aria-hidden="true"></i>
-                  </button>
-                  <button mat-mini-fab  color="warn">
-                      <i class="fa fa-trash" aria-hidden="true"></i>
-                  </button>
 
-              </div>
-          </td>
-      </ng-container>
+<ng-container matColumnDef="devolver">
+  <th mat-header-cell *matHeaderCellDef><strong> Devuelve </strong></th>
+  <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+          [routerLink]="['/recepción/modeloOC5/detalles/', element.id]"
+          class="link-estilizado"> <i *ngIf="element.devolver" class="fas fa-check"></i> </a> </td>
+</ng-container>
+
+<ng-container matColumnDef="nivel">
+  <th mat-header-cell *matHeaderCellDef><strong> Nivel </strong></th>
+  <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a
+          [routerLink]="['/recepción/modeloOC5/detalles/', element.id]"
+          class="link-estilizado"> <i *ngIf="element.nivel" class="fas fa-check"></i> </a> </td>
+</ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let element; columns: displayedColumns;">
